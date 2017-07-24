@@ -42,5 +42,28 @@
   {
     "trigger": "Deck doesn't exist.",
     "sound": "error"
+  },
+  {
+    "trigger": "* chats: *",
+    "sound": "chat/message"
+  },
+  {
+    "trigger": "Chat on.",
+    "sound": "chat/on",
+    "omit": 1
+  },
+  {
+    "trigger": "Chat off.",
+    "sound": "chat/off",
+    "omit": 1
+  },
+  {
+    "trigger": "* says: *",
+    "sound": "chat/say"
+  },
+  {
+    "trigger": "Online players:",
+    "sound": "who",
+    "omit": 1
   }
 ]
