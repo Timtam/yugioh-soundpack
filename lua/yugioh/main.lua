@@ -6,6 +6,7 @@ Audio = nil
 Ini = require("ini")
 Path = require('pl.path')
 PPI = require("ppi")
+TriggerHandler = require('yugioh.triggerhandler')()
 
 function OnWorldOpen()
 
@@ -42,6 +43,7 @@ end
 
 function OnWorldClose()
   Ini.write('config.dat', Config)
+  TriggerHandler:Unload()
 end
 
 function PlaySound(file, pan)
