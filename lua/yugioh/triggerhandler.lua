@@ -28,7 +28,7 @@ function TriggerHandler:Load(language)
     if trigger.sequence ~= nil then
       self.triggers[i].sequence = tonumber(trigger.sequence)
     end
-    self.triggers[i].name = utils.hash(trigger.trigger)
+    self.triggers[i].name = 't_'..utils.hash(trigger.trigger)
     if trigger.sound ~= nil then
       self.triggers[i].script = 'PlaySound(\''..trigger.sound..'\')'
     elseif trigger.script ~= nil then

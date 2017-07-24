@@ -1,0 +1,46 @@
+[
+  {
+    "trigger": "* logged in.",
+    "sound": "login"
+  },
+  {
+    "trigger": "* logged out.",
+    "sound": "logout"
+  },
+  {
+    "trigger": "I don't understand that.",
+    "sound": "error",
+    "omit": 1
+  },
+  {
+    "trigger": "Deck exists, loading.",
+    "sound": "deck/change",
+    "omit": 1
+  },
+  {
+    "trigger": "Quit.",
+    "sound": "deck/quit",
+    "omit": 1
+  },
+  {
+    "trigger": "Deck loaded with * cards.",
+    "sound": "deck/load",
+    "omit": 1
+  },
+  {
+    "trigger": "Deck imported.",
+    "sound": "deck/import"
+  },
+  {
+    "trigger": "Deck deleted.",
+    "sound": "deck/delete"
+  },
+  {
+    "trigger": "Deck cleared.",
+    "sound": "deck/clear"
+  },
+  {
+    "trigger": "Deck doesn't exist.",
+    "sound": "error"
+  }
+]
