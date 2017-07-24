@@ -133,7 +133,15 @@
     "sound": "duel/draw"
   },
   {
-    "trigger": "* set * in face-down defense position.",
+    "trigger": "You set * in face-down defense position.",
+    "sound": "duel/facedown"
+  },
+  {
+    "trigger": "* sets * in face down position.",
+    "sound": "duel/facedown"
+  },
+  {
+    "trigger": "You set * in face down position.",
     "sound": "duel/facedown"
   },
   {
@@ -242,11 +250,15 @@
     "script": "PlayLifepoints(\"%2\", \"%3\")"
   },
   {
-    "trigger": "* lp decreased by *, now *.",
+    "trigger": "You pay * LP. Your LP is now *.",
+    "script": "PlayLifepoints(\"%1\", \"%2\")"
+  },
+  {
+    "trigger": "* lp decreased by *, now *",
     "script": "PlayLifepoints(\"%2\", \"%3\")"
   },
   {
-    "trigger": "* lp increased by *, now *.",
+    "trigger": "* lp increased by *, now *",
     "sound": "duel/earn",
     "script": "PlayLifepoints(\"%2\", \"%3\")"
   }
