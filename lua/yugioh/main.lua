@@ -1,8 +1,8 @@
+Audio = nil
 Config = {}
 Config.settings = {}
 Config.settings.SoundsMuted = 0
 Config.settings.SoundVolume=50
-Audio = nil
 Ini = require("ini")
 Path = require('pl.path')
 PPI = require("ppi")
@@ -86,4 +86,36 @@ function VolumeMute()
     Config.settings.SoundsMuted = 1
     world.Note('Sounds muted')
   end
+end
+
+-- some helper function to efficiently play lifepoint sounds
+-- which will actually differ, depending on the amount of lost lifepoints
+
+function PlayLifepoints(lp_lost, lp_now)
+
+  if Config.settings.SoundsMuted == 1 then
+    return
+  end
+  lp_lost=tonumber(lp_lost)
+  lp_now = tonumber(lp_now)
+  if lp_lost == nil then
+    return
+  end
+  interval=100
+  plays=lp_lost / 100
+  delay=0
+  while plays > 0 do
+    Audio.playDelay(Path.join(GetInfo(74), 'duel', 'lp.ogg'),delay,0,Config.settings.SoundVolume)
+    delay=delay + interval
+    plays=plays - 1
+  end
+
+  local tmp
+
+  if lp_now <= 0 then
+    tmp = 'lpzero.ogg'
+  else
+    tmp = 'lpend.ogg'
+  end
+  Audio.playDelay(Path.join(GetInfo(74), 'duel', tmp), delay, 0, Config.settings.SoundVolume)
 end

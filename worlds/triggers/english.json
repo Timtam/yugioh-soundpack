@@ -236,5 +236,18 @@
   {
     "trigger": "You tribute *",
     "sound": "duel/tribute"
+  },
+  {
+    "trigger": "* pays * LP. Their LP is now *.",
+    "script": "PlayLifepoints(\"%2\", \"%3\")"
+  },
+  {
+    "trigger": "* lp decreased by *, now *.",
+    "script": "PlayLifepoints(\"%2\", \"%3\")"
+  },
+  {
+    "trigger": "* lp increased by *, now *.",
+    "sound": "duel/earn",
+    "script": "PlayLifepoints(\"%2\", \"%3\")"
   }
 ]
