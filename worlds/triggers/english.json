@@ -65,5 +65,176 @@
     "trigger": "Online players:",
     "sound": "who",
     "omit": 1
+  },
+  {
+    "trigger": "Your hand is empty.",
+    "sound": "duel/empty"
+  },
+  {
+    "trigger": "Waiting for opponent.",
+    "sound": "duel/wait",
+    "omit": 1
+  },
+  {
+    "trigger": "Your LP: * Opponent LP: *",
+    "sound": "duel/score"
+  },
+  {
+    "trigger": "Opponent's table:",
+    "sound": "duel/table"
+  },
+  {
+    "trigger": "Your table:",
+    "sound": "duel/table"
+  },
+  {
+    "trigger": "You won.",
+    "sound": "duel/win",
+    "omit": 1
+  },
+  {
+    "trigger": "Do you want to use the effect from * in *?",
+    "sound": "prompt"
+  },
+  {
+    "trigger": "* wants to duel. Type duel * to accept.",
+    "sound": "duel/request"
+  },
+  {
+    "trigger": "Duel created. You are player *.",
+    "sound": "duel/start",
+    "omit": 1
+  },
+  {
+    "trigger": "Activating *",
+    "sound": "duel/activate"
+  },
+  {
+    "trigger": "entering standby phase.",
+    "sound": "duel/standby",
+    "omit": 1
+  },
+  {
+    "trigger": "entering end phase.",
+    "sound": "duel/end",
+    "omit": 1
+  },
+  {
+    "trigger": "* activating *",
+    "sound": "duel/effect"
+  },
+  {
+    "trigger": "entering main1 phase.",
+    "sound": "duel/main",
+    "omit": 1
+  },
+  {
+    "trigger": "Drew * cards*",
+    "sound": "duel/draw"
+  },
+  {
+    "trigger": "* set * in face-down defense position.",
+    "sound": "duel/facedown"
+  },
+  {
+    "trigger": "entering battle start phase.",
+    "sound": "duel/battle",
+    "omit": 1
+  },
+  {
+    "trigger": "Select card to attack with:",
+    "sound": "duel/attention"
+  },
+  {
+    "trigger": "You lost.",
+    "sound": "duel/lose",
+    "omit": 1
+  },
+  {
+    "trigger": "Invalid spec.",
+    "sound": "duel/invalid"
+  },
+  {
+    "trigger": "Select chain (c to cancel):",
+    "sound": "duel/chain"
+  },
+  {
+    "trigger": "* drew * cards*",
+    "sound": "duel/draw"
+  },
+  {
+    "trigger": "* special summoning *",
+    "sound": "duel/special"
+  },
+  {
+    "trigger": "* sets * in face-down defense position.",
+    "sound": "duel/defense"
+  },
+  {
+    "trigger": "You set * in face-down position.",
+    "sound": "duel/facedown"
+  },
+  {
+    "trigger": "entering main2 phase.",
+    "sound": "duel/main",
+    "omit": 1
+  },
+  {
+    "trigger": "Card * destroyed.",
+    "sound": "duel/destroy"
+  },
+  {
+    "trigger": "begin damage",
+    "sound": "duel/attack",
+    "omit": 1
+  },
+  {
+    "trigger": "Enter a line of text.",
+    "sound": "duel/attention"
+  },
+  {
+    "trigger": "* attacks",
+    "sound": "duel/damage"
+  },
+  {
+    "trigger": "* summoning * (*/*) in face-up attack position.",
+    "sound": "duel/normal"
+  },
+  {
+    "trigger": "Duel request sent to *.",
+    "sound": "duel/request"
+  },
+  {
+    "trigger": "* turn.",
+    "sound": "duel/attention"
+  },
+  {
+    "trigger": "The position of card * (*) was changed to face-up.",
+    "sound": "duel/flip"
+  },
+  {
+    "trigger": "The position of card * (*) was changed to face-up defense.",
+    "sound": "duel/defend"
+  },
+  {
+    "trigger": "end damage",
+    "sound": "duel/damageend",
+    "omit": 1
+  },
+  {
+    "trigger": "* prepares to attack with *",
+    "sound": "duel/aim"
+  },
+  {
+    "trigger": "* targets *",
+    "sound": "duel/aim"
+  },
+  {
+    "trigger": "* tributes *",
+    "sound": "duel/tribute"
+  },
+  {
+    "trigger": "You tribute *",
+    "sound": "duel/tribute"
   }
 ]
