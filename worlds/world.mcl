@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on Montag, Juli 24, 2017, 4:50  -->
+<!-- Saved on Montag, Juli 24, 2017, 7:04  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +8,7 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
 
    auto_say_override_prefix="-"
    auto_say_string="say "
@@ -108,8 +108,54 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
   >
+  <trigger
+   enabled="y"
+   group="System"
+   match="Language set."
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load('english')</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Password:"
+   send_to="12"
+   sequence="100"
+  >
+  <send>PlaySound('prompt')</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Sprache gesetzt."
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load('german')</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="That account doesn't exist. Type new to create a new account."
+   send_to="12"
+   sequence="100"
+  >
+  <send>PlaySound('error')</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Welcome to the game."
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load('english')
+PlaySound('welcome')</send>
+  </trigger>
 </triggers>
 
 <!-- aliases -->
@@ -117,7 +163,7 @@
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
   >
   <alias
    match="volume_down"
@@ -159,7 +205,7 @@
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
   >
 </timers>
 
@@ -168,7 +214,7 @@
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
   >
 
   <macro name="up" type="send_now" >
@@ -262,8 +308,9 @@
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
   >
+  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\login.ogg|n:3|n:0|n:4|n:0|n:5|n:10</variable>
   <variable name="avalon">02dade4f6131c8d67e85c7ee</variable>
   <variable name="mxp_ap">30</variable>
   <variable name="mxp_max_ap">96</variable>
@@ -279,7 +326,7 @@
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
   >
 
 <ansi>
@@ -336,7 +383,7 @@
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
   >
 
   <key name="0" >
@@ -450,7 +497,7 @@
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 16:50:07"
+   date_saved="2017-07-24 19:04:48"
   >
 
 <ansi>
