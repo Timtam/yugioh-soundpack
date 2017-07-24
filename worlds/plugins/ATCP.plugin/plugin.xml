@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+
+<muclient>
+<plugin
+   name="ATCP"
+   author="Soludra"
+   id="7c08e2961c5e20e5bdbf7fc5"
+   language="Lua"
+   purpose="ATCP data"
+   date_written="2008-09-18"
+   date_modified="2010-01-15 12:27:00"
+   requires="4.50"
+   version="2.002"
+   save_state="n"
+   >
+</plugin>
+
+<include name="$PLUGINDIR\libraries\plugger.xml" />
+
+</muclient>

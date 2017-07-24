@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- MuClient version 5.05 -->
+<!-- Written by Nick Gammon -->
+<!-- Home Page: http://www.mushclient.com/ -->
+
+<!-- Plugin state saved. Plugin: "Kompass". World: "Avalon". -->
+
+<muclient>
+
+<!-- variables -->
+
+<variables
+   muclient_version="5.05"
+   world_file_version="15"
+  >
+  <variable name="blind">1</variable>
+  <variable name="perma">0</variable>
+</variables>
+</muclient>

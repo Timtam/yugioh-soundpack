@@ -1,0 +1,47 @@
+<!DOCTYPE script>
+
+<script><![CDATA[
+
+plugger = {}
+
+-- Semantic versioning (http://semver.org)
+do
+  local V_MAJOR, V_MINOR, V_BUGFIX = 1, 0, 0
+  local SEMVER = string.format("%d.%d.%d", V_MAJOR, V_MINOR, V_BUGFIX)
+  
+  plugger.__VERSION_MAJOR  = V_MAJOR
+  plugger.__VERSION_MINOR  = V_MINOR
+  plugger.__VERSION_BUGFIX = V_BUGFIX
+  plugger.__VERSION = SEMVER
+end
+
+plugger.path = function(subdir)
+  if not subdir then
+    subdir = ""
+  else
+    subdir = subdir:gsub("%.", "\\")
+    if subdir:sub(#subdir) ~= "\\" then
+      subdir = subdir .. "\\"
+    end
+  end
+  
+  return GetPluginInfo(GetPluginID(), 20) .. subdir
+end
+
+-- fix the lua path
+do
+  local path = utils.split(package.path, ";")
+  path[1] = plugger.path() .. "?.lua"
+  table.insert(path, 2, plugger.path() .. "libraries\\?.lua")
+  table.insert(path, 3, plugger.path() .. "libraries\\?\\init.lua")
+  package.path = table.concat(path, ";")
+  
+  local cpath = utils.split(package.cpath, ";")
+  cpath[1] = plugger.path() .. "?.dll"
+  table.insert(cpath, 2, plugger.path() .. "libraries\\?.dll")
+  package.cpath = table.concat(cpath, ";")
+end
+
+require("scripts.main")
+
+]]></script>

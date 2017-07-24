@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<!-- Saved on Freitag, März 03, 2017, 9:54  -->
+<!-- MuClient version 5.05 -->
+<!-- Written by Nick Gammon -->
+<!-- Home Page: http://www.mushclient.com/ -->
+
+<!-- Plugin state saved. Plugin: "LuaAudio". World: "Avalon". -->
+
+<muclient>
+
+<!-- variables -->
+
+<variables
+   muclient_version="5.05"
+   world_file_version="15"
+   date_saved="2017-03-03 21:54:20"
+  >
+  <variable name="vol">100</variable>
+</variables>
+</muclient>
