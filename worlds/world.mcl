@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on Montag, Juli 24, 2017, 3:30  -->
+<!-- Saved on Montag, Juli 24, 2017, 4:50  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +8,7 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
 
    auto_say_override_prefix="-"
    auto_say_string="say "
@@ -19,6 +19,8 @@
    mapping_failure="^Da gehts nicht weiter\.$"
    name="yugioh"
    new_activity_sound="(No sound)"
+   on_world_close="OnWorldClose"
+   on_world_open="OnWorldOpen"
    output_font_name="FixedSys"
    script_editor="C:\Windows\notepad.exe"
    script_filename=".\lua\yugioh\main.lua"
@@ -106,7 +108,7 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
   >
 </triggers>
 
@@ -115,8 +117,41 @@
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
   >
+  <alias
+   match="volume_down"
+   enabled="y"
+   group="System"
+   omit_from_command_history="y"
+   send_to="12"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>Volume(-5)</send>
+  </alias>
+  <alias
+   match="volume_mute"
+   enabled="y"
+   group="System"
+   omit_from_command_history="y"
+   send_to="12"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>VolumeMute()</send>
+  </alias>
+  <alias
+   match="volume_up"
+   enabled="y"
+   group="System"
+   omit_from_command_history="y"
+   send_to="12"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>Volume(5)</send>
+  </alias>
 </aliases>
 
 <!-- timers -->
@@ -124,7 +159,7 @@
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
   >
 </timers>
 
@@ -133,7 +168,7 @@
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
   >
 
   <macro name="up" type="send_now" >
@@ -227,7 +262,7 @@
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
   >
   <variable name="avalon">02dade4f6131c8d67e85c7ee</variable>
   <variable name="mxp_ap">30</variable>
@@ -244,7 +279,7 @@
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
   >
 
 <ansi>
@@ -301,7 +336,7 @@
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
   >
 
   <key name="0" >
@@ -415,7 +450,7 @@
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 15:30:53"
+   date_saved="2017-07-24 16:50:07"
   >
 
 <ansi>
