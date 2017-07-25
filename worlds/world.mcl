@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on Montag, Juli 24, 2017, 7:04  -->
+<!-- Saved on Dienstag, Juli 25, 2017, 6:55  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +8,7 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
 
    auto_say_override_prefix="-"
    auto_say_string="say "
@@ -63,6 +63,7 @@
    input_text_colour="black"
    keypad_enable="y"
    log_input="y"
+   log_output="y"
    map_failure_regexp="y"
    max_output_lines="5000"
    mud_can_change_link_colour="y"
@@ -94,7 +95,6 @@
    use_custom_link_colour="y"
    use_default_input_font="y"
    use_default_output_font="y"
-   use_mxp="2"
    warn_if_scripting_inactive="y"
    wrap="y"
    wrap_column="80"
@@ -108,7 +108,7 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
   >
   <trigger
    enabled="y"
@@ -163,7 +163,7 @@ PlaySound('welcome')</send>
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
   >
   <alias
    match="volume_down"
@@ -205,7 +205,7 @@ PlaySound('welcome')</send>
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
   >
 </timers>
 
@@ -214,7 +214,7 @@ PlaySound('welcome')</send>
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
   >
 
   <macro name="up" type="send_now" >
@@ -308,7 +308,7 @@ PlaySound('welcome')</send>
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
   >
   <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\login.ogg|n:3|n:0|n:4|n:0|n:5|n:10</variable>
   <variable name="avalon">02dade4f6131c8d67e85c7ee</variable>
@@ -326,7 +326,7 @@ PlaySound('welcome')</send>
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
   >
 
 <ansi>
@@ -383,7 +383,7 @@ PlaySound('welcome')</send>
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
   >
 
   <key name="0" >
@@ -497,7 +497,7 @@ PlaySound('welcome')</send>
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-24 19:04:48"
+   date_saved="2017-07-25 06:55:41"
   >
 
 <ansi>
