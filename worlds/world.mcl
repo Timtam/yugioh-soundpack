@@ -178,7 +178,44 @@ This soundpack supports some commands to optimize your user experience.
 Use the following command to check your current status.
 Use those commands followed by "on" or "off" to toggle them on or off.
 
+config autochaining - when this option is on, all chaining requests by the mud will automatically be negated. Use this only if you're sure what you're doing. 
+
 config omitting - checks wether the soundpack filters unimportant messages for you automatically. Most of those messages will have sound triggers anyway. If setting this option to "off", those sound triggers will remain, but the messages will be displayed too.</send>
+  </alias>
+  <alias
+   match="config autochaining"
+   enabled="y"
+   group="System"
+   send_to="12"
+   sequence="100"
+  >
+  <send>if Config.settings.AutoChaining == 0 then
+  world.Note("Chaining requests won't be answered automatically.")
+else
+  world.Note("Autochaining is activated and all requests will be refused.")
+end</send>
+  </alias>
+  <alias
+   match="config autochaining off"
+   enabled="y"
+   group="System"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Config.settings.AutoChaining = 0
+Interface:SetAutoChaining(0)
+world.Note("Chaining requests won't be answered automatically.")</send>
+  </alias>
+  <alias
+   match="config autochaining on"
+   enabled="y"
+   group="System"
+   send_to="12"
+   sequence="100"
+  >
+  <send>Config.settings.AutoChaining = 1
+Interface:SetAutoChaining(1)
+world.Note('All chaining requests will be refused from now on.')</send>
   </alias>
   <alias
    match="config omitting"
@@ -373,7 +410,7 @@ group="System" omit_from_output="y" >
    muclient_version="5.05"
    world_file_version="15"
   >
-  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\chat/message.ogg|n:3|n:0|n:4|n:0|n:5|n:20</variable>
+  <variable name="PPIparams_1">n:1|n:2|n:2|n:-2147483638</variable>
 </variables>
 
 <!-- colours -->

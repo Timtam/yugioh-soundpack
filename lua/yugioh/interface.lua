@@ -3,6 +3,7 @@ Class = require('pl.class')
 Class.Interface()
 
 function Interface:_init(sound_callback, lifepoints_callback, musicmode_callback)
+  self.autochaining = false
   self.lifepoints = lifepoints_callback
   self.musicmode = musicmode_callback
   self.sound = sound_callback
@@ -147,6 +148,9 @@ end
 
 function Interface:PlayDuelChain()
   self.sound('duel/chain')
+  if self.autochaining == true then
+    world.Execute('c')
+  end
 end
 
 function Interface:PlayDuelSpecial()
@@ -200,6 +204,16 @@ end
 
 function Interface:PlayLoseLifepoints(lp_lost, lp_now)
   self.lifepoints(lp_lost, lp_now)
+end
+
+function Interface:SetAutoChaining(autochaining)
+
+  if autochaining == 0 then
+    self.autochaining = false
+  else
+    self.autochaining = true
+  end
+
 end
 
 return Interface

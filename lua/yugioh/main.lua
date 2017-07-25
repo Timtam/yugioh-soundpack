@@ -2,6 +2,7 @@ Audio = nil
 CallbackHook=nil
 Config = {}
 Config.settings = {}
+Config.settings.AutoChaining = 0
 Config.settings.MusicMuted = 0
 Config.settings.MusicVolume=10
 Config.settings.Omitting = 1
@@ -50,6 +51,7 @@ function OnWorldOpen()
   world.Accelerator('F11', 'volume_toggle')
   world.Accelerator('F12', 'volume_mute')
    Interface = require('yugioh.interface')(PlaySound, PlayLifepoints, SetMusicMode)
+  Interface:SetAutoChaining(Config.settings.AutoChaining)
 end
 
 function OnWorldDisconnect()
