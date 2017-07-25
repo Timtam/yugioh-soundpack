@@ -222,6 +222,10 @@
     "action": "PlayDuelFlip()"
   },
   {
+    "trigger": "The position of card * (*) was changed to face-up attack.",
+    "action": "PlayDuelFlip()"
+  },
+  {
     "trigger": "The position of card * (*) was changed to face-up defense.",
     "action": "PlayDuelDefend()"
   },
