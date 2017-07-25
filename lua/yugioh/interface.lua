@@ -126,7 +126,6 @@ function Interface:PlayDuelMain()
 end
 
 function Interface:PlayDuelDraw()
-  world.Note('triggered')
   self.sound('duel/draw')
 end
 
