@@ -358,7 +358,6 @@ world.Note('Unimportant messages will be omitted.')</send>
    muclient_version="5.05"
    world_file_version="15"
   >
-  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\logout.ogg|n:3|n:0|n:4|n:0|n:5|n:5</variable>
 </variables>
 
 <!-- colours -->
@@ -561,4 +560,5 @@ world.Note('Unimportant messages will be omitted.')</send>
 <!-- plugins -->
 <include name="auto_retyping.xml" plugin="y" />
 <include name="channel_history.xml" plugin="y" />
+<include name="Callback_Caller.xml" plugin="y" />
 </muclient>
