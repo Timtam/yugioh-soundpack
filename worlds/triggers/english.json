@@ -24,7 +24,7 @@
   },
   {
     "trigger": "Deck loaded with * cards.",
-    "sound": "deck/load",
+    "sound": "deck/load"
   },
   {
     "trigger": "Deck imported.",
