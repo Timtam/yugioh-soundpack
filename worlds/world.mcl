@@ -239,6 +239,17 @@ world.Note('Unimportant messages will be omitted.')</send>
   <send>VolumeMute()</send>
   </alias>
   <alias
+   match="volume_toggle"
+   enabled="y"
+   group="System"
+   omit_from_command_history="y"
+   send_to="12"
+   omit_from_output="y"
+   sequence="100"
+  >
+  <send>VolumeToggle()</send>
+  </alias>
+  <alias
    match="volume_up"
    enabled="y"
    group="System"
@@ -358,6 +369,7 @@ world.Note('Unimportant messages will be omitted.')</send>
    muclient_version="5.05"
    world_file_version="15"
   >
+  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\Beep.ogg|n:3|n:0|n:4|n:0|n:5|n:5</variable>
 </variables>
 
 <!-- colours -->

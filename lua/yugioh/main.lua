@@ -1,6 +1,8 @@
 Audio = nil
 Config = {}
 Config.settings = {}
+Config.settings.MusicMuted = 0
+Config.settings.MusicVolume=10
 Config.settings.Omitting = 1
 Config.settings.SoundsMuted = 0
 Config.settings.SoundVolume=50
@@ -9,6 +11,7 @@ Interface = nil
 Path = require('pl.path')
 PPI = require("ppi")
 TriggerHandler = require('yugioh.triggerhandler')()
+VolumeControl = 1 -- 1 = sounds, 2 = music
 
 function OnWorldOpen()
 
@@ -39,7 +42,8 @@ function OnWorldOpen()
   -- defining all world accelerators
   world.Accelerator('F9', 'volume_down')
   world.Accelerator('F10', 'volume_up')
-  world.Accelerator('F11', 'volume_mute')
+  world.Accelerator('F11', 'volume_toggle')
+  world.Accelerator('F12', 'volume_mute')
 
   Interface = require('yugioh.interface')(PlaySound, PlayLifepoints)
 end
@@ -63,32 +67,69 @@ end
 
 function Volume(value)
 
-  if Config.settings.SoundsMuted == 1 then
+  if VolumeControl == 1 and Config.settings.SoundsMuted == 1 then
     return
   end
 
-  local tmp = Config.settings.SoundVolume + value
+  if VolumeControl == 2 and Config.settings.MusicMuted == 1 then
+    return
+  end
+
+  local tmp
+
+  if VolumeControl == 1 then
+    tmp = Config.settings.SoundVolume + value
+  elseif VolumeControl == 2 then
+    tmp = Config.settings.MusicVolume + value
+  end
 
   if tmp < 0 or tmp > 100 then
     return
   end
 
-  Config.settings.SoundVolume = tmp
+  if VolumeControl == 1 then
+    Config.settings.SoundVolume = tmp
+    PlaySound('Beep')
+    world.Note('Sound Volume: '..tostring(tmp)..'%')
+  elseif VolumeControl == 2 then
+    Config.settings.MusicVolume = tmp
+    -- TODO: setting volume of the currently playing music
+    world.Note('Music Volume: '..tostring(tmp)..'%')
+  end
 
-  PlaySound('Beep')
-
-  world.Note('Volume: '..tostring(tmp)..'%')
 end
 
 function VolumeMute()
 
-  if Config.settings.SoundsMuted == 1 then
+  if VolumeControl == 1 and Config.settings.SoundsMuted == 1 then
     Config.settings.SoundsMuted = 0
     world.Note('Sounds unmuted')
-  else
+  elseif VolumeControl == 1 and Config.settings.SoundsMuted == 0 then
     Config.settings.SoundsMuted = 1
     world.Note('Sounds muted')
+  elseif VolumeControl == 2 and Config.settings.MusicMuted == 1 then
+    Config.settings.MusicMuted = 0
+    world.Note('Music unmuted')
+    -- TODO: starting music playback
+  elseif VolumeControl == 2 and Config.settings.MusicMuted == 0 then
+    Config.settings.MusicMuted = 1
+    world.Note('Music muted')
+    -- TODO: stopping music playback
   end
+end
+
+function VolumeToggle()
+
+  if VolumeControl == 1 then
+    VolumeControl = 2
+    world.Note('Music')
+  elseif VolumeControl == 2 then
+    VolumeControl = 1
+    world.Note('Sounds')
+  end
+
+  PlaySound('beep')
+
 end
 
 -- some helper function to efficiently play lifepoint sounds
