@@ -98,6 +98,10 @@
     "omit": 1
   },
   {
+    "trigger": "Your opponent disconnected, the duel is over.",
+    "action": "PlayDuelWin()"
+  },
+  {
     "trigger": "Do you want to use the effect from * in *?",
     "action": "PlayPrompt()"
   },
