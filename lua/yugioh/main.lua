@@ -11,6 +11,7 @@ Dir = require('pl.dir')
 Ini = require("ini")
 Interface = nil
 Music = nil
+MusicFile = ''
 MusicMode = 0 -- 0 = not set, 1 = lounge, 2 = duel
 Path = require('pl.path')
 PPI = require('ppi')
@@ -83,6 +84,7 @@ function PlayMusic(file)
   else
     Music = Audio.play(file, 0, 0, Config.settings.MusicVolume)
   end
+  MusicFile = file
 end
 
 function Volume(value)
@@ -212,7 +214,15 @@ function SetMusicMode(mode)
 
     local files = Dir.getfiles(Path.join(GetInfo(74), 'music', tmp))
 
-    PlayMusic(files[math.random(1, #files)])
+    local file
+
+    repeat
+
+      file = files[math.random(1,#files)]
+
+    until file ~= MusicFile
+
+    PlayMusic(file)
 
   end
 
