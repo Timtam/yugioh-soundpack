@@ -25,7 +25,6 @@
   {
     "trigger": "Deck loaded with * cards.",
     "sound": "deck/load",
-    "omit": 1
   },
   {
     "trigger": "Deck imported.",
