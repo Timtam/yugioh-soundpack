@@ -1,6 +1,7 @@
 Audio = nil
 Config = {}
 Config.settings = {}
+Config.settings.Omitting = 1
 Config.settings.SoundsMuted = 0
 Config.settings.SoundVolume=50
 Ini = require("ini")

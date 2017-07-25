@@ -82,6 +82,8 @@ function TriggerHandler:SetOmitting(omit)
     self.omit = true
   end
 
+  self:Reload()
+
 end
 
 return TriggerHandler
