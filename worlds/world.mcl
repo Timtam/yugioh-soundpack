@@ -17,7 +17,7 @@
    mapping_failure="^Da gehts nicht weiter\.$"
    name="yugioh"
    new_activity_sound="(No sound)"
-   on_world_close="OnWorldClose"
+   on_world_disconnect="OnWorldDisconnect"
    on_world_open="OnWorldOpen"
    output_font_name="FixedSys"
    script_editor="C:\Windows\notepad.exe"
@@ -45,9 +45,7 @@
    echo_hyperlink_in_output_window="y"
    enable_aliases="y"
    enable_beeps="y"
-   enable_command_stack="y"
    enable_scripts="y"
-   enable_speed_walk="y"
    enable_timers="y"
    enable_triggers="y"
    enable_trigger_sounds="y"
@@ -154,7 +152,8 @@ world.Execute('encoding windows-1252')</send>
    sequence="100"
   >
   <send>TriggerHandler:Load('english')
-PlaySound('welcome')</send>
+PlaySound('welcome')
+SetMusicMode(1)</send>
   </trigger>
 </triggers>
 
@@ -268,6 +267,11 @@ world.Note('Unimportant messages will be omitted.')</send>
    muclient_version="5.05"
    world_file_version="15"
   >
+  <timer enabled="y" second="1.00" offset_second="0.00"    send_to="12"
+group="System" omit_from_output="y" >
+  <send>MusicLooper()</send>
+
+  </timer>
 </timers>
 
 <!-- macros -->
@@ -369,7 +373,7 @@ world.Note('Unimportant messages will be omitted.')</send>
    muclient_version="5.05"
    world_file_version="15"
   >
-  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\Beep.ogg|n:3|n:0|n:4|n:0|n:5|n:5</variable>
+  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\chat/message.ogg|n:3|n:0|n:4|n:0|n:5|n:20</variable>
 </variables>
 
 <!-- colours -->
@@ -572,5 +576,4 @@ world.Note('Unimportant messages will be omitted.')</send>
 <!-- plugins -->
 <include name="auto_retyping.xml" plugin="y" />
 <include name="channel_history.xml" plugin="y" />
-<include name="Callback_Caller.xml" plugin="y" />
 </muclient>

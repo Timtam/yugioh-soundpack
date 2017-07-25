@@ -8,14 +8,14 @@
 <muclient>
 <plugin
    name="channel_history"
-   author="Tyler Spivey and Oriol Gomez"
+   author="Tyler S, Oriol G, and Weyoun"
    id="6000a4c6f0e71d31fecf523d"
    language="Lua"
    purpose="Allows reading of messages sorted into categories with hotkeys"
    date_written="2010-04-09 15:14:12"
    requires="4.51"
    version="2.0"
-   save_state="n"
+save_state="y"
    >
 <description trim="y">
 <![CDATA[
@@ -69,7 +69,7 @@ clipboard, and 3 times will paste it into the command window.
 
   <alias
    script="history_add"
-   match="^history_add (\[?\w+\-?\w*\-?\w*\]?)=(.*)"
+   match="^history_add (\w+)=(.*)"
    enabled="y"
    omit_from_command_history="y"
    omit_from_log="y"
@@ -121,6 +121,38 @@ keep_evaluating="y"
    sequence="100"
   >
   </alias>
+  <alias
+   script="history_msgprev"
+   match="^history_msgprev (\d+)$"
+   enabled="y"
+   omit_from_command_history="y"
+   omit_from_log="y"
+   omit_from_output="y"
+   regexp="y"
+   sequence="100"
+  >
+  </alias>
+  <alias
+   script="history_msgnext"
+   match="^history_msgnext (\d+)$"
+   enabled="y"
+   omit_from_command_history="y"
+   omit_from_log="y"
+   omit_from_output="y"
+   regexp="y"
+   sequence="100"
+  >
+  </alias>
+  <alias
+   script="history_msgcopy"
+   match="history_msgcopy"
+   enabled="y"
+   omit_from_command_history="y"
+   omit_from_log="y"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </alias>
 </aliases>
 
 <!--  Script  -->
@@ -130,8 +162,10 @@ keep_evaluating="y"
 <![CDATA[
 modes = {} -- for keyboard states
 messages = {}
-current_category = nil -- not set yet
+indices = {}
+current_category = 0 -- not set yet
 categories = {}
+
 -- set up accelerators
 for i = 1, 9 do
 Accelerator("alt + " .. i, "history_get " .. i)
@@ -139,214 +173,236 @@ end
 Accelerator("alt + 0", "history_get 10") -- 10 is a special case
 Accelerator("alt + right", "history_catnext")
 Accelerator("alt + left", "history_catprev")
+Accelerator("alt + down", "history_msgnext 1")
+Accelerator("alt + up", "history_msgprev 1")
+Accelerator("alt + pagedown", "history_msgnext 10")
+Accelerator("alt + pageup", "history_msgprev 10")
+Accelerator("alt + end", "history_msgnext 200")
+Accelerator("alt + home", "history_msgprev 200")
 Accelerator("shift+alt + right", "history_move right")
 Accelerator("shift+alt + left", "history_move left")
 Accelerator("alt+delete","history_delete")
-function history_delete(n,l,w)
-local i
-if #categories == 0 then
-say("no categories")
-return
-end
-if current_category == nil then
-say("No category selected.")
-return
-end
-local tbl = {}
-for k, v in ipairs(categories) do
-tbl[v] = k
-end
-idx = tbl[current_category]
-name=categories[idx]
---response=utils.msgbox("Are you sure you want to delete the category "..name.."?", --"Confirmation","yesno","?")
---if response=="yes" then
-table.remove(categories,idx)
-messages[name]=nil
-if #categories < idx+1 then -- wrap around
-idx = 1
-else
-idx=idx+1
-end
-current_category = categories[idx]
-if current_category~=nil then
-say(current_category)
-else
-say("no more categories.")
-end
---else
---return
---end
-end
-function category_move(name, line, w)
-local i
-if #categories == 0 then
-say("no categories")
-return
-end
-if current_category == nil then
-say("No category selected.")
-return
-end
-local tbl = {}
-for k, v in ipairs(categories) do
-tbl[v] = k
-end
-idx = tbl[current_category]
-name=categories[idx]
-table.remove(categories,idx)
-if w[1]=="right" then
-if #categories < idx+1 then -- wrap around
-idx = 1
-else
-idx=idx+1
-end
-table.insert(categories, idx, name)
-else
-if idx-1 < 1 then -- wrap around
-idx = #categories
+Accelerator("alt + space", "history_msgprev 0")
+Accelerator("alt+shift+space","history_msgcopy")
 
-else
-idx=idx-1
+function history_delete(n,l,w)
+ if #categories == 0 then
+  say("no categories")
+  return
+ end
+ if current_category == 0 then
+  say("No category selected.")
+  return
+ end
+ messages[categories[current_category]] = nil
+ indices[categories[current_category]] = nil
+ table.remove(categories, current_category)
+ if current_category > #categories then
+  current_category = 1
+ end
+ if #categories > 0 then
+  say(categories[current_category])
+ else
+  say("no more categories.")
+ end
 end
-table.insert(categories,idx,name)
-end
-say("moved.")
-current_category = categories[idx]
+
+function category_move(name, line, w)
+ if #categories == 0 then
+  say("no categories")
+  return
+ end
+ if current_category == 0 then
+  say("No category selected.")
+  return
+ end
+ name = categories[current_category]
+ table.remove(categories,current_category)
+ if w[1]=="right" then
+  current_category = current_category + 1
+  if current_category > #categories + 1 then
+   current_category = 2
+  end
+ else
+  current_category = current_category - 1
+  if current_category < 1 then
+   current_category = #categories
+  end
+ end
+ table.insert(categories, current_category, name)
+ say("moved.")
 end
 
 function OnPluginInstall()
---SetVariable("tts",GetPluginVariable("553a883096da345ce6897740","tts"))
-SetVariable("tts","1")
+ --SetVariable("tts",GetPluginVariable("553a883096da345ce6897740","tts"))
+ SetVariable("tts","1")
 end
+
 function ttstoggle(n,l,w)
-SetVariable("tts",GetPluginVariable("553a883096da345ce6897740","tts"))
+ SetVariable("tts",GetPluginVariable("553a883096da345ce6897740","tts"))
 end
+
 function history_add(name, line, wc)
--- wc[1] is category, wc[2] is text
-local cat, msg = wc[1], wc[2]
-if messages[cat] == nil then
-messages[cat] = {}
--- add the category to the categories table
-table.insert(categories, cat)
+ local cat, msg = wc[1], wc[2]
+ if messages[cat] == nil then
+  messages[cat] = {}
+  indices[cat] = 0
+  table.insert(categories, cat)
+ end
+ table.insert(messages[cat], msg)
+ -- if we go over 100 items, remove the oldest one
+ if #messages[cat] > 100 then
+  table.remove(messages[cat], 1)
+  if indices[cat] > 1 then
+   indices[cat] = indices[cat] - 1
+  end
+ end
 end
-table.insert(messages[cat], msg)
--- if we go over 10 items, remove the oldest one
-if #messages[cat] > 10 then
-table.remove(messages[cat], 1)
-end
-end
+
 -- helper function to say stuff
 function say(x) 
-if(GetVariable("tts")=="1") then
-Execute(";tts_interrupt " .. x)
-else
-Note(x)
+ if(GetVariable("tts")=="1") then
+  Execute("tts_interrupt " .. x)
+ else
+  Note(x)
+ end
 end
-end
+
 function history_get(name, line, wc)
--- wc[1] should be the item number.
-local str = ""
-if current_category == nil and #categories == 0 then
-say("No categories")
-return
-elseif current_category == nil and #categories > 0 then
-local all=0
-for i,result in ipairs(categories) do
-if(categories[i]=="all") then
-all=i
-end--if
-end--for
-if(all>0) then
-str = str .. "switching to all."
-current_category = categories[all]
-else
-str = str .. "switching to " .. categories[1] .. ". Use alt left and right arrows to change."
-current_category = categories[1]
-end
-end
-local item = tonumber(wc[1])
-if #messages[current_category] < item then
-say("no message")
-return
-end
--- now that all that's out of the way, we can start our real code which should always succeed.
-local timeout = 0.5 -- in seconds
-if modes[item] == nil then
-modes[item] = {os.clock(), 1}
-elseif os.clock()-modes[item][1] >= timeout then
-modes[item][1] = os.clock()
-modes[item][2] = 1
-else
-modes[item][1] = os.clock()
-modes[item][2] = modes[item][2] + 1
-end
+ local str = ""
+ if current_category == 0 and #categories == 0 then
+  say("No categories")
+  return
+ elseif current_category == 0 and #categories > 0 then
+  for i, result in ipairs(categories) do
+   if categories[i] == "all" then
+    current_category = i
+   end
+  end
+  if current_category > 0 then
+   str = str .. "switching to all."
+  else
+   str = str .. "switching to " .. categories[1] .. ". Use alt left and right arrows to change."
+   current_category = 1
+  end
+ end
+ local item = tonumber(wc[1])
+ if #messages[categories[current_category]] < item then
+  say("no message")
+  return
+ end
 
-local real_item = #messages[current_category]+1-item
-if modes[item][2] > 3 then
-modes[item][2] = 3
-end
+ -- now that all that's out of the way, we can start our real code which should always succeed.
+ local timeout = 0.5 -- in seconds
+ if modes[item] == nil then
+  modes[item] = {os.clock(), 1}
+ elseif os.clock()-modes[item][1] >= timeout then
+  modes[item][1] = os.clock()
+  modes[item][2] = 1
+ else
+  modes[item][1] = os.clock()
+  modes[item][2] = modes[item][2] + 1
+ end
+ if modes[item][2] > 3 then
+  modes[item][2] = 3
+ end
 
-if modes[item][2] == 1 then
-say(str .. " " .. messages[current_category][real_item])
-elseif modes[item][2] == 2 then
-SetClipboard(messages[current_category][real_item])
-say("copied")
-elseif modes[item][2] == 3 then
-PasteCommand(messages[current_category][real_item])
-say("pasted")
-end
+ local real_item = #messages[categories[current_category]] + 1 - item
+ if modes[item][2] == 1 then
+  say(str .. " " .. messages[categories[current_category]][real_item])
+ elseif modes[item][2] == 2 then
+  SetClipboard(messages[categories[current_category]][real_item])
+  say("copied")
+ elseif modes[item][2] == 3 then
+  PasteCommand(messages[categories[current_category]][real_item])
+  say("pasted")
+ end
 end
 
 function history_catnext(name, line, wc)
-local i
-if #categories == 0 then
-say("no categories")
-return
-end
-if current_category == nil then
-current_category = categories[1]
-say(current_category)
-return
-end
-
-local tbl = {}
-for k, v in ipairs(categories) do
-tbl[v] = k
-end
-idx = tbl[current_category]
-if #categories < idx+1 then -- wrap around
-idx = 1
-else
-idx = idx + 1
-end
-current_category = categories[idx]
-say(categories[idx])
+ if #categories == 0 then
+  say("no categories")
+  return
+ end
+ current_category = current_category + 1
+ if current_category > #categories then
+  current_category = 1
+ end
+ say(categories[current_category])
 end
 
 function history_catprev(name, line, wc)
-local i
-if #categories == 0 then
-say("no categories")
-return
-end
-if current_category == nil then
-current_category = categories[#categories]
-say(current_category)
-return
+ if #categories == 0 then
+  say("no categories")
+  return
+ end
+ current_category = current_category - 1
+ if current_category < 1 then
+  current_category = #categories
+ end
+ say(categories[current_category])
 end
 
-local tbl = {}
-for k, v in ipairs(categories) do
-tbl[v] = k
+function history_msgnext(name, line, wc)
+ local skip = tonumber(wc[1])
+ local str = ""
+ if #categories == 0 then
+  say("no categories")
+  return
+ end
+ if current_category == 0 then
+  say("No category selected.")
+  return
+ end
+ if indices[categories[current_category]] == 0 then
+  indices[categories[current_category]] = #messages[categories[current_category]]
+ end
+ if indices[categories[current_category]] + skip > #messages[categories[current_category]] then
+  indices[categories[current_category]] = #messages[categories[current_category]]
+  str = str .. "Bottom: "
+ else
+  indices[categories[current_category]] = indices[categories[current_category]] + skip
+ end
+ say(str .. messages[categories[current_category]][indices[categories[current_category]]])
 end
-idx = tbl[current_category]
-if idx-1 < 1 then -- wrap around
-idx = #categories
-else
-idx = idx - 1
+
+function history_msgprev(name, line, wc)
+ local skip = tonumber(wc[1])
+ local str = ""
+ if #categories == 0 then
+  say("no categories")
+  return
+ end
+ if current_category == 0 then
+  say("No category selected.")
+  return
+ end
+ if indices[categories[current_category]] == 0 then
+  indices[categories[current_category]] = #messages[categories[current_category]]
+ end
+ if indices[categories[current_category]] - skip < 1 then
+  indices[categories[current_category]] = 1
+  str = str .. "Top: "
+ else
+  indices[categories[current_category]] = indices[categories[current_category]] - skip
+ end
+ say(str .. messages[categories[current_category]][indices[categories[current_category]]])
 end
-current_category = categories[idx]
-say(categories[idx])
+
+function history_msgcopy(name, line, wc)
+ if #categories == 0 then
+  say("no categories")
+  return
+ end
+ if current_category == 0 then
+  say("No category selected.")
+  return
+ end
+ if indices[categories[current_category]] == 0 then
+  indices[categories[current_category]] = #messages[categories[current_category]]
+ end
+ SetClipboard(messages[categories[current_category]][indices[categories[current_category]]])
+ say("copied")
 end
 
 ]]>

@@ -2,8 +2,9 @@ Class = require('pl.class')
 
 Class.Interface()
 
-function Interface:_init(sound_callback, lifepoints_callback)
+function Interface:_init(sound_callback, lifepoints_callback, musicmode_callback)
   self.lifepoints = lifepoints_callback
+  self.musicmode = musicmode_callback
   self.sound = sound_callback
 end
 
@@ -44,7 +45,7 @@ function Interface:PlayDeckClear()
 end
 
 function Interface:PlayChatMessage(text)
-  world.Execute(';history_add chat='..text)
+  world.Execute('history_add chat='..text)
   self.sound('chat/message')
 end
 
@@ -57,7 +58,7 @@ function Interface:PlayChatOff()
 end
 
 function Interface:PlayChatSay(text)
-  world.Execute(';history_add say='..text)
+  world.Execute('history_add say='..text)
   self.sound('chat/say')
 end
 
@@ -83,10 +84,12 @@ end
 
 function Interface:PlayDuelWin()
   self.sound('duel/win')
+  self.musicmode(1)
 end
 
 function Interface:PlayDuelLose()
   self.sound('duel/lose')
+  self.musicmode(1)
 end
 
 function Interface:PlayPrompt()
@@ -99,6 +102,7 @@ end
 
 function Interface:PlayDuelStart()
   self.sound('duel/start')
+  self.musicmode(2)
 end
 
 function Interface:PlayDuelActivate()
@@ -122,6 +126,7 @@ function Interface:PlayDuelMain()
 end
 
 function Interface:PlayDuelDraw()
+  world.Note('triggered')
   self.sound('duel/draw')
 end
 

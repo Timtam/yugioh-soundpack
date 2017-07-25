@@ -1,4 +1,5 @@
 Audio = nil
+CallbackHook=nil
 Config = {}
 Config.settings = {}
 Config.settings.MusicMuted = 0
@@ -6,10 +7,13 @@ Config.settings.MusicVolume=10
 Config.settings.Omitting = 1
 Config.settings.SoundsMuted = 0
 Config.settings.SoundVolume=50
+Dir = require('pl.dir')
 Ini = require("ini")
 Interface = nil
+Music = nil
+MusicMode = 0 -- 0 = not set, 1 = lounge, 2 = duel
 Path = require('pl.path')
-PPI = require("ppi")
+PPI = require('ppi')
 TriggerHandler = require('yugioh.triggerhandler')()
 VolumeControl = 1 -- 1 = sounds, 2 = music
 
@@ -33,7 +37,7 @@ function OnWorldOpen()
     end
   end
 
-  -- connecting to the LuaAudio plugin via PPI
+  -- connecting to several plugins via PPI
   Audio = PPI.Load("aedf0cb0be5bf045860d54b7")
   if not Audio then
     error('Unable to initialize audio package.')
@@ -44,13 +48,13 @@ function OnWorldOpen()
   world.Accelerator('F10', 'volume_up')
   world.Accelerator('F11', 'volume_toggle')
   world.Accelerator('F12', 'volume_mute')
-
-  Interface = require('yugioh.interface')(PlaySound, PlayLifepoints)
+   Interface = require('yugioh.interface')(PlaySound, PlayLifepoints, SetMusicMode)
 end
 
-function OnWorldClose()
+function OnWorldDisconnect()
   Ini.write('config.dat', Config)
   TriggerHandler:Unload()
+  SetMusicMode(0)
 end
 
 function PlaySound(file, pan)
@@ -63,6 +67,22 @@ function PlaySound(file, pan)
   end
   file = file..'.ogg'
   return Audio.play(file, 0, pan, Config.settings.SoundVolume)
+end
+
+function PlayMusic(file)
+
+  if (Config.settings.MusicMuted == 1) then
+    return
+  end
+  if(not Path.isabs(file)) then
+    file=Path.join(GetInfo(74), "Music", file)
+  end
+  if Music ~= nil and Audio.isPlaying(Music) == 1 then
+    Audio.fadeout(Music, 1.0)
+    Music = Audio.playDelay(file, 0.5, 0, Config.settings.MusicVolume)
+  else
+    Music = Audio.play(file, 0, 0, Config.settings.MusicVolume)
+  end
 end
 
 function Volume(value)
@@ -93,7 +113,9 @@ function Volume(value)
     world.Note('Sound Volume: '..tostring(tmp)..'%')
   elseif VolumeControl == 2 then
     Config.settings.MusicVolume = tmp
-    -- TODO: setting volume of the currently playing music
+    if Music ~= nil and Audio.isPlaying(Music) == 1 then
+      Audio.setVol(tmp, Music)
+    end
     world.Note('Music Volume: '..tostring(tmp)..'%')
   end
 
@@ -110,11 +132,14 @@ function VolumeMute()
   elseif VolumeControl == 2 and Config.settings.MusicMuted == 1 then
     Config.settings.MusicMuted = 0
     world.Note('Music unmuted')
-    -- TODO: starting music playback
+    SetMusicMode(MusicMode)
   elseif VolumeControl == 2 and Config.settings.MusicMuted == 0 then
     Config.settings.MusicMuted = 1
     world.Note('Music muted')
-    -- TODO: stopping music playback
+    if Music ~= nil and Audio.isPlaying(Music) == 1 then
+      Audio.fadeout(Music, 1.0)
+      Music = nil
+    end
   end
 end
 
@@ -162,4 +187,43 @@ function PlayLifepoints(lp_lost, lp_now)
     tmp = 'lpend.ogg'
   end
   Audio.playDelay(Path.join(GetInfo(74), 'duel', tmp), delay, 0, Config.settings.SoundVolume)
+end
+
+function SetMusicMode(mode)
+
+  if Music ~= nil and Audio.isPlaying(Music) == 1 and MusicMode == mode then
+    return
+  end
+
+  if mode == 0 then
+    if Music ~= nil and Audio.isPlaying(Music) == 1 then
+      Audio.fadeout(Music)
+    end
+    Music = nil
+  else
+
+    local tmp
+
+    if mode == 1 then
+      tmp = 'lounge'
+    elseif mode == 2 then
+      tmp = 'duel'
+    end
+
+    local files = Dir.getfiles(Path.join(GetInfo(74), 'music', tmp))
+
+    PlayMusic(files[math.random(1, #files)])
+
+  end
+
+  MusicMode = mode
+
+end
+
+function MusicLooper()
+
+  if MusicMode > 0 and Music ~= nil and Audio.isPlaying(Music) == 0 and Config.settings.MusicMuted == 0 then
+    SetMusicMode(MusicMode)
+  end
+
 end
