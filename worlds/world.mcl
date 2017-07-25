@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on Dienstag, Juli 25, 2017, 7:29  -->
+<!-- Saved on Dienstag, Juli 25, 2017, 9:04  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +8,7 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
 
    auto_say_override_prefix="-"
    auto_say_string="say "
@@ -108,7 +108,7 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
   >
   <trigger
    enabled="y"
@@ -117,7 +117,8 @@
    send_to="12"
    sequence="100"
   >
-  <send>TriggerHandler:Load('english')</send>
+  <send>TriggerHandler:Load('english')
+world.Execute('encoding utf-8')</send>
   </trigger>
   <trigger
    enabled="y"
@@ -135,7 +136,8 @@
    send_to="12"
    sequence="100"
   >
-  <send>TriggerHandler:Load('german')</send>
+  <send>TriggerHandler:Load('german')
+world.Execute('encoding windows-1252')</send>
   </trigger>
   <trigger
    enabled="y"
@@ -163,7 +165,7 @@ PlaySound('welcome')</send>
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
   >
   <alias
    match="volume_down"
@@ -205,7 +207,7 @@ PlaySound('welcome')</send>
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
   >
 </timers>
 
@@ -214,7 +216,7 @@ PlaySound('welcome')</send>
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
   >
 
   <macro name="up" type="send_now" >
@@ -308,8 +310,9 @@ PlaySound('welcome')</send>
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
   >
+  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\chat/message.ogg|n:3|n:0|n:4|n:0|n:5|n:5</variable>
 </variables>
 
 <!-- colours -->
@@ -317,7 +320,7 @@ PlaySound('welcome')</send>
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
   >
 
 <ansi>
@@ -374,7 +377,7 @@ PlaySound('welcome')</send>
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
   >
 
   <key name="0" >
@@ -488,7 +491,7 @@ PlaySound('welcome')</send>
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 07:29:24"
+   date_saved="2017-07-25 09:04:22"
   >
 
 <ansi>
