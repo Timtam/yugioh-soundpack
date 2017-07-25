@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE muclient>
-<!-- Saved on Dienstag, Juli 25, 2017, 9:04  -->
+<!-- Saved on Dienstag, Juli 25, 2017, 1:55  -->
 <!-- MuClient version 5.05 -->
 <!-- Written by Nick Gammon -->
 <!-- Home Page: http://www.mushclient.com/ -->
@@ -8,7 +8,7 @@
 <world
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
 
    auto_say_override_prefix="-"
    auto_say_string="say "
@@ -108,7 +108,7 @@
 <triggers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
   >
   <trigger
    enabled="y"
@@ -165,7 +165,7 @@ PlaySound('welcome')</send>
 <aliases
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
   >
   <alias
    match="volume_down"
@@ -207,7 +207,7 @@ PlaySound('welcome')</send>
 <timers
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
   >
 </timers>
 
@@ -216,7 +216,7 @@ PlaySound('welcome')</send>
 <macros
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
   >
 
   <macro name="up" type="send_now" >
@@ -310,9 +310,9 @@ PlaySound('welcome')</send>
 <variables
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
   >
-  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\chat/message.ogg|n:3|n:0|n:4|n:0|n:5|n:5</variable>
+  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\duel/request.ogg|n:3|n:0|n:4|n:0|n:5|n:5</variable>
 </variables>
 
 <!-- colours -->
@@ -320,7 +320,7 @@ PlaySound('welcome')</send>
 <colours
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
   >
 
 <ansi>
@@ -377,7 +377,7 @@ PlaySound('welcome')</send>
 <keypad
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
   >
 
   <key name="0" >
@@ -491,7 +491,7 @@ PlaySound('welcome')</send>
 <printing
    muclient_version="5.05"
    world_file_version="15"
-   date_saved="2017-07-25 09:04:22"
+   date_saved="2017-07-25 13:55:55"
   >
 
 <ansi>
@@ -517,4 +517,5 @@ PlaySound('welcome')</send>
 
 <!-- plugins -->
 <include name="auto_retyping.xml" plugin="y" />
+<include name="channel_history.xml" plugin="y" />
 </muclient>

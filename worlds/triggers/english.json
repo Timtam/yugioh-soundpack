@@ -44,7 +44,7 @@
   },
   {
     "trigger": "* chats: *",
-    "action": "PlayChatMessage()",
+    "action": "PlayChatMessage(\"%0\")",
     "sequence": 90
   },
   {
@@ -59,7 +59,7 @@
   },
   {
     "trigger": "* says: *",
-    "action": "PlayChatSay()",
+    "action": "PlayChatSay(\"%0\")",
     "sequence": 90
   },
   {

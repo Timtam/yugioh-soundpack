@@ -43,7 +43,8 @@ function Interface:PlayDeckClear()
   self.sound('deck/clear')
 end
 
-function Interface:PlayChatMessage()
+function Interface:PlayChatMessage(text)
+  world.Execute(';history_add chat='..text)
   self.sound('chat/message')
 end
 
@@ -55,7 +56,8 @@ function Interface:PlayChatOff()
   self.sound('chat/off')
 end
 
-function Interface:PlayChatSay()
+function Interface:PlayChatSay(text)
+  world.Execute(';history_add say='..text)
   self.sound('chat/say')
 end
 
