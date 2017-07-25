@@ -29,16 +29,7 @@ function TriggerHandler:Load(language)
       self.triggers[i].sequence = tonumber(trigger.sequence)
     end
     self.triggers[i].name = 't_'..utils.hash(trigger.trigger)
-    self.triggers[i].script = ''
-    if trigger.sound ~= nil then
-      self.triggers[i].script = 'PlaySound(\''..trigger.sound..'\')'
-    end
-    if trigger.script ~= nil then
-      if self.triggers[i].script ~= '' then
-        self.triggers[i].script = self.triggers[i].script..'\n'
-      end
-      self.triggers[i].script = self.triggers[i].script..trigger.script
-    end
+    self.triggers[i].script = 'Interface:'..trigger.action
     self.triggers[i].flags = trigger_flag.Enabled+trigger_flag.IgnoreCase+trigger_flag.Temporary
     if trigger.omit ~= nil then
       self.triggers[i].flags = self.triggers[i].flags+trigger_flag.OmitFromOutput

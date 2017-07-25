@@ -4,6 +4,7 @@ Config.settings = {}
 Config.settings.SoundsMuted = 0
 Config.settings.SoundVolume=50
 Ini = require("ini")
+Interface = nil
 Path = require('pl.path')
 PPI = require("ppi")
 TriggerHandler = require('yugioh.triggerhandler')()
@@ -34,11 +35,12 @@ function OnWorldOpen()
     error('Unable to initialize audio package.')
   end
 
-
   -- defining all world accelerators
   world.Accelerator('F9', 'volume_down')
   world.Accelerator('F10', 'volume_up')
   world.Accelerator('F11', 'volume_mute')
+
+  Interface = require('yugioh.interface')(PlaySound, PlayLifepoints)
 end
 
 function OnWorldClose()

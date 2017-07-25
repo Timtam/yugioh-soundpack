@@ -1,264 +1,265 @@
 [
   {
     "trigger": "* logged in.",
-    "sound": "login"
+    "action": "PlayLogin()"
   },
   {
     "trigger": "* logged out.",
-    "sound": "logout"
+    "action": "PlayLogout()"
   },
   {
     "trigger": "I don't understand that.",
-    "sound": "error",
+    "action": "PlayError()",
     "omit": 1
   },
   {
     "trigger": "Deck exists, loading.",
-    "sound": "deck/change",
+    "action": "PlayDeckChange()",
     "omit": 1
   },
   {
     "trigger": "Quit.",
-    "sound": "deck/quit",
+    "action": "PlayDeckQuit()",
     "omit": 1
   },
   {
     "trigger": "Deck loaded with * cards.",
-    "sound": "deck/load"
+    "action": "PlayDeckLoad()"
   },
   {
     "trigger": "Deck imported.",
-    "sound": "deck/import"
+    "action": "PlayDeckImport()"
   },
   {
     "trigger": "Deck deleted.",
-    "sound": "deck/delete"
+    "action": "PlayDeckDelete()"
   },
   {
     "trigger": "Deck cleared.",
-    "sound": "deck/clear"
+    "action": "PlayDeckClear()"
   },
   {
     "trigger": "Deck doesn't exist.",
-    "sound": "error"
+    "action": "PlayError()"
   },
   {
     "trigger": "* chats: *",
-    "sound": "chat/message"
+    "action": "PlayChatMessage()",
+    "sequence": 90
   },
   {
     "trigger": "Chat on.",
-    "sound": "chat/on",
+    "action": "PlayChatOn()",
     "omit": 1
   },
   {
     "trigger": "Chat off.",
-    "sound": "chat/off",
+    "action":"PlayChatOff()",
     "omit": 1
   },
   {
     "trigger": "* says: *",
-    "sound": "chat/say"
+    "action": "PlayChatSay()",
+    "sequence": 90
   },
   {
     "trigger": "Online players:",
-    "sound": "who",
+    "action": "PlayWho()",
     "omit": 1
   },
   {
     "trigger": "Your hand is empty.",
-    "sound": "duel/empty"
+    "action": "PlayDuelEmpty()"
   },
   {
     "trigger": "Waiting for opponent.",
-    "sound": "duel/wait",
+    "action": "PlayDuelWait()",
     "omit": 1
   },
   {
     "trigger": "Your LP: * Opponent LP: *",
-    "sound": "duel/score"
+    "action": "PlayDuelScore()"
   },
   {
     "trigger": "Opponent's table:",
-    "sound": "duel/table"
+    "action": "PlayDuelTable()"
   },
   {
     "trigger": "Your table:",
-    "sound": "duel/table"
+    "action": "PlayDuelTable()"
   },
   {
     "trigger": "You won.",
-    "sound": "duel/win",
+    "action": "PlayDuelWin()",
     "omit": 1
   },
   {
     "trigger": "Do you want to use the effect from * in *?",
-    "sound": "prompt"
+    "action": "PlayPrompt()"
   },
   {
     "trigger": "* wants to duel. Type duel * to accept.",
-    "sound": "duel/request"
+    "action": "PlayDuelRequest()"
   },
   {
     "trigger": "Duel created. You are player *.",
-    "sound": "duel/start",
+    "action": "PlayDuelStart()",
     "omit": 1
   },
   {
     "trigger": "Activating *",
-    "sound": "duel/activate"
+    "action": "PlayDuelActivate()"
   },
   {
     "trigger": "entering standby phase.",
-    "sound": "duel/standby",
+    "action": "PlayDuelStandby()",
     "omit": 1
   },
   {
     "trigger": "entering end phase.",
-    "sound": "duel/end",
+    "action": "PlayDuelEnd()",
     "omit": 1
   },
   {
     "trigger": "* activating *",
-    "sound": "duel/effect"
+    "action": "PlayDuelEffect()"
   },
   {
     "trigger": "entering main1 phase.",
-    "sound": "duel/main",
+    "action": "PlayDuelMain()",
     "omit": 1
   },
   {
     "trigger": "Drew * cards*",
-    "sound": "duel/draw"
+    "action": "PlayDuelDraw()"
   },
   {
     "trigger": "You set * in face-down defense position.",
-    "sound": "duel/facedown"
+    "action": "PlayDuelFacedown()"
   },
   {
     "trigger": "* sets * in face down position.",
-    "sound": "duel/facedown"
+    "action": "PlayDuelFacedown()"
   },
   {
     "trigger": "You set * in face down position.",
-    "sound": "duel/facedown"
+    "action": "PlayDuelFacedown()"
   },
   {
     "trigger": "entering battle start phase.",
-    "sound": "duel/battle",
+    "action": "PlayDuelBattle()",
     "omit": 1
   },
   {
     "trigger": "Select card to attack with:",
-    "sound": "duel/attention"
+    "action": "PlayDuelAttention()"
   },
   {
     "trigger": "You lost.",
-    "sound": "duel/lose",
+    "action": "PlayDuelLose()",
     "omit": 1
   },
   {
     "trigger": "Invalid spec.",
-    "sound": "duel/invalid"
+    "action": "PlayDuelInvalid()"
   },
   {
     "trigger": "Select chain (c to cancel):",
-    "sound": "duel/chain"
+    "action": "PlayDuelChain()"
   },
   {
     "trigger": "* drew * cards*",
-    "sound": "duel/draw"
+    "action": "PlayDuelDraw()"
   },
   {
     "trigger": "* special summoning *",
-    "sound": "duel/special"
+    "action": "PlayDuelSpecial()"
   },
   {
     "trigger": "* sets * in face-down defense position.",
-    "sound": "duel/defense"
+    "action": "PlayDuelDefense()"
   },
   {
     "trigger": "You set * in face-down position.",
-    "sound": "duel/facedown"
+    "action": "PlayDuelFacedown()"
   },
   {
     "trigger": "entering main2 phase.",
-    "sound": "duel/main",
+    "action": "PlayDuelMain()",
     "omit": 1
   },
   {
     "trigger": "Card * destroyed.",
-    "sound": "duel/destroy"
+    "action": "PlayDuelDestroy()"
   },
   {
     "trigger": "begin damage",
-    "sound": "duel/attack",
+    "action": "PlayDuelAttack()",
     "omit": 1
   },
   {
     "trigger": "Enter a line of text.",
-    "sound": "duel/attention"
+    "action": "PlayDuelAttention()"
   },
   {
     "trigger": "* attacks",
-    "sound": "duel/damage"
+    "action": "PlayDuelDamage()"
   },
   {
     "trigger": "* summoning * (*/*) in face-up attack position.",
-    "sound": "duel/normal"
+    "action": "PlayDuelNormal()"
   },
   {
     "trigger": "Duel request sent to *.",
-    "sound": "duel/request"
+    "action": "PlayDuelRequest()"
   },
   {
     "trigger": "* turn.",
-    "sound": "duel/attention"
+    "action": "PlayDuelAttention()"
   },
   {
     "trigger": "The position of card * (*) was changed to face-up.",
-    "sound": "duel/flip"
+    "action": "PlayDuelFlip()"
   },
   {
     "trigger": "The position of card * (*) was changed to face-up defense.",
-    "sound": "duel/defend"
+    "action": "PlayDuelDefend()"
   },
   {
     "trigger": "end damage",
-    "sound": "duel/damageend",
+    "action": "PlayDuelDamageEnd()",
     "omit": 1
   },
   {
     "trigger": "* prepares to attack with *",
-    "sound": "duel/aim"
+    "action": "PlayDuelAim()"
   },
   {
     "trigger": "* targets *",
-    "sound": "duel/aim"
+    "action": "PlayDuelAim()"
   },
   {
     "trigger": "* tributes *",
-    "sound": "duel/tribute"
+    "action": "PlayDuelTribute()"
   },
   {
     "trigger": "You tribute *",
-    "sound": "duel/tribute"
+    "action": "PlayDuelTribute()"
   },
   {
     "trigger": "* pays * LP. Their LP is now *.",
-    "script": "PlayLifepoints(\"%2\", \"%3\")"
+    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
   },
   {
     "trigger": "You pay * LP. Your LP is now *.",
-    "script": "PlayLifepoints(\"%1\", \"%2\")"
+    "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
   },
   {
     "trigger": "* lp decreased by *, now *",
-    "script": "PlayLifepoints(\"%2\", \"%3\")"
+    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
   },
   {
     "trigger": "* lp increased by *, now *",
-    "sound": "duel/earn",
-    "script": "PlayLifepoints(\"%2\", \"%3\")"
+    "action": "PlayEarnLifepoints(\"%2\", \"%3\")"
   }
 ]
