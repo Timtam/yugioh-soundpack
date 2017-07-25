@@ -11,9 +11,6 @@ TriggerHandler = require('yugioh.triggerhandler')()
 
 function OnWorldOpen()
 
-  -- defining some world-wide options
-  world.SetOption ("omit_date_from_save_files", 1)
-
   -- loading and parsing the configuration file
   local ctbl = Ini.read('config.dat')
 

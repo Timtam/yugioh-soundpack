@@ -7,12 +7,16 @@ Class.TriggerHandler()
 
 function TriggerHandler:_init()
   self.folder = Path.join(world.GetInfo(67), 'triggers')
+  self.language = ''
+  self.omit = true
   self.triggers = {}
 end
 
 function TriggerHandler:Load(language)
 
   self:Unload()
+
+  self.language = language
 
   if not Path.exists(Path.join(self.folder, language..'.json')) then
     return
@@ -31,7 +35,7 @@ function TriggerHandler:Load(language)
     self.triggers[i].name = 't_'..utils.hash(trigger.trigger)
     self.triggers[i].script = 'Interface:'..trigger.action
     self.triggers[i].flags = trigger_flag.Enabled+trigger_flag.IgnoreCase+trigger_flag.Temporary
-    if trigger.omit ~= nil then
+    if trigger.omit ~= nil and self.omit == true then
       self.triggers[i].flags = self.triggers[i].flags+trigger_flag.OmitFromOutput
     end
 
@@ -51,6 +55,32 @@ function TriggerHandler:Unload()
   end
 
   self.triggers = {}
+  self.language = ''
+
+end
+
+-- reparses all triggers and injects them all new after unloading them
+function TriggerHandler:Reload()
+
+  if self.language == '' then
+    return
+  end
+
+  local language = self.language
+
+  self:Unload()
+
+  self:Load(language)
+
+end
+
+function TriggerHandler:SetOmitting(omit)
+
+  if omit == 0 then
+    self.omit = false
+  else
+    self.omit = true
+  end
 
 end
 
