@@ -272,14 +272,22 @@
   },
   {
     "trigger": "You tell *: *",
-    "action": "PlayChatSend(\"%0\")"
+    "action": "PlayChatSend(\"%0\")",
+    "sequence": 90
   },
   {
     "trigger": "You reply to *: *",
-    "action": "PlayChatSend(\"%0\")"
+    "action": "PlayChatSend(\"%0\")",
+    "sequence": 90
   },
   {
     "trigger": "* tells you: *",
-    "action": "PlayChatReceive(\"%0\")"
+    "action": "PlayChatReceive(\"%0\")",
+    "sequence": 90
+  },
+  {
+    "trigger": "* replies: *",
+    "action": "PlayChatReceive(\"%0\")",
+    "sequence": 90
   }
 ]
