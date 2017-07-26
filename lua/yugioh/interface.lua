@@ -206,6 +206,16 @@ function Interface:PlayLoseLifepoints(lp_lost, lp_now)
   self.lifepoints(lp_lost, lp_now)
 end
 
+function Interface:PlayChatReceive(text)
+  self.sound('chat/receive')
+  world.Execute('history_add tell='..text)
+end
+
+function Interface:PlayChatSend(text)
+  self.sound('chat/send')
+  world.Execute('history_add tell='..text)
+end
+
 function Interface:SetAutoChaining(autochaining)
 
   if autochaining == 0 then

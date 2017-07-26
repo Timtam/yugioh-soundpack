@@ -269,5 +269,17 @@
   {
     "trigger": "* lp increased by *, now *",
     "action": "PlayEarnLifepoints(\"%2\", \"%3\")"
+  },
+  {
+    "trigger": "You tell *: *",
+    "action": "PlayChatSend(\"%0\")"
+  },
+  {
+    "trigger": "You reply to *: *",
+    "action": "PlayChatSend(\"%0\")"
+  },
+  {
+    "trigger": "* tells you: *",
+    "action": "PlayChatReceive(\"%0\")"
   }
 ]
