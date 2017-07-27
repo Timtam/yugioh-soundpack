@@ -17,6 +17,7 @@
    mapping_failure="^Da gehts nicht weiter\.$"
    name="yugioh"
    new_activity_sound="(No sound)"
+   on_world_close="OnWorldClose"
    on_world_disconnect="OnWorldDisconnect"
    on_world_open="OnWorldOpen"
    output_font_name="FixedSys"

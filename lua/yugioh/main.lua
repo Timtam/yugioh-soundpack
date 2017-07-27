@@ -60,6 +60,12 @@ function OnWorldDisconnect()
   SetMusicMode(0)
 end
 
+-- seems like the disconnect callback doesn't get called when closing the world
+-- we will do this here manually
+function OnWorldClose()
+  OnWorldDisconnect()
+end
+
 function PlaySound(file, pan)
   pan = pan or 0
   if (Config.settings.SoundsMuted == 1) then
