@@ -50,7 +50,7 @@ function OnWorldOpen()
   world.Accelerator('F10', 'volume_up')
   world.Accelerator('F11', 'volume_toggle')
   world.Accelerator('F12', 'volume_mute')
-   Interface = require('yugioh.interface')(PlaySound, PlayLifepoints, SetMusicMode)
+  Interface = require('yugioh.interface')(PlaySound, PlayLifepoints, SetMusicMode)
   Interface:SetAutoChaining(Config.settings.AutoChaining)
 end
 
@@ -82,11 +82,14 @@ function PlayMusic(file)
   end
   if Music ~= nil and Audio.isPlaying(Music) == 1 then
     Audio.fadeout(Music, 1.0)
-    Music = Audio.playDelay(file, 0.5, 0, Config.settings.MusicVolume)
+    Music = nil
+    world.EnableTimer('MusicLooper', false)
+    world.DoAfterSpecial(0.5, 'PlayMusic(\''..Path.relpath(file, Path.join(GetInfo(74), 'music')):gsub('\\', '\\\\')..'\')', sendto.script)
   else
     Music = Audio.play(file, 0, 0, Config.settings.MusicVolume)
+    MusicFile = file
+    world.EnableTimer('MusicLooper', true)
   end
-  MusicFile = file
 end
 
 function Volume(value)
@@ -201,7 +204,7 @@ function SetMusicMode(mode)
 
   if mode == 0 then
     if Music ~= nil and Audio.isPlaying(Music) == 1 then
-      Audio.fadeout(Music)
+      Audio.fadeout(Music, 1.0)
     end
     Music = nil
   else
