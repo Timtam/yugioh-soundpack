@@ -154,7 +154,7 @@ end
 
 function Interface:PlayDuelChain()
   self.sound('duel/chain')
-  if self.Config.Get('settings', 'AutoChaining') ~= 0 then
+  if self.config.Get('settings', 'AutoChaining') ~= 0 then
     world.Execute('c')
   end
 end
