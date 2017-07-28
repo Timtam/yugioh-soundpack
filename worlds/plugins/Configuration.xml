@@ -25,15 +25,37 @@
 
 <include name="constants.lua"/>
 
+<!--  Aliases  -->
+
+<aliases>
+  <alias
+   match="^config ?([\w|\d]+)? ?([\w|\d]+)?$"
+   enabled="y"
+   regexp="y"
+   sequence="100"
+   send_to="12"
+  >
+  <send>ConfigCommand("%1", "%2")</send>
+  </alias>
+</aliases>
+
+
 <!--  Script  -->
 
 
 <script>
 <![CDATA[
 Config = {}
+Configurables = {}
 Ini = require('ini')
 PPI = require('ppi')
 Table = require('pl.tablex')
+
+-- constants follow
+TYPE_BOOL = 'bool'
+TYPE_INTEGER = 'int'
+TYPE_PERCENTAGE = 'percentage'
+TYPE_TEXT = 'text'
 
 function Load()
 
@@ -89,6 +111,116 @@ function Get(section, option)
 
 end
 
+-- configurables can be configured ingame via the config command
+-- section and option relate to the corresponding value inside the Config table
+-- type can be one of the following:
+--   int (any kind of integer)
+--   percentage (integer, but only 0 to 100)
+--   bool (true or false / on or off only)
+--   text (any given text will be accepted as valid)
+-- description will be the text displayed when entering only config (without arguments)
+function AddConfigurable(section, option, type, description)
+
+  -- make sure the type is valid
+  if Table.find({TYPE_BOOL, TYPE_INTEGER, TYPE_PERCENTAGE, TYPE_TEXT}, type) == nil then
+    error(type..' is no valid configurable type')
+  end
+
+  -- make sure the section and the option exist
+  if Config[section] == nil or Config[section][option] == nil then
+    if type == TYPE_TEXT then
+      Set(section, option, '')
+    else
+      Set(section, option, 0)
+    end
+  end
+
+  -- and we don't actually got an option with this name
+  if Configurables[option:lower()] ~= nil then
+    error('configurable '..option:lower()..' already exists')
+  end
+
+  -- we will add it to the table
+  Configurables[option:lower()] = {
+    section = section,
+    option = option,
+    type = type,
+    description = description
+  }
+
+end
+
+-- returns the current configurable value properly formatted
+function GetConfigurableValue(option)
+
+  if Configurables[option] == nil then
+    return
+  end
+
+  local result = Config[Configurables[option].section][Configurables[option].option]
+
+  if Configurables[option].type == TYPE_TEXT then
+    result = tostring(result)
+  elseif Configurables[option].type == TYPE_INTEGER then
+    result = tonumber(result)
+  elseif Configurables[option].type == TYPE_PERCENTAGE then
+    result = tonumber(result)
+    if tonumber(result) <0 then
+      result = 0
+    elseif tonumber(result) > 100 then
+      result = 100
+    end
+  elseif Configurables[option].type == TYPE_BOOL then
+    if result == 0 then
+      result = false
+    else
+      result = true
+    end
+  end
+
+  return result
+
+end
+
+function ListConfigurables()
+
+  world.Note('Configuration')
+
+  world.Note('The following options are available:')
+
+  local options = Table.keys(Configurables)
+
+  for i, option in pairs(options) do
+
+    local value = GetConfigurableValue(option)
+    
+    -- even if this function formatted it all right, we don't want to be true or false displayed, but on or off
+    if Configurables[option].type == TYPE_BOOL then
+      if value == true then
+        value = 'on'
+      else
+        value = 'off'
+      end
+    end
+
+    world.Note(option..' ('..value..'): '..Configurables[option].description)
+
+  end
+
+end
+
+-- this function will receive all input from the client
+function ConfigCommand(option, value)
+
+  if option == '' then
+    -- we will only list all the available commands
+    ListConfigurables()
+    return
+  end
+
+end
+
+PPI.Expose('AddConfigurable', AddConfigurable)
 PPI.Expose('Get', Get)
 PPI.Expose('Load', Load)
 PPI.Expose('Set', Set)

@@ -165,95 +165,6 @@ SetMusicMode(1)</send>
    world_file_version="15"
   >
   <alias
-   match="config"
-   enabled="y"
-   group="System"
-   send_to="2"
-   ignore_case="y"
-   sequence="100"
-  >
-  <send>Configuration help
-
-This soundpack supports some commands to optimize your user experience.
-
-Use the following command to check your current status.
-Use those commands followed by "on" or "off" to toggle them on or off.
-
-config autochaining - when this option is on, all chaining requests by the mud will automatically be negated. Use this only if you're sure what you're doing. 
-
-config omitting - checks wether the soundpack filters unimportant messages for you automatically. Most of those messages will have sound triggers anyway. If setting this option to "off", those sound triggers will remain, but the messages will be displayed too.</send>
-  </alias>
-  <alias
-   match="config autochaining"
-   enabled="y"
-   group="System"
-   send_to="12"
-   sequence="100"
-  >
-  <send>if Config.settings.AutoChaining == 0 then
-  world.Note("Chaining requests won't be answered automatically.")
-else
-  world.Note("Autochaining is activated and all requests will be refused.")
-end</send>
-  </alias>
-  <alias
-   match="config autochaining off"
-   enabled="y"
-   group="System"
-   send_to="12"
-   sequence="100"
-  >
-  <send>Config.settings.AutoChaining = 0
-Interface:SetAutoChaining(0)
-world.Note("Chaining requests won't be answered automatically.")</send>
-  </alias>
-  <alias
-   match="config autochaining on"
-   enabled="y"
-   group="System"
-   send_to="12"
-   sequence="100"
-  >
-  <send>Config.settings.AutoChaining = 1
-Interface:SetAutoChaining(1)
-world.Note('All chaining requests will be refused from now on.')</send>
-  </alias>
-  <alias
-   match="config omitting"
-   enabled="y"
-   group="System"
-   send_to="12"
-   sequence="100"
-  >
-  <send>if Config.settings.Omitting == 0 then
-  world.Note('Omitting is currently turned off.')
-else
-  world.Note('Omitting is currently turned on.')
-end</send>
-  </alias>
-  <alias
-   match="config omitting off"
-   enabled="y"
-   group="System"
-   send_to="12"
-   sequence="100"
-  >
-  <send>Config.settings.Omitting = 0
-TriggerHandler:SetOmitting(0)
-world.Note('Unimportant messages will be displayed.')</send>
-  </alias>
-  <alias
-   match="config omitting on"
-   enabled="y"
-   group="System"
-   send_to="12"
-   sequence="100"
-  >
-  <send>Config.settings.Omitting = 1
-TriggerHandler:SetOmitting(1)
-world.Note('Unimportant messages will be omitted.')</send>
-  </alias>
-  <alias
    match="volume_down"
    enabled="y"
    group="System"
@@ -412,6 +323,7 @@ group="System" omit_from_output="y" >
    world_file_version="15"
   >
   <variable name="Configuration">741d5052da64c6ec33c863e5</variable>
+  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\who.ogg|n:3|n:0|n:4|n:0|n:5|n:90</variable>
 </variables>
 
 <!-- colours -->

@@ -26,6 +26,8 @@ function OnWorldOpen()
   Config.Set('settings', 'Omitting', 1)
   Config.Set('settings', 'SoundsMuted', 0)
   Config.Set('settings', 'SoundVolume', 50)
+  Config.AddConfigurable('settings', 'AutoChaining', 'bool', 'always reject chaining questions')
+  Config.AddConfigurable('settings', 'Omitting', 'bool', 'don\'t show unimportant messages')
   Config.Load()
 
   -- defining all world accelerators
