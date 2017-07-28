@@ -224,7 +224,7 @@ end
 
 function MusicLooper()
 
-  if MusicMode > 0 and Music ~= nil and Audio.isPlaying(Music) == 0 and Config.settings.MusicMuted == 0 then
+  if MusicMode > 0 and Music ~= nil and Audio.isPlaying(Music) == 0 and Config.Get('settings', 'MusicMuted') == 0 then
     SetMusicMode(MusicMode)
   end
 
