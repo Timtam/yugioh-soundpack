@@ -289,5 +289,10 @@
     "trigger": "* replies: *",
     "action": "PlayChatReceive(\"%0\")",
     "sequence": 90
+  },
+  {
+    "trigger": "Announcement: *",
+    "action": "PlayChatAnnouncement(\"%0\")",
+    "sequence": 90
   }
 ]
