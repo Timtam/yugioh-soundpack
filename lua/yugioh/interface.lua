@@ -1,9 +1,10 @@
 Class = require('pl.class')
+PPI = require('ppi')
 
 Class.Interface()
 
 function Interface:_init(sound_callback, lifepoints_callback, musicmode_callback)
-  self.autochaining = false
+  self.config = PPI.Load(world.GetVariable('Configuration'))
   self.lifepoints = lifepoints_callback
   self.musicmode = musicmode_callback
   self.sound = sound_callback
@@ -148,7 +149,7 @@ end
 
 function Interface:PlayDuelChain()
   self.sound('duel/chain')
-  if self.autochaining == true then
+  if self.Config.Get('settings', 'AutoChaining') ~= 0 then
     world.Execute('c')
   end
 end
@@ -214,16 +215,6 @@ end
 function Interface:PlayChatSend(text)
   self.sound('chat/send')
   world.Execute('history_add tell='..text)
-end
-
-function Interface:SetAutoChaining(autochaining)
-
-  if autochaining == 0 then
-    self.autochaining = false
-  else
-    self.autochaining = true
-  end
-
 end
 
 return Interface

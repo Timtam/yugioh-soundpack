@@ -1,15 +1,6 @@
 Audio = nil
-CallbackHook=nil
-Config = {}
-Config.settings = {}
-Config.settings.AutoChaining = 0
-Config.settings.MusicMuted = 0
-Config.settings.MusicVolume=10
-Config.settings.Omitting = 1
-Config.settings.SoundsMuted = 0
-Config.settings.SoundVolume=50
+Config = nil
 Dir = require('pl.dir')
-Ini = require("ini")
 Interface = nil
 Music = nil
 MusicFile = ''
@@ -21,29 +12,21 @@ VolumeControl = 1 -- 1 = sounds, 2 = music
 
 function OnWorldOpen()
 
-  -- loading and parsing the configuration file
-  local ctbl = Ini.read('config.dat')
-
-  if ctbl then
-    for name, section in pairs(ctbl) do
-      for optionname, optionvalue in pairs(section) do
-        config = tonumber(optionvalue)
-        if config == nil then
-          config = optionvalue
-        end
-        if Config[name] == nil then
-          Config[name] = {}
-        end
-        Config[name][optionname] = config
-      end
-    end
-  end
-
   -- connecting to several plugins via PPI
   Audio = PPI.Load("aedf0cb0be5bf045860d54b7")
   if not Audio then
     error('Unable to initialize audio package.')
   end
+
+  Config = PPI.Load(world.GetVariable('Configuration'))
+
+  Config.Set('settings', 'AutoChaining', 0)
+  Config.Set('settings', 'MusicMuted', 0)
+  Config.Set('settings', 'MusicVolume', 10)
+  Config.Set('settings', 'Omitting', 1)
+  Config.Set('settings', 'SoundsMuted', 0)
+  Config.Set('settings', 'SoundVolume', 50)
+  Config.Load()
 
   -- defining all world accelerators
   world.Accelerator('F9', 'volume_down')
@@ -51,11 +34,9 @@ function OnWorldOpen()
   world.Accelerator('F11', 'volume_toggle')
   world.Accelerator('F12', 'volume_mute')
   Interface = require('yugioh.interface')(PlaySound, PlayLifepoints, SetMusicMode)
-  Interface:SetAutoChaining(Config.settings.AutoChaining)
 end
 
 function OnWorldDisconnect()
-  Ini.write('config.dat', Config)
   TriggerHandler:Unload()
   SetMusicMode(0)
 end
@@ -68,19 +49,19 @@ end
 
 function PlaySound(file, pan)
   pan = pan or 0
-  if (Config.settings.SoundsMuted == 1) then
+  if Config.Get('settings', 'SoundsMuted') == 1 then
     return
   end
   if(not Path.isabs(file)) then
     file=Path.join(GetInfo(74), file)
   end
   file = file..'.ogg'
-  return Audio.play(file, 0, pan, Config.settings.SoundVolume)
+  return Audio.play(file, 0, pan, Config.Get('settings', 'SoundVolume'))
 end
 
 function PlayMusic(file)
 
-  if (Config.settings.MusicMuted == 1) then
+  if Config.Get('settings', 'MusicMuted') == 1 then
     return
   end
   if(not Path.isabs(file)) then
@@ -92,7 +73,7 @@ function PlayMusic(file)
     world.EnableTimer('MusicLooper', false)
     world.DoAfterSpecial(0.5, 'PlayMusic(\''..Path.relpath(file, Path.join(GetInfo(74), 'music')):gsub('\\', '\\\\')..'\')', sendto.script)
   else
-    Music = Audio.play(file, 0, 0, Config.settings.MusicVolume)
+    Music = Audio.play(file, 0, 0, Config.Get('settings', 'MusicVolume'))
     MusicFile = file
     world.EnableTimer('MusicLooper', true)
   end
@@ -100,20 +81,20 @@ end
 
 function Volume(value)
 
-  if VolumeControl == 1 and Config.settings.SoundsMuted == 1 then
+  if VolumeControl == 1 and Config.Get('settings', 'SoundsMuted') == 1 then
     return
   end
 
-  if VolumeControl == 2 and Config.settings.MusicMuted == 1 then
+  if VolumeControl == 2 and Config.Get('settings', 'MusicMuted') == 1 then
     return
   end
 
   local tmp
 
   if VolumeControl == 1 then
-    tmp = Config.settings.SoundVolume + value
+    tmp = Config.Get('settings', 'SoundVolume') + value
   elseif VolumeControl == 2 then
-    tmp = Config.settings.MusicVolume + value
+    tmp = Config.Get('settings', 'MusicVolume') + value
   end
 
   if tmp < 0 or tmp > 100 then
@@ -121,11 +102,11 @@ function Volume(value)
   end
 
   if VolumeControl == 1 then
-    Config.settings.SoundVolume = tmp
+    Config.Set('settings', 'SoundVolume', tmp)
     PlaySound('Beep')
     world.Note('Sound Volume: '..tostring(tmp)..'%')
   elseif VolumeControl == 2 then
-    Config.settings.MusicVolume = tmp
+    Config.Set('settings', 'MusicVolume', tmp)
     if Music ~= nil and Audio.isPlaying(Music) == 1 then
       Audio.setVol(tmp, Music)
     end
@@ -136,18 +117,18 @@ end
 
 function VolumeMute()
 
-  if VolumeControl == 1 and Config.settings.SoundsMuted == 1 then
-    Config.settings.SoundsMuted = 0
+  if VolumeControl == 1 and Config.Get('settings', 'SoundsMuted') == 1 then
+    Config.Set('settings', 'SoundsMuted', 0)
     world.Note('Sounds unmuted')
-  elseif VolumeControl == 1 and Config.settings.SoundsMuted == 0 then
-    Config.settings.SoundsMuted = 1
+  elseif VolumeControl == 1 and Config.Get('settings', 'SoundsMuted') == 0 then
+    Config.Set('settings', 'SoundsMuted', 1)
     world.Note('Sounds muted')
-  elseif VolumeControl == 2 and Config.settings.MusicMuted == 1 then
-    Config.settings.MusicMuted = 0
+  elseif VolumeControl == 2 and Config.Get('settings', 'MusicMuted') == 1 then
+    Config.Set('settings', 'MusicMuted', 0)
     world.Note('Music unmuted')
     SetMusicMode(MusicMode)
-  elseif VolumeControl == 2 and Config.settings.MusicMuted == 0 then
-    Config.settings.MusicMuted = 1
+  elseif VolumeControl == 2 and Config.Get('settings', 'MusicMuted') == 0 then
+    Config.Set('settings', 'MusicMuted', 1)
     world.Note('Music muted')
     if Music ~= nil and Audio.isPlaying(Music) == 1 then
       Audio.fadeout(Music, 1.0)
@@ -175,7 +156,7 @@ end
 
 function PlayLifepoints(lp_lost, lp_now)
 
-  if Config.settings.SoundsMuted == 1 then
+  if Config.Get('settings', 'SoundsMuted') == 1 then
     return
   end
   lp_lost=tonumber(lp_lost)
@@ -187,7 +168,7 @@ function PlayLifepoints(lp_lost, lp_now)
   plays=lp_lost / 100
   delay=0
   while plays > 0 do
-    Audio.playDelay(Path.join(GetInfo(74), 'duel', 'lp.ogg'),delay,0,Config.settings.SoundVolume)
+    Audio.playDelay(Path.join(GetInfo(74), 'duel', 'lp.ogg'),delay,0,Config.Get('settings', 'SoundVolume'))
     delay=delay + interval
     plays=plays - 1
   end
@@ -199,7 +180,7 @@ function PlayLifepoints(lp_lost, lp_now)
   else
     tmp = 'lpend.ogg'
   end
-  Audio.playDelay(Path.join(GetInfo(74), 'duel', tmp), delay, 0, Config.settings.SoundVolume)
+  Audio.playDelay(Path.join(GetInfo(74), 'duel', tmp), delay, 0, Config.Get('settings', 'SoundVolume'))
 end
 
 function SetMusicMode(mode)

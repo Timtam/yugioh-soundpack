@@ -411,7 +411,7 @@ group="System" omit_from_output="y" >
    muclient_version="5.05"
    world_file_version="15"
   >
-  <variable name="PPIparams_1">n:1|n:2|n:2|n:-2147483638</variable>
+  <variable name="Configuration">741d5052da64c6ec33c863e5</variable>
 </variables>
 
 <!-- colours -->
@@ -614,4 +614,5 @@ group="System" omit_from_output="y" >
 <!-- plugins -->
 <include name="auto_retyping.xml" plugin="y" />
 <include name="channel_history.xml" plugin="y" />
+<include name="Configuration.xml" plugin="y" />
 </muclient>

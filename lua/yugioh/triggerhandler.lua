@@ -2,13 +2,14 @@ Class = require('pl.class')
 File = require('pl.file')
 JSON = require('json')
 Path = require('pl.path')
+PPI = require('ppi')
 
 Class.TriggerHandler()
 
 function TriggerHandler:_init()
+  self.config = PPI.Load(world.GetVariable('Configuration'))
   self.folder = Path.join(world.GetInfo(67), 'triggers')
   self.language = ''
-  self.omit = true
   self.triggers = {}
 end
 
@@ -35,7 +36,7 @@ function TriggerHandler:Load(language)
     self.triggers[i].name = 't_'..utils.hash(trigger.trigger)
     self.triggers[i].script = 'Interface:'..trigger.action
     self.triggers[i].flags = trigger_flag.Enabled+trigger_flag.IgnoreCase+trigger_flag.Temporary
-    if trigger.omit ~= nil and self.omit == true then
+    if trigger.omit ~= nil and self.config.Get('settings', 'Omitting') ~= 0 then
       self.triggers[i].flags = self.triggers[i].flags+trigger_flag.OmitFromOutput
     end
 
@@ -71,18 +72,6 @@ function TriggerHandler:Reload()
   self:Unload()
 
   self:Load(language)
-
-end
-
-function TriggerHandler:SetOmitting(omit)
-
-  if omit == 0 then
-    self.omit = false
-  else
-    self.omit = true
-  end
-
-  self:Reload()
 
 end
 
