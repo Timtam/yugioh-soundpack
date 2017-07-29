@@ -29,7 +29,7 @@
 
 <aliases>
   <alias
-   match="^config ?([\w|\d]+)? ?([\w|\d]+)?$"
+   match="^config ?([\w|\d]+)? ?(.*)?$"
    enabled="y"
    regexp="y"
    sequence="100"
@@ -119,10 +119,15 @@ end
 --   bool (true or false / on or off only)
 --   text (any given text will be accepted as valid)
 -- description will be the text displayed when entering only config (without arguments)
-function AddConfigurable(section, option, type, description)
+-- if func is given, we won't do any type checks ever
+-- the given function will be called instead with the following parameters:
+--   section, option, value, where the value is the value the user wants to set
+-- the return value will be saved into the configuration
+-- if nil is returned, the current value won't be changed
+function AddConfigurable(section, option, type, description, func)
 
   -- make sure the type is valid
-  if Table.find({TYPE_BOOL, TYPE_INTEGER, TYPE_PERCENTAGE, TYPE_TEXT}, type) == nil then
+  if func == nil and Table.find({TYPE_BOOL, TYPE_INTEGER, TYPE_PERCENTAGE, TYPE_TEXT}, type) == nil then
     error(type..' is no valid configurable type')
   end
 
@@ -145,7 +150,8 @@ function AddConfigurable(section, option, type, description)
     section = section,
     option = option,
     type = type,
-    description = description
+    description = description,
+    func = func
   }
 
 end
@@ -182,6 +188,21 @@ function GetConfigurableValue(option)
 
 end
 
+function GetConfigurableRepresentation(option)
+
+  local result = GetConfigurableValue(option)
+
+  if Configurables[option].type == TYPE_BOOL then
+    if result == true then
+      result = 'on'
+    else
+      result = 'off'
+    end
+  end
+
+  return result
+end
+
 function ListConfigurables()
 
   world.Note('Configuration')
@@ -192,20 +213,87 @@ function ListConfigurables()
 
   for i, option in pairs(options) do
 
-    local value = GetConfigurableValue(option)
-    
-    -- even if this function formatted it all right, we don't want to be true or false displayed, but on or off
-    if Configurables[option].type == TYPE_BOOL then
-      if value == true then
-        value = 'on'
-      else
-        value = 'off'
-      end
-    end
+    local value = GetConfigurableRepresentation(option)
 
     world.Note(option..' ('..value..'): '..Configurables[option].description)
 
   end
+
+end
+
+function InformConfigurable(option)
+
+  if Configurables[option] == nil then
+    world.Note('Option '..option..' not found')
+    return
+  end
+
+  world.Note(option)
+  world.Note(Configurables[option].description)
+
+  world.Note('Current state: '..tostring(GetConfigurableRepresentation(option)))
+
+end
+
+function SetConfigurable(option, value)
+
+  local set
+
+  if Configurables[option] == nil then
+    world.Note('Option '..option..' not found')
+    return
+  end
+
+  -- you can define own types by adding a function to it
+  if Configurables[option].func ~= nil then
+    set = Configurables[option].func(Configurables[option].section, Configurables[option].option, value)
+    if set ~= nil then
+      Config[Configurables[option].section][Configurables[option].option]=set
+    end
+    return
+  end
+
+  -- we will handle everything with valid text input first
+  if Configurables[option].type == TYPE_TEXT then
+    Config[Configurables[option].section][Configurables[option].option]=value
+    set = value
+  elseif Configurables[option].type == TYPE_BOOL then
+    if value == 'off' then
+      Config[Configurables[option].section][Configurables[option].option]=0
+    elseif value == 'on' then
+      Config[Configurables[option].section][Configurables[option].option]=1
+    else
+      world.Note('You can toggle this option only on or off.')
+      return
+    end
+    set = value
+  else
+    -- all numeric values go here
+    value = tonumber(value)
+
+    if value == nil then
+      world.Note('You need to specify a numeric value.')
+      return
+    end
+
+    if Configurables[option].type == TYPE_INTEGER then
+      Config[Configurables[option].section][Configurables[option].option]=value
+      set = tostring(value)
+    elseif Configurables[option].type == TYPE_PERCENTAGE then
+
+      if value < 0 or value > 100 then
+        world.Note('Value out of range. You need to specify a value between 0 and 100.')
+        return
+      end
+
+      Config[Configurables[option].section][Configurables[option].option]=value
+
+      set = tostring(value)..'%'
+
+    end
+  end
+
+  world.Note(option..' set to '..set)
 
 end
 
@@ -217,6 +305,15 @@ function ConfigCommand(option, value)
     ListConfigurables()
     return
   end
+
+  option = option:lower()
+
+  if value == '' then
+    InformConfigurable(option)
+    return
+  end
+
+  SetConfigurable(option, value)
 
 end
 
