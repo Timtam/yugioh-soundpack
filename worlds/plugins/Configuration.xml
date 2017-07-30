@@ -253,6 +253,10 @@ function InformConfigurable(option)
 
   world.Note('Current state: '..tostring(GetConfigurableRepresentation(option)))
 
+  if Configurables[option].key ~= nil then
+    world.Note('You can toggle this option using '..Configurables[option].key..' too.')
+  end
+
 end
 
 function SetConfigurable(option, value)
