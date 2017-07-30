@@ -68,7 +68,7 @@
     "omit": 1
   },
   {
-    "trigger": "Your hand is empty.",
+    "trigger": "Keine Karten auf der Hand.",
     "action": "PlayDuelEmpty()"
   },
   {
@@ -263,7 +263,7 @@
     "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
   },
   {
-    "trigger": "Du zahlst * LP. Deine LP betragen nun *.",
+    "trigger": "You pay * LP. Your LP is now *.",
     "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
   },
   {
