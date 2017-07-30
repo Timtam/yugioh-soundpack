@@ -251,11 +251,11 @@
     "action": "PlayDuelTribute()"
   },
   {
-    "trigger": "Du bietest * zum Tribut an.",
+    "trigger": "Du bietest * als Tribut an.",
     "action": "PlayDuelTribute()"
   },
   {
-    "trigger": "Rüste * (m*) mit * (s*) aus.",
+    "trigger": "Rüste * (*) mit * (*) aus.",
     "action": "PlayDuelEquip()"
   },
   {
