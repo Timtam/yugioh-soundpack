@@ -26,9 +26,9 @@ function OnWorldOpen()
   Config.Set('settings', 'Omitting', 1)
   Config.Set('settings', 'SoundsMuted', 0)
   Config.Set('settings', 'SoundVolume', 50)
-  Config.AddConfigurable('settings', 'AutoChaining', 'bool', 'always reject chaining questions')
-  Config.AddConfigurable('settings', 'Omitting', 'bool', 'don\'t show unimportant messages')
   Config.Load()
+  Config.AddConfigurable{section='settings', option='AutoChaining', type='bool', description='always reject chaining questions', key = 'ctrl+alt+c'}
+  Config.AddConfigurable{section='settings', option='Omitting', type='bool', description='don\'t show unimportant messages', key='ctrl+alt+o'}
 
   -- defining all world accelerators
   world.Accelerator('F9', 'volume_down')

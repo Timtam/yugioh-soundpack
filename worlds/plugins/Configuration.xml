@@ -60,7 +60,7 @@ TYPE_TEXT = 'text'
 
 function Load()
 
-    local ctbl = Ini.read('config.dat')
+  local ctbl = Ini.read('config.dat')
 
   if ctbl then
     for name, section in pairs(ctbl) do
@@ -82,6 +82,13 @@ end
 function Unload()
   if Table.size(Config) > 0 then
     Ini.write('config.dat', Config)
+  end
+
+  for option, config in pairs(Configurables) do
+
+    if config.type == TYPE_BOOL and config.key ~= nil then
+      world.Accelerator(config.key, '')
+    end
   end
 
 end
@@ -125,35 +132,47 @@ end
 --   section, option, value, where the value is the value the user wants to set
 -- the return value will be saved into the configuration
 -- if nil is returned, the current value won't be changed
-function AddConfigurable(section, option, type, description, func)
+-- if key is given, an accelerator with this key will be added to boolean configurables
+function AddConfigurable(arg)
 
   -- make sure the type is valid
-  if func == nil and Table.find({TYPE_BOOL, TYPE_INTEGER, TYPE_PERCENTAGE, TYPE_TEXT}, type) == nil then
-    error(type..' is no valid configurable type')
+  if arg.func == nil and Table.find({TYPE_BOOL, TYPE_INTEGER, TYPE_PERCENTAGE, TYPE_TEXT}, arg.type) == nil then
+    error(arg.type..' is no valid configurable type')
   end
 
   -- make sure the section and the option exist
-  if Config[section] == nil or Config[section][option] == nil then
-    if type == TYPE_TEXT then
-      Set(section, option, '')
+  if Config[arg.section] == nil or Config[arg.section][arg.option] == nil then
+    if arg.type == TYPE_TEXT then
+      Set(arg.section, arg.option, '')
     else
-      Set(section, option, 0)
+      Set(arg.section, arg.option, 0)
     end
   end
 
   -- and we don't actually got an option with this name
-  if Configurables[option:lower()] ~= nil then
-    error('configurable '..option:lower()..' already exists')
+  if Configurables[arg.option:lower()] ~= nil then
+    error('configurable '..arg.option:lower()..' already exists')
+  end
+
+  -- if we got a function, we will remove the type
+  if arg.func ~= nil then
+    arg.type = nil
   end
 
   -- we will add it to the table
-  Configurables[option:lower()] = {
-    section = section,
-    option = option,
-    type = type,
-    description = description,
-    func = func
+  Configurables[arg.option:lower()] = {
+    section = arg.section,
+    option = arg.option,
+    type = arg.type,
+    description = arg.description,
+    func = arg.func,
+    key = arg.key
   }
+
+  if arg.type == TYPE_BOOL and arg.key ~= nil then
+    world.Note('key set')
+    world.Accelerator(arg.key, 'config '..arg.option:lower()..' toggle')
+  end
 
 end
 
