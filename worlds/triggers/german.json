@@ -106,7 +106,7 @@
     "action": "PlayPrompt()"
   },
   {
-    "trigger": "* wants to duel. Type duel * to accept.",
+    "trigger": "* möchte sich mit Dir duellieren. Tippe duel * um die Anfrage zu akzeptieren.",
     "action": "PlayDuelRequest()"
   },
   {
