@@ -49,6 +49,7 @@ Config = {}
 Configurables = {}
 Ini = require('ini')
 PPI = require('ppi')
+String = require('pl.stringx')
 Table = require('pl.tablex')
 
 -- constants follow
@@ -322,7 +323,7 @@ function ConfigCommand(option, value)
     return
   end
 
-  SetConfigurable(option, value)
+  SetConfigurable(option, String.strip(value))
 
 end
 
