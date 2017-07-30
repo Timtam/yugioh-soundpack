@@ -202,7 +202,7 @@
     "omit": 1
   },
   {
-    "trigger": "Enter a line of text.",
+    "trigger": "Select a card:",
     "action": "PlayDuelAttention()"
   },
   {
