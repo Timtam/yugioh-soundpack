@@ -239,6 +239,7 @@ end
 function SetConfigurable(option, value)
 
   local set
+  local operator
 
   if Configurables[option] == nil then
     world.Note('Option '..option..' not found')
@@ -279,6 +280,13 @@ function SetConfigurable(option, value)
     end
   else
     -- all numeric values go here
+
+    -- we will have to check for relative incrementation
+    if value:sub(1,1) == '+' or value:sub(1,1) == '-' then
+      operator = value:sub(1,1)
+      value = value:sub(2)
+    end
+
     value = tonumber(value)
 
     if value == nil then
@@ -287,18 +295,38 @@ function SetConfigurable(option, value)
     end
 
     if Configurables[option].type == TYPE_INTEGER then
-      Config[Configurables[option].section][Configurables[option].option]=value
-      set = tostring(value)
+      if operator == '+' then
+        Config[Configurables[option].section][Configurables[option].option]=Config[Configurables[option].section][Configurables[option].option] + value
+      elseif operator == '-' then
+        Config[Configurables[option].section][Configurables[option].option]=Config[Configurables[option].section][Configurables[option].option] - value
+      else
+        Config[Configurables[option].section][Configurables[option].option] = value
+      end
+      set = tostring(Config[Configurables[option].section][Configurables[option].option])
     elseif Configurables[option].type == TYPE_PERCENTAGE then
 
-      if value < 0 or value > 100 then
-        world.Note('Value out of range. You need to specify a value between 0 and 100.')
-        return
+      if operator == '+' then
+        if Config[Configurables[option].section][Configurables[option].option] == 100 then
+          world.Note(option..' already at 100%')
+          return
+        end
+        Config[Configurables[option].section][Configurables[option].option] = math.min(100, Config[Configurables[option].section][Configurables[option].option] + value)
+      elseif operator == '-' then
+        if Config[Configurables[option].section][Configurables[option].option] == 0 then
+          world.Note(option..' already at 0%')
+          return
+        end
+        Config[Configurables[option].section][Configurables[option].option] = math.max(0, Config[Configurables[option].section][Configurables[option].option] + value)
+      else
+        if value < 0 or value > 100 then
+          world.Note('Value out of range. You need to specify a value between 0 and 100.')
+          return
+        end
+
+        Config[Configurables[option].section][Configurables[option].option]=value
       end
 
-      Config[Configurables[option].section][Configurables[option].option]=value
-
-      set = tostring(value)..'%'
+      set = tostring(Config[Configurables[option].section][Configurables[option].option])..'%'
 
     end
   end
