@@ -156,6 +156,17 @@ world.Execute('encoding windows-1252')</send>
 PlaySound('welcome')
 SetMusicMode(1)</send>
   </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Willkommen im Spiel."
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load('german')
+PlaySound('welcome')
+SetMusicMode(1)</send>
+  </trigger>
 </triggers>
 
 <!-- aliases -->
@@ -323,7 +334,8 @@ group="System" omit_from_output="y" >
    world_file_version="15"
   >
   <variable name="Configuration">741d5052da64c6ec33c863e5</variable>
-  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\who.ogg|n:3|n:0|n:4|n:0|n:5|n:90</variable>
+  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\prompt.ogg|n:3|n:0|n:4|n:0|n:5|n:90</variable>
+  <variable name="PPIparams_2">s:description|s:don't show unimportant messages|s:key|s:ctrl+alt+o|s:option|s:Omitting|s:section|s:settings|s:type|s:bool</variable>
 </variables>
 
 <!-- colours -->

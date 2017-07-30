@@ -1,0 +1,285 @@
+[
+  {
+    "trigger": "* angemeldet.",
+    "action": "PlayLogin()"
+  },
+  {
+    "trigger": "* abgemeldet.",
+    "action": "PlayLogout()"
+  },
+  {
+    "trigger": "I don't understand that.",
+    "action": "PlayError()",
+    "omit": 1
+  },
+  {
+    "trigger": "Deck exists, loading.",
+    "action": "PlayDeckChange()",
+    "omit": 1
+  },
+  {
+    "trigger": "Quit.",
+    "action": "PlayDeckQuit()",
+    "omit": 1
+  },
+  {
+    "trigger": "Deck mit * Karten geladen.",
+    "action": "PlayDeckLoad()"
+  },
+  {
+    "trigger": "Deck imported.",
+    "action": "PlayDeckImport()"
+  },
+  {
+    "trigger": "Deck deleted.",
+    "action": "PlayDeckDelete()"
+  },
+  {
+    "trigger": "Deck cleared.",
+    "action": "PlayDeckClear()"
+  },
+  {
+    "trigger": "Deck doesn't exist.",
+    "action": "PlayError()"
+  },
+  {
+    "trigger": "* chats: *",
+    "action": "PlayChatMessage(\"%0\")",
+    "sequence": 90
+  },
+  {
+    "trigger": "Chat on.",
+    "action": "PlayChatOn()",
+    "omit": 1
+  },
+  {
+    "trigger": "Chat off.",
+    "action":"PlayChatOff()",
+    "omit": 1
+  },
+  {
+    "trigger": "* says: *",
+    "action": "PlayChatSay(\"%0\")",
+    "sequence": 90
+  },
+  {
+    "trigger": "Online players:",
+    "action": "PlayWho()",
+    "omit": 1
+  },
+  {
+    "trigger": "Your hand is empty.",
+    "action": "PlayDuelEmpty()"
+  },
+  {
+    "trigger": "Keine Karten auf dem Tisch.",
+    "action": "PlayDuelEmpty()"
+  },
+  {
+    "trigger": "Auf den Gegner warten.",
+    "action": "PlayDuelWait()",
+    "omit": 1
+  },
+  {
+    "trigger": "Your LP: * Opponent LP: *",
+    "action": "PlayDuelScore()"
+  },
+  {
+    "trigger": "Tisch des Gegners:",
+    "action": "PlayDuelTable()"
+  },
+  {
+    "trigger": "Dein Tisch:",
+    "action": "PlayDuelTable()"
+  },
+  {
+    "trigger": "Du hast gewonnen.",
+    "action": "PlayDuelWin()",
+    "omit": 1
+  },
+  {
+    "trigger": "Your opponent disconnected, the duel is over.",
+    "action": "PlayDuelWin()"
+  },
+  {
+    "trigger": "Möchtest Du den Effekt von * in * verwenden?",
+    "action": "PlayPrompt()"
+  },
+  {
+    "trigger": "* wants to duel. Type duel * to accept.",
+    "action": "PlayDuelRequest()"
+  },
+  {
+    "trigger": "Duell begonnen. Du bist Spieler *.",
+    "action": "PlayDuelStart()",
+    "omit": 1
+  },
+  {
+    "trigger": "Aktiviere *",
+    "action": "PlayDuelActivate()"
+  },
+  {
+    "trigger": "Beginn der Standby Phase.",
+    "action": "PlayDuelStandby()",
+    "omit": 1
+  },
+  {
+    "trigger": "Beginn der End Phase.",
+    "action": "PlayDuelEnd()",
+    "omit": 1
+  },
+  {
+    "trigger": "* aktiviert *",
+    "action": "PlayDuelEffect()"
+  },
+  {
+    "trigger": "Beginn der Main Phase 1.",
+    "action": "PlayDuelMain()",
+    "omit": 1
+  },
+  {
+    "trigger": "* Karten gezogen*",
+    "action": "PlayDuelDraw()"
+  },
+  {
+    "trigger": "* setzt * in face down Position.",
+    "action": "PlayDuelFacedown()"
+  },
+  {
+    "trigger": "Du setzt * in face down position.",
+    "action": "PlayDuelFacedown()"
+  },
+  {
+    "trigger": "Beginn der Battle Phase.",
+    "action": "PlayDuelBattle()",
+    "omit": 1
+  },
+  {
+    "trigger": "Wähle angreifende Karte:",
+    "action": "PlayDuelAttention()"
+  },
+  {
+    "trigger": "Du hast verloren.",
+    "action": "PlayDuelLose()",
+    "omit": 1
+  },
+  {
+    "trigger": "Invalid spec.",
+    "action": "PlayDuelInvalid()"
+  },
+  {
+    "trigger": "Kette auswählen (c um abzubrechen):",
+    "action": "PlayDuelChain()"
+  },
+  {
+    "trigger": "* zog * Karten*",
+    "action": "PlayDuelDraw()"
+  },
+  {
+    "trigger": "* Spezialbeschwörung *",
+    "action": "PlayDuelSpecial()"
+  },
+  {
+    "trigger": "* setzt * in face-down defense Position.",
+    "action": "PlayDuelDefense()"
+  },
+  {
+    "trigger": "Du setzt * in face-down defense position.",
+    "action": "PlayDuelFacedown()"
+  },
+  {
+    "trigger": "Beginn der Main2 Phase.",
+    "action": "PlayDuelMain()",
+    "omit": 1
+  },
+  {
+    "trigger": "Karte * zerstört.",
+    "action": "PlayDuelDestroy()"
+  },
+  {
+    "trigger": "Schadensberechnung",
+    "action": "PlayDuelAttack()",
+    "omit": 1
+  },
+  {
+    "trigger": "Enter a line of text.",
+    "action": "PlayDuelAttention()"
+  },
+  {
+    "trigger": "* greift an",
+    "action": "PlayDuelDamage()"
+  },
+  {
+    "trigger": "* beschwört * (*/*) in Offener *",
+    "action": "PlayDuelNormal()"
+  },
+  {
+    "trigger": "Duell-Anfrage an * gesendet.",
+    "action": "PlayDuelRequest()"
+  },
+  {
+    "trigger": "* Zug.",
+    "action": "PlayDuelAttention()"
+  },
+  {
+    "trigger": "Die Position der Karte * (*) wurde in face-up geändert.",
+    "action": "PlayDuelFlip()"
+  },
+  {
+    "trigger": "Die Position der Karte * (*) wurde in face-up attack geändert.",
+    "action": "PlayDuelFlip()"
+  },
+  {
+    "trigger": "Die Position der Karte * (*) wurde in face-up defense geändert.",
+    "action": "PlayDuelDefend()"
+  },
+  {
+    "trigger": "Schadensberechnung abgeschlossen",
+    "action": "PlayDuelDamageEnd()",
+    "omit": 1
+  },
+  {
+    "trigger": "* prepares to attack with *",
+    "action": "PlayDuelAim()"
+  },
+  {
+    "trigger": "* bestimmt *",
+    "action": "PlayDuelAim()"
+  },
+  {
+    "trigger": "* bietet * zum Tribut an.",
+    "action": "PlayDuelTribute()"
+  },
+  {
+    "trigger": "Du bietest * zum Tribut an.",
+    "action": "PlayDuelTribute()"
+  },
+  {
+    "trigger": "* pays * LP. Their LP is now *.",
+    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
+  },
+  {
+    "trigger": "Du zahlst * LP. Deine LP betragen nun *.",
+    "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
+  },
+  {
+    "trigger": "* Lebenspunkte wurden um * reduziert, jetzt *",
+    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
+  },
+  {
+    "trigger": "* Lebenspunkte wurden um * erhöht, jetzt *",
+    "action": "PlayEarnLifepoints(\"%2\", \"%3\")"
+  },
+  {
+    "trigger": "Du vermittelst *: *",
+    "action": "PlayChatSend(\"%0\")"
+  },
+  {
+    "trigger": "Du antwortest *: *",
+    "action": "PlayChatSend(\"%0\")"
+  },
+  {
+    "trigger": "* vermittelt Dir: *",
+    "action": "PlayChatReceive(\"%0\")"
+  }
+]
