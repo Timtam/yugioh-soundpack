@@ -222,4 +222,12 @@ function Interface:PlayChatSend(text)
   world.Execute('history_add tell='..text)
 end
 
+function Interface:PlayDuelEquip()
+  self.sound('duel/equip')
+end
+
+function Interface:PlayDuelShow()
+  self.sound('duel/show')
+end
+
 return Interface

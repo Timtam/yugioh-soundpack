@@ -255,6 +255,14 @@
     "action": "PlayDuelTribute()"
   },
   {
+    "trigger": "* (s*) equipped to * (m*).",
+    "action": "PlayDuelEquip()"
+  },
+  {
+    "trigger": "* shows you * cards.",
+    "action": "PlayDuelShow()"
+  },
+  {
     "trigger": "* pays * LP. Their LP is now *.",
     "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
   },
