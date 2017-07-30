@@ -255,6 +255,10 @@
     "action": "PlayDuelTribute()"
   },
   {
+    "trigger": "Rüste * (m*) mit * (s*) aus.",
+    "action": "PlayDuelEquip()"
+  },
+  {
     "trigger": "* pays * LP. Their LP is now *.",
     "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
   },
