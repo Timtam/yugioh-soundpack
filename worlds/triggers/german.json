@@ -81,7 +81,7 @@
     "omit": 1
   },
   {
-    "trigger": "Your LP: * Opponent LP: *",
+    "trigger": "Deine Lebenspunkte: *, Gegnerische Lebenspunkte: *",
     "action": "PlayDuelScore()"
   },
   {
@@ -202,7 +202,11 @@
     "omit": 1
   },
   {
-    "trigger": "Select a card:",
+    "trigger": "Wähle eine Karte aus, mit der eine Aktion ausgeführt werden soll.",
+    "action": "PlayDuelAttention()"
+  },
+  {
+    "trigger": "Wähle eine Option:",
     "action": "PlayDuelAttention()"
   },
   {
