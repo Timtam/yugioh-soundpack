@@ -64,7 +64,7 @@ function Interface:PlayChatSay(text)
   self.sound('chat/say')
 end
 
-function Interface:PlayChatAnouncement(text)
+function Interface:PlayChatAnnouncement(text)
   self.sound('chat/announcement')
   world.Execute('history_add announcement='..text)
 end
