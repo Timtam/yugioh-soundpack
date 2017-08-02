@@ -293,5 +293,9 @@
   {
     "trigger": "* vermittelt Dir: *",
     "action": "PlayChatReceive(\"%0\")"
+  },
+  {
+    "trigger": "* zeigt Dir * Karten.",
+    "action": "PlayDuelShow()"
   }
 ]
