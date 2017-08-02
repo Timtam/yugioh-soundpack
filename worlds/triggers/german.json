@@ -43,7 +43,7 @@
     "action": "PlayError()"
   },
   {
-    "trigger": "* chats: *",
+    "trigger": "* chattet: *",
     "action": "PlayChatMessage(\"%0\")",
     "sequence": 90
   },
@@ -53,17 +53,17 @@
     "omit": 1
   },
   {
-    "trigger": "Chat off.",
+    "trigger": "Chat ausgeschaltet.",
     "action":"PlayChatOff()",
     "omit": 1
   },
   {
-    "trigger": "* says: *",
+    "trigger": "* sagt: *",
     "action": "PlayChatSay(\"%0\")",
     "sequence": 90
   },
   {
-    "trigger": "Online players:",
+    "trigger": "Anwesende Spieler:",
     "action": "PlayWho()",
     "omit": 1
   },
@@ -188,7 +188,7 @@
     "action": "PlayDuelFacedown()"
   },
   {
-    "trigger": "Beginn der Main2 Phase.",
+    "trigger": "Beginn der Main Phase 2.",
     "action": "PlayDuelMain()",
     "omit": 1
   },
@@ -251,7 +251,7 @@
     "action": "PlayDuelTribute()"
   },
   {
-    "trigger": "Du bietest * als Tribut an.",
+    "trigger": "Du bietest * zum Tribut an.",
     "action": "PlayDuelTribute()"
   },
   {
@@ -281,6 +281,10 @@
   {
     "trigger": "Du antwortest *: *",
     "action": "PlayChatSend(\"%0\")"
+  },
+  {
+    "trigger": "* antwortet Dir: *",
+    "action": "PlayChatReceive(\"%0\")"
   },
   {
     "trigger": "* vermittelt Dir: *",
