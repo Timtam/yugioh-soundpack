@@ -170,7 +170,6 @@ function AddConfigurable(arg)
   }
 
   if arg.type == TYPE_BOOL and arg.key ~= nil then
-    world.Note('key set')
     world.Accelerator(arg.key, 'config '..arg.option:lower()..' toggle')
   end
 
