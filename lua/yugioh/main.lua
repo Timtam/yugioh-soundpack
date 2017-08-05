@@ -156,7 +156,7 @@ end
 -- some helper function to efficiently play lifepoint sounds
 -- which will actually differ, depending on the amount of lost lifepoints
 
-function PlayLifepoints(lp_lost, lp_now)
+function PlayLifepoints(lp_lost, lp_now, lp_sound)
 
   if Config.Get('settings', 'SoundsMuted') == 1 then
     return
@@ -166,23 +166,24 @@ function PlayLifepoints(lp_lost, lp_now)
   if lp_lost == nil then
     return
   end
-  interval=100
-  plays=lp_lost / 100
-  delay=0
-  while plays > 0 do
-    Audio.playDelay(Path.join(GetInfo(74), 'duel', 'lp.ogg'),delay,0,Config.Get('settings', 'SoundVolume'))
-    delay=delay + interval
-    plays=plays - 1
-  end
 
-  local tmp
-
-  if lp_now <= 0 then
-    tmp = 'lpzero.ogg'
+  if lp_sound == nil then
+    local sound = Audio.playLooped(Path.join(GetInfo(74), 'duel', 'lp.ogg'))
+    Audio.setVol(sound, Config.Get('settings', 'SoundVolume'))
+    world.DoAfterSpecial(lp_lost/1000, 'PlayLifepoints('..tostring(lp_lost)..', '..tostring(lp_now)..', '..tostring(sound)..')', sendto.script)
+    return
   else
-    tmp = 'lpend.ogg'
+    Audio.stop(lp_sound)
+
+    local tmp
+
+    if lp_now <= 0 then
+      tmp = 'duel/lpzero'
+    else
+      tmp = 'duel/lpend'
+    end
+    PlaySound(tmp)
   end
-  Audio.playDelay(Path.join(GetInfo(74), 'duel', tmp), delay, 0, Config.Get('settings', 'SoundVolume'))
 end
 
 function SetMusicMode(mode)
