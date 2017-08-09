@@ -167,6 +167,10 @@ function PlayLifepoints(lp_lost, lp_now, lp_sound)
     return
   end
 
+  if lp_lost < 100 then
+    lp_lost = 100
+  end
+
   if lp_sound == nil then
     local sound = Audio.playLooped(Path.join(GetInfo(74), 'duel', 'lp.ogg'))
     Audio.setVol(sound, Config.Get('settings', 'SoundVolume'))
