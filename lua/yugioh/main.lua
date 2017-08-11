@@ -21,6 +21,7 @@ function OnWorldOpen()
   Config = PPI.Load(world.GetVariable('Configuration'))
 
   Config.Set('settings', 'AutoChaining', 0)
+  Config.Set('settings', 'LogonSound', 1)
   Config.Set('settings', 'MusicMuted', 0)
   Config.Set('settings', 'MusicVolume', 10)
   Config.Set('settings', 'Omitting', 1)
@@ -28,6 +29,7 @@ function OnWorldOpen()
   Config.Set('settings', 'SoundVolume', 50)
   Config.Load()
   Config.AddConfigurable{section='settings', option='AutoChaining', type='bool', description='always reject chaining questions', key = 'ctrl+alt+c'}
+  Config.AddConfigurable{section='settings', option='LogonSound', type='bool', description='play sound when logging in', key='ctrl+alt+l'}
   Config.AddConfigurable{section='settings', option='Omitting', type='bool', description='don\'t show unimportant messages', key='ctrl+alt+o'}
 
   -- defining all world accelerators

@@ -153,8 +153,8 @@ world.Execute('encoding windows-1252')</send>
    sequence="100"
   >
   <send>TriggerHandler:Load('english')
-PlaySound('welcome')
-SetMusicMode(1)</send>
+SetMusicMode(1)
+Interface:PlayWelcome()</send>
   </trigger>
   <trigger
    enabled="y"
@@ -164,8 +164,8 @@ SetMusicMode(1)</send>
    sequence="100"
   >
   <send>TriggerHandler:Load('german')
-PlaySound('welcome')
-SetMusicMode(1)</send>
+SetMusicMode(1)
+Interface:PlayWelcome()</send>
   </trigger>
 </triggers>
 
@@ -343,7 +343,6 @@ group="System" omit_from_output="y" >
    world_file_version="15"
   >
   <variable name="Configuration">741d5052da64c6ec33c863e5</variable>
-  <variable name="PPIparams_1">n:1|n:1|n:2|s:F:\\Privat\\Skripte\\yugioh-soundpack\\sounds\\chat/message.ogg|n:3|n:0|n:4|n:0|n:5|n:60</variable>
 </variables>
 
 <!-- colours -->

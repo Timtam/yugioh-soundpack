@@ -230,4 +230,12 @@ function Interface:PlayDuelShow()
   self.sound('duel/show')
 end
 
+function Interface:PlayWelcome()
+
+  if self.config.Get('settings', 'LogonSound') ~= 0 then
+    self.sound('welcome')
+  end
+
+end
+
 return Interface
