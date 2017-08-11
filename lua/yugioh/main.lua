@@ -173,7 +173,7 @@ function PlayLifepoints(lp_lost, lp_now, lp_sound)
 
   if lp_sound == nil then
     local sound = Audio.playLooped(Path.join(GetInfo(74), 'duel', 'lp.ogg'))
-    Audio.setVol(sound, Config.Get('settings', 'SoundVolume'))
+    Audio.setVol(Config.Get('settings', 'SoundVolume'), sound)
     world.DoAfterSpecial(lp_lost/1000, 'PlayLifepoints('..tostring(lp_lost)..', '..tostring(lp_now)..', '..tostring(sound)..')', sendto.script)
     return
   else
