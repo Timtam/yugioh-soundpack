@@ -297,5 +297,9 @@
   {
     "trigger": "* zeigt Dir * Karten.",
     "action": "PlayDuelShow()"
+  },
+  {
+    "trigger": "Replay (Angriff wiederholen)?",
+    "action": "PlayDuelReplay()"
   }
 ]
