@@ -301,5 +301,9 @@
   {
     "trigger": "Replay (Angriff wiederholen)?",
     "action": "PlayDuelReplay()"
+  },
+  {
+    "trigger": "* Karte * (*) auf die Hand genommen.",
+    "action": "PlayDuelReturn()"
   }
 ]

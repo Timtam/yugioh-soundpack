@@ -244,4 +244,10 @@ function Interface:PlayDuelReplay()
 
 end
 
+function Interface:PlayDuelReturn()
+
+  self.sound('duel/return')
+
+end
+
 return Interface
