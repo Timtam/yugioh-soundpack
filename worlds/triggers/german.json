@@ -305,5 +305,9 @@
   {
     "trigger": "* Karte * (*) auf die Hand genommen.",
     "action": "PlayDuelReturn()"
+  },
+  {
+    "trigger": "Karte * (*) auf die Hand genommen.",
+    "action": "PlayDuelReturn()"
   }
 ]
