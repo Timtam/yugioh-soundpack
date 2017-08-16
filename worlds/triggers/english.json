@@ -302,5 +302,9 @@
     "trigger": "Announcement: *",
     "action": "PlayChatAnnouncement(\"%0\")",
     "sequence": 90
+  },
+  {
+    "trigger": "Card * (*) returned to hand.",
+    "action": "PlayDuelReturn()"
   }
 ]
