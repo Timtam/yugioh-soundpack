@@ -1,4 +1,6 @@
-Audio = nil
+BASS = require("audio.bass")()
+BASSCONSTANTS = require("audio.constants")
+BASSSTREAM = require("audio.bass.stream")
 Config = nil
 Dir = require('pl.dir')
 Interface = nil
@@ -13,11 +15,6 @@ VolumeControl = 1 -- 1 = sounds, 2 = music
 function OnWorldOpen()
 
   -- connecting to several plugins via PPI
-  Audio = PPI.Load("aedf0cb0be5bf045860d54b7")
-  if not Audio then
-    error('Unable to initialize audio package.')
-  end
-
   Config = PPI.Load(world.GetVariable('Configuration'))
 
   Config.Set('settings', 'AutoChaining', 0)
@@ -38,6 +35,9 @@ function OnWorldOpen()
   world.Accelerator('F11', 'volume_toggle')
   world.Accelerator('F12', 'volume_mute')
   Interface = require('yugioh.interface')(PlaySound, PlayLifepoints, SetMusicMode)
+
+  BASS:Init()
+
 end
 
 function OnWorldDisconnect()
@@ -60,7 +60,11 @@ function PlaySound(file, pan)
     file=Path.join(GetInfo(74), file)
   end
   file = file..'.ogg'
-  return Audio.play(file, 0, pan, Config.Get('settings', 'SoundVolume'))
+  local stream = BASS:StreamCreateFile(false, file)
+  stream:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
+  stream:SetAttribute(BASSCONSTANTS.attribute.pan, pan)
+  stream:Play()
+  return stream
 end
 
 function PlayMusic(file)
@@ -71,13 +75,14 @@ function PlayMusic(file)
   if(not Path.isabs(file)) then
     file=Path.join(GetInfo(74), "Music", file)
   end
-  if Music ~= nil and Audio.isPlaying(Music) == 1 then
-    Audio.fadeout(Music, 1.0)
+  if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing then
+    Music:Stop()
     Music = nil
     world.EnableTimer('MusicLooper', false)
     world.DoAfterSpecial(0.5, 'PlayMusic(\''..Path.relpath(file, Path.join(GetInfo(74), 'music')):gsub('\\', '\\\\')..'\')', sendto.script)
   else
-    Music = Audio.play(file, 0, 0, Config.Get('settings', 'MusicVolume'))
+    Music = BASS:StreamCreateFile(false, file)
+    Music:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
     MusicFile = file
     world.EnableTimer('MusicLooper', true)
   end
@@ -111,8 +116,8 @@ function Volume(value)
     world.Note('Sound Volume: '..tostring(tmp)..'%')
   elseif VolumeControl == 2 then
     Config.Set('settings', 'MusicVolume', tmp)
-    if Music ~= nil and Audio.isPlaying(Music) == 1 then
-      Audio.setVol(tmp, Music)
+    if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing then
+      Music:SetAttribute(BASSCONSTANTS.attribute.volume, tmp/100)
     end
     world.Note('Music Volume: '..tostring(tmp)..'%')
   end
@@ -134,8 +139,8 @@ function VolumeMute()
   elseif VolumeControl == 2 and Config.Get('settings', 'MusicMuted') == 0 then
     Config.Set('settings', 'MusicMuted', 1)
     world.Note('Music muted')
-    if Music ~= nil and Audio.isPlaying(Music) == 1 then
-      Audio.fadeout(Music, 1.0)
+    if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing then
+      Music:Stop()
       Music = nil
     end
   end
@@ -174,12 +179,14 @@ function PlayLifepoints(lp_lost, lp_now, lp_sound)
   end
 
   if lp_sound == nil then
-    local sound = Audio.playLooped(Path.join(GetInfo(74), 'duel', 'lp.ogg'))
-    Audio.setVol(Config.Get('settings', 'SoundVolume'), sound)
-    world.DoAfterSpecial(lp_lost/1000, 'PlayLifepoints('..tostring(lp_lost)..', '..tostring(lp_now)..', '..tostring(sound)..')', sendto.script)
+    local sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'), 0, 0, BASSCONSTANTS.sample.loop)
+    sound:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
+    sound:Play()
+    world.DoAfterSpecial(lp_lost/1000, 'PlayLifepoints('..tostring(lp_lost)..', '..tostring(lp_now)..', '..tostring(sound.id)..')', sendto.script)
     return
   else
-    Audio.stop(lp_sound)
+    sound = BASSSTREAM(sound)
+    sound:Stop()
 
     local tmp
 
@@ -194,13 +201,13 @@ end
 
 function SetMusicMode(mode)
 
-  if Music ~= nil and Audio.isPlaying(Music) == 1 and MusicMode == mode then
+  if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing and MusicMode == mode then
     return
   end
 
   if mode == 0 then
-    if Music ~= nil and Audio.isPlaying(Music) == 1 then
-      Audio.fadeout(Music, 1.0)
+    if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing then
+      Music:Stop()
     end
     Music = nil
   else

@@ -1,5 +1,5 @@
 -- Error codes returned by BASS_ErrorGetCode
-error = {
+local error = {
   ok = 0, -- all is OK
   memory = 1, -- memory error
   file_open = 2, -- can't open the file
@@ -40,7 +40,7 @@ error = {
 }
 
 -- BASS_SetConfig options
-config = {
+local config = {
   buffer = 0,
   update_period = 1,
   global_volume_sample = 4,
@@ -88,7 +88,7 @@ config = {
 }
 
 -- BASS_Init flags
-device = {
+local device = {
   eight_bit = 1, -- 8 bit
   mono = 2, -- mono
   three_d = 4, -- enable 3D functionality
@@ -103,7 +103,7 @@ device = {
 }
 
 -- BASS_DEVICEINFO flags
-device_info = {
+local device_info = {
   enabled = 1,
   default = 2,
   init = 4,
@@ -121,7 +121,7 @@ device_info = {
   type_displayport = 0x40000000
 }
 
-sample = {
+local sample = {
   eight_bit = 1, -- 8 bit
   float = 256, -- 32 bit floating-point
   mono = 2, -- mono
@@ -136,7 +136,7 @@ sample = {
   override_distance = 0x30000 -- override furthest from listener (3D only)
 }
 
-stream = {
+local stream = {
   prescan = 0x20000, -- enable pin-point seeking/length (MP3/MP2/MP1)
   auto_free = 0x40000, -- automatically free the stream when it stop/ends
   restrict_rate = 0x80000, -- restrict the download rate of internet file streams
@@ -145,7 +145,7 @@ stream = {
   status = 0x800000 -- give server status info (HTTP/ICY tags) in DOWNLOADPROC
 }
 
-music = {
+local music = {
   float = sample.float,
   mono = sample.mono,
   loop = sample.loop,
@@ -171,14 +171,14 @@ music = {
 }
 
 -- 3D channel modes
-three_d_mode = {
+local three_d_mode = {
   normal = 0, -- normal 3D processing
   relative = 1, -- position is relative to the listener
   off = 2 -- no 3D processing
 }
 
 -- software 3D mixing algorithms (used with BASS_CONFIG_3DALGORITHM)
-three_d_algorithm = {
+local three_d_algorithm = {
   default = 0,
   off = 1,
   full = 2,
@@ -186,7 +186,7 @@ three_d_algorithm = {
 }
 
 -- BASS_ChannelIsActive return values
-active = {
+local active = {
   stopped = 0,
   playing = 1,
   stalled = 2,
@@ -194,7 +194,7 @@ active = {
 }
 
 -- Channel attributes
-attribute = {
+local attribute = {
   frequency = 1,
   volume = 2,
   pan = 3,
@@ -219,7 +219,7 @@ attribute = {
 }
 
 -- BASS_ChannelGetLength/GetPosition/SetPosition modes
-position = {
+local position = {
   byte = 0, -- byte position
   music_order = 1, -- order.row position, MAKELONG(order,row)
   ogg = 3, -- OGG bitstream number
