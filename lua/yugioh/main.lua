@@ -1,5 +1,5 @@
-BASS = require("audio.bass")()
-BASSCONSTANTS = require("audio.constants")
+Audio = require("audio")
+BASS = Audio.BASS()
 BASSSTREAM = require("audio.bass.stream")
 Config = nil
 Dir = require('pl.dir')
@@ -60,9 +60,9 @@ function PlaySound(file, pan)
     file=Path.join(GetInfo(74), file)
   end
   file = file..'.ogg'
-  local stream = BASS:StreamCreateFile(false, file, 0, 0, BASSCONSTANTS.stream.auto_free)
-  stream:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
-  stream:SetAttribute(BASSCONSTANTS.attribute.pan, pan)
+  local stream = BASS:StreamCreateFile(false, file, 0, 0, Audio.CONST.stream.auto_free)
+  stream:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
+  stream:SetAttribute(Audio.CONST.attribute.pan, pan)
   stream:Play()
   return stream
 end
@@ -75,14 +75,14 @@ function PlayMusic(file)
   if(not Path.isabs(file)) then
     file=Path.join(GetInfo(74), "Music", file)
   end
-  if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing then
+  if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
     Music:Stop()
     Music = nil
     world.EnableTimer('MusicLooper', false)
     world.DoAfterSpecial(0.5, 'PlayMusic(\''..Path.relpath(file, Path.join(GetInfo(74), 'music')):gsub('\\', '\\\\')..'\')', sendto.script)
   else
-    Music = BASS:StreamCreateFile(false, file, 0, 0, BASSCONSTANTS.stream.auto_free)
-    Music:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
+    Music = BASS:StreamCreateFile(false, file, 0, 0, Audio.CONST.stream.auto_free)
+    Music:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
     MusicFile = file
     world.EnableTimer('MusicLooper', true)
   end
@@ -116,8 +116,8 @@ function Volume(value)
     world.Note('Sound Volume: '..tostring(tmp)..'%')
   elseif VolumeControl == 2 then
     Config.Set('settings', 'MusicVolume', tmp)
-    if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing then
-      Music:SetAttribute(BASSCONSTANTS.attribute.volume, tmp/100)
+    if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
+      Music:SetAttribute(Audio.CONST.attribute.volume, tmp/100)
     end
     world.Note('Music Volume: '..tostring(tmp)..'%')
   end
@@ -139,7 +139,7 @@ function VolumeMute()
   elseif VolumeControl == 2 and Config.Get('settings', 'MusicMuted') == 0 then
     Config.Set('settings', 'MusicMuted', 1)
     world.Note('Music muted')
-    if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing then
+    if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
       Music:Stop()
       Music = nil
     end
@@ -179,8 +179,8 @@ function PlayLifepoints(lp_lost, lp_now, lp_sound)
   end
 
   if lp_sound == nil then
-    local sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'), 0, 0, BASSCONSTANTS.sample.loop+BASSCONSTANTS.stream.auto_free)
-    sound:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
+    local sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'), 0, 0, Audio.CONST.sample.loop+Audio.CONST.stream.auto_free)
+    sound:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
     sound:Play()
     world.DoAfterSpecial(lp_lost/1000, 'PlayLifepoints('..tostring(lp_lost)..', '..tostring(lp_now)..', '..tostring(sound.id)..')', sendto.script)
     return
@@ -201,12 +201,12 @@ end
 
 function SetMusicMode(mode)
 
-  if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing and MusicMode == mode then
+  if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing and MusicMode == mode then
     return
   end
 
   if mode == 0 then
-    if Music ~= nil and Music:IsActive() == BASSCONSTANTS.active.playing then
+    if Music ~= nil and Music:IsActive() == Audio.Const.active.playing then
       Music:Stop()
     end
     Music = nil

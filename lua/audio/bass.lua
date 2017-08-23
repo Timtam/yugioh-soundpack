@@ -1,4 +1,3 @@
-bit = require("bit")
 class = require("pl.class")
 stream = require("audio.bass.stream")
 
