@@ -229,6 +229,41 @@ local position = {
   scan = 0x40000000 -- flag: scan to the position
 }
 
+local fx = {
+  dx8_chorus = 0,
+  dx8_compressor = 1,
+  dx8_distortion = 2,
+  dx8_echo = 3,
+  dx8_flanger = 4,
+  dx8_gargle = 5,
+  dx8_i3dl2reverb = 6,
+  dx8_parameq = 7,
+  dx8_reverb = 8,
+  bfx_rotate = 0x10000,
+  bfx_echo = 0x10001,
+  bfx_flanger = 0x10002,
+  bfx_volume = 0x10003,
+  bfx_peakeq = 0x10004,
+  bfx_reverb = 0x10005,
+  bfx_lpf = 0x10006,
+  bfx_mix = 0x10007,
+  bfx_damp = 0x10008,
+  bfx_autowah = 0x10009,
+  bfx_echo2 = 0x10010,
+  bfx_phaser = 0x10011,
+  bfx_echo3 = 0x10012,
+  bfx_chorus = 0x10013,
+  bfx_apf = 0x10014,
+  bfx_compressor = 0x10015,
+  bfx_distortion = 0x10016,
+  bfx_compressor2 = 0x10017,
+  bfx_volume_env = 0x10018,
+  bfx_bqf = 0x10019,
+  bfx_echo4 = 0x10020,
+  bfx_pitchshift = 0x10021,
+  bfx_freeverb = 0x10022
+}
+
 return {
   active = active,
   attribute = attribute,
@@ -236,6 +271,7 @@ return {
   device = device,
   device_info = device_info,
   error = error,
+  fx = fx,
   music = music,
   position = position,
   sample = sample,
