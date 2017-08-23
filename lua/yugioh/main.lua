@@ -83,6 +83,7 @@ function PlayMusic(file)
   else
     Music = BASS:StreamCreateFile(false, file, 0, 0, Audio.CONST.stream.auto_free)
     Music:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
+    Music:Play()
     MusicFile = file
     world.EnableTimer('MusicLooper', true)
   end
@@ -185,7 +186,7 @@ function PlayLifepoints(lp_lost, lp_now, lp_sound)
     world.DoAfterSpecial(lp_lost/1000, 'PlayLifepoints('..tostring(lp_lost)..', '..tostring(lp_now)..', '..tostring(sound.id)..')', sendto.script)
     return
   else
-    sound = BASSSTREAM(sound)
+    sound = BASSSTREAM(lp_sound)
     sound:Stop()
 
     local tmp
@@ -206,7 +207,7 @@ function SetMusicMode(mode)
   end
 
   if mode == 0 then
-    if Music ~= nil and Music:IsActive() == Audio.Const.active.playing then
+    if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
       Music:Stop()
     end
     Music = nil
@@ -240,7 +241,7 @@ end
 
 function MusicLooper()
 
-  if MusicMode > 0 and Music ~= nil and Audio.isPlaying(Music) == 0 and Config.Get('settings', 'MusicMuted') == 0 then
+  if MusicMode > 0 and Music ~= nil and not (Music:IsActive() == Audio.CONST.active.playing) and Config.Get('settings', 'MusicMuted') == 0 then
     SetMusicMode(MusicMode)
   end
 
