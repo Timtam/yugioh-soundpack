@@ -18,4 +18,12 @@ function FX:Remove()
 
 end
 
+function FX:Reset()
+
+  self.bass.BASS_FXReset(self.id)
+
+  return self.bass.BASS_ErrorGetCode()
+
+end
+
 return FX

@@ -17,8 +17,11 @@ ffi.cdef[[
   BOOL BASS_ChannelStop(HCHANNEL handle);
   int BASS_ErrorGetCode();
   BOOL BASS_Free();
+  BOOL BASS_FXReset(HCHANNEL handle);
+  DWORD BASS_GetConfig(DWORD option);
   DWORD BASS_GetVersion();
   BOOL BASS_Init(int device, DWORD frequency, DWORD flags, void *win, const void *dsguid);
+  BOOL BASS_SetConfig(DWORD option, DWORD value);
   HSTREAM BASS_StreamCreateFile(BOOL mem, const char *file, QWORD offset, QWORD length, DWORD flags);
   BOOL BASS_StreamFree(HSTREAM handle);
 ]]

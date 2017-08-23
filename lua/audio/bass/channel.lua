@@ -11,6 +11,14 @@ function Channel:_init(id)
 
 end
 
+function Channel:FXReset()
+
+  self.bass.BASS_FXReset(self.id)
+
+  return self.bass.BASS_ErrorGetCode()
+
+end
+
 function Channel:GetAttribute(attrib)
 
   local f = ffi.new("float[1]")
@@ -58,11 +66,11 @@ function Channel:SetAttribute(attrib, value)
 
 end
 
-function Channel:SetFX(fx, priority)
+function Channel:SetFX(lfx, priority)
 
   priority = priority or 0
 
-  local handle = self.bass.BASS_ChannelSetFX(self.id, fx, priority)
+  local handle = self.bass.BASS_ChannelSetFX(self.id, lfx, priority)
 
   if handle ~= 0 then
     return fx(handle, self.id)

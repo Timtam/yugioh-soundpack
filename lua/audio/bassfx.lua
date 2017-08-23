@@ -4,7 +4,7 @@ class.BASSFX()
 
 function BASSFX:_init()
 
-  self.bassfx = require("audio.bindings.bass_fx")
+  self.bassfx = require("audio.bindings.bassfx")
 
 end
 

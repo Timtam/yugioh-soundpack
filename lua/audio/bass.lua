@@ -18,6 +18,12 @@ function BASS:Free()
 
 end
 
+function BASS:GetConfig(option)
+
+  return self.bass.BASS_GetConfig(option)
+
+end
+
 function BASS:GetVersion()
 
   version = self.bass.BASS_GetVersion()
@@ -37,6 +43,14 @@ function BASS:Init(device, frequency, flags)
   self.bass.BASS_Init(device, frequency, flags, nil, nil)
 
   return self.bass.BASS_ErrorGetCode()
+end
+
+function BASS:SetConfig(option, value)
+
+  self.bass.BASS_SetConfig(option, value)
+
+  return self.bass.BASS_ErrorGetCode()
+
 end
 
 function BASS:StreamCreateFile(mem, file, offset, length, flags)

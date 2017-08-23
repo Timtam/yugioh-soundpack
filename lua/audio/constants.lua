@@ -249,19 +249,19 @@ local fx = {
   bfx_mix = 0x10007,
   bfx_damp = 0x10008,
   bfx_autowah = 0x10009,
-  bfx_echo2 = 0x10010,
-  bfx_phaser = 0x10011,
-  bfx_echo3 = 0x10012,
-  bfx_chorus = 0x10013,
-  bfx_apf = 0x10014,
-  bfx_compressor = 0x10015,
-  bfx_distortion = 0x10016,
-  bfx_compressor2 = 0x10017,
-  bfx_volume_env = 0x10018,
-  bfx_bqf = 0x10019,
-  bfx_echo4 = 0x10020,
-  bfx_pitchshift = 0x10021,
-  bfx_freeverb = 0x10022
+  bfx_echo2 = 0x1000a,
+  bfx_phaser = 0x1000b,
+  bfx_echo3 = 0x1000c,
+  bfx_chorus = 0x1000d,
+  bfx_apf = 0x1000e,
+  bfx_compressor = 0x1000f,
+  bfx_distortion = 0x10010,
+  bfx_compressor2 = 0x10011,
+  bfx_volume_env = 0x10012,
+  bfx_bqf = 0x10013,
+  bfx_echo4 = 0x10014,
+  bfx_pitchshift = 0x10015,
+  bfx_freeverb = 0x10016
 }
 
 return {
