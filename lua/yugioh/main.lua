@@ -60,7 +60,7 @@ function PlaySound(file, pan)
     file=Path.join(GetInfo(74), file)
   end
   file = file..'.ogg'
-  local stream = BASS:StreamCreateFile(false, file)
+  local stream = BASS:StreamCreateFile(false, file, 0, 0, BASSCONSTANTS.stream.auto_free)
   stream:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
   stream:SetAttribute(BASSCONSTANTS.attribute.pan, pan)
   stream:Play()
@@ -81,7 +81,7 @@ function PlayMusic(file)
     world.EnableTimer('MusicLooper', false)
     world.DoAfterSpecial(0.5, 'PlayMusic(\''..Path.relpath(file, Path.join(GetInfo(74), 'music')):gsub('\\', '\\\\')..'\')', sendto.script)
   else
-    Music = BASS:StreamCreateFile(false, file)
+    Music = BASS:StreamCreateFile(false, file, 0, 0, BASSCONSTANTS.stream.auto_free)
     Music:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
     MusicFile = file
     world.EnableTimer('MusicLooper', true)
@@ -179,7 +179,7 @@ function PlayLifepoints(lp_lost, lp_now, lp_sound)
   end
 
   if lp_sound == nil then
-    local sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'), 0, 0, BASSCONSTANTS.sample.loop)
+    local sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'), 0, 0, BASSCONSTANTS.sample.loop+BASSCONSTANTS.stream.auto_free)
     sound:SetAttribute(BASSCONSTANTS.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
     sound:Play()
     world.DoAfterSpecial(lp_lost/1000, 'PlayLifepoints('..tostring(lp_lost)..', '..tostring(lp_now)..', '..tostring(sound.id)..')', sendto.script)

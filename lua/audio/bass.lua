@@ -45,11 +45,7 @@ function BASS:StreamCreateFile(mem, file, offset, length, flags)
   length = length or 0
   flags = flags or 0
 
-  if mem ~= 0 and mem ~= false then
-    mem = true
-  else
-    mem = false
-  end
+  assert(type(mem) == 'boolean')
 
   local handle = self.bass.BASS_StreamCreateFile(mem, file, offset, length, flags)
 

@@ -1,5 +1,6 @@
 class = require("pl.class")
 ffi = require("ffi")
+fx = require("audio.bass.fx")
 
 class.Channel()
 
@@ -41,11 +42,7 @@ function Channel:Play(restart)
 
   restart = restart or false
 
-  if restart ~= 0 and restart ~= false then
-    restart = true
-  else
-    restart = false
-  end
+  assert(type(restart) == 'boolean')
 
   self.bass.BASS_ChannelPlay(self.id, restart)
 
@@ -58,6 +55,20 @@ function Channel:SetAttribute(attrib, value)
   self.bass.BASS_ChannelSetAttribute(self.id, attrib, value)
 
   return self.bass.BASS_ErrorGetCode()
+
+end
+
+function Channel:SetFX(fx, priority)
+
+  priority = priority or 0
+
+  local handle = self.bass.BASS_ChannelSetFX(self.id, fx, priority)
+
+  if handle ~= 0 then
+    return fx(handle, self.id)
+  else
+    return self.bass.BASS_ErrorGetCode()
+  end
 
 end
 
