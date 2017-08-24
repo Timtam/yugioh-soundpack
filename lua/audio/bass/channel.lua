@@ -73,7 +73,7 @@ function Channel:SetFX(lfx, priority)
   local handle = self.bass.BASS_ChannelSetFX(self.id, lfx, priority)
 
   if handle ~= 0 then
-    return fx(handle, self.id)
+    return fx(handle, self.id, lfx)
   else
     return self.bass.BASS_ErrorGetCode()
   end

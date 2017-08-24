@@ -7,6 +7,85 @@ ffi.cdef[[
   typedef DWORD HCHANNEL;
   typedef DWORD HFX;
   typedef DWORD HSTREAM;
+
+  typedef struct {
+    float fWetDryMix;
+    float fDepth;
+    float fFeedback;
+    float fFrequency;
+    DWORD lWaveform;
+    float fDelay;
+    DWORD lPhase;
+  } BASS_DX8_CHORUS;
+
+  typedef struct {
+    float fGain;
+    float fAttack;
+    float fRelease;
+    float fThreshold;
+    float fRatio;
+    float fPredelay;
+  } BASS_DX8_COMPRESSOR;
+
+  typedef struct {
+    float fGain;
+    float fEdge;
+    float fPostEQCenterFrequency;
+    float fPostEQBandwidth;
+    float fPreLowpassCutoff;
+  } BASS_DX8_DISTORTION;
+
+  typedef struct {
+    float fWetDryMix;
+    float fFeedback;
+    float fLeftDelay;
+    float fRightDelay;
+    BOOL lPanDelay;
+  } BASS_DX8_ECHO;
+
+  typedef struct {
+    float fWetDryMix;
+    float fDepth;
+    float fFeedback;
+    float fFrequency;
+    DWORD lWaveform;
+    float fDelay;
+    DWORD lPhase;
+  } BASS_DX8_FLANGER;
+
+  typedef struct {
+    DWORD dwRateHz;
+    DWORD dwWaveShape;
+  } BASS_DX8_GARGLE;
+
+  typedef struct {
+    int lRoom;
+    int lRoomHF;
+    float flRoomRolloffFactor;
+    float flDecayTime;
+    float flDecayHFRatio;
+    int lReflections;
+    float flReflectionsDelay;
+    int lReverb;
+    float flReverbDelay;
+    float flDiffusion;
+    float flDensity;
+    float flHFReference;
+  } BASS_DX8_I3DL2REVERB;
+
+  typedef struct {
+    float fCenter;
+    float fBandwidth;
+    float fGain;
+  } BASS_DX8_PARAMEQ;
+
+  typedef struct {
+    float fInGain;
+    float fReverbMix;
+    float fReverbTime;
+    float fHighFreqRTRatio;
+  } BASS_DX8_REVERB;
+
   BOOL BASS_ChannelGetAttribute(HCHANNEL handle, DWORD attrib, float *value);
   DWORD BASS_ChannelIsActive(HCHANNEL handle);
   BOOL BASS_ChannelPause(HCHANNEL handle);

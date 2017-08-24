@@ -31,17 +31,13 @@ function Addon:_inject_table(dest, src)
 
   for key, value in pairs(src) do
 
-    if dest[key] ~= nil and type(dest[key]) ~= "table" then
-      error(self._name.." add-on table injection failed: key "..key.." already exists in destination table and isn't a table")
-    end
-
-    if dest[key] ~= nil and type(dest[key]) == "table" and type(value) ~= "table" then
-      error(self._name.." add-on table injection failed: key "..key.." already exists in destination table. it's a table, but the source contains something different here.")
+    if dest[key] ~= nil and type(dest[key]) ~= type(value) then
+      error(self._name.." add-on table injection failed: type "..type(dest[key]).." in destination table doesn't match type "..type(value).." in source table for key "..key)
     end
 
     if dest[key] ~= nil and type(dest[key]) == "table" then
       self:_inject_table(dest[key], value)
-    else
+    elseif dest[key] == nil then
       dest[key] = value
     end
 
