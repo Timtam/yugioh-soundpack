@@ -28,6 +28,15 @@ function FXParameters:_init(struct)
 
   end
 
+  meta.__newindex = function(self, key, value)
+
+    if type(rawget(self, 'set_'..key)) ~= 'function' then
+      error('parameter '..key..' not found')
+    end
+
+    rawget(self, 'set_'..key)(self, value)
+  end
+
   setmetatable(self, meta)
 
 end
