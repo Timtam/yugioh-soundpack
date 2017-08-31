@@ -4,9 +4,9 @@ local const = require("audio.bassfx.constants")
 local fx = require("audio.bass.fx")
 
 local _fx_parameters = {
-  [const.fx.bfx_rotate] = 'BASS_BFX_ROTATE',
-  [const.fx.bfx_volume] = 'BASS_BFX_VOLUME',
-  [const.fx.bfx_peakeq] = 'BASS_BFX_PEAKEQ',
+  [const.fx.bfx_rotate] = require("audio.bassfx.fxparameters.bfx_rotate"),
+  [const.fx.bfx_volume] = require("audio.bassfx.fxparameters.bfx_volume"),
+  [const.fx.bfx_peakeq] = require("audio.bassfx.fxparameters.bfx_peakeq"),
   [const.fx.bfx_mix] = 'BASS_BFX_MIX',
   [const.fx.bfx_autowah] = 'BASS_BFX_AUTOWAH',
   [const.fx.bfx_damp] = 'BASS_BFX_DAMP',
