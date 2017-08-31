@@ -1,7 +1,7 @@
-bass = require("audio.bindings.bass")
-bit = require("bit")
-class = require("pl.class")
-tablex = require("pl.tablex")
+local bass = require("audio.bindings.bass")
+local bit = require("bit")
+local class = require("pl.class")
+local tablex = require("pl.tablex")
 
 class.Addon()
 

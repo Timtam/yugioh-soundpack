@@ -1,6 +1,6 @@
-class = require("pl.class")
-ffi = require("ffi")
-fx = require("audio.bass.fx")
+local class = require("pl.class")
+local ffi = require("ffi")
+local fx = require("audio.bass.fx")
 
 class.Channel()
 

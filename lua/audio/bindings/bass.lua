@@ -96,7 +96,9 @@ ffi.cdef[[
   BOOL BASS_ChannelStop(HCHANNEL handle);
   int BASS_ErrorGetCode();
   BOOL BASS_Free();
+  BOOL BASS_FXGetParameters(HFX handle, void *params);
   BOOL BASS_FXReset(HCHANNEL handle);
+  BOOL BASS_FXSetParameters(HFX handle, void * parameters);
   DWORD BASS_GetConfig(DWORD option);
   DWORD BASS_GetVersion();
   BOOL BASS_Init(int device, DWORD frequency, DWORD flags, void *win, const void *dsguid);

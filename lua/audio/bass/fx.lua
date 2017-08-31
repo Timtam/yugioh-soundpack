@@ -1,6 +1,6 @@
-class = require("pl.class")
-const = require("audio.bass.constants")
-ffi = require("ffi")
+local class = require("pl.class")
+local const = require("audio.bass.constants")
+local ffi = require("ffi")
 
 class.FX()
 
@@ -14,7 +14,16 @@ function FX:_init(handle, channel, fx)
     error("no parameter type found for fx "..tostring(fx))
   end
 
-  self.Parameters = ffi.new(self._parameters[fx])
+  self.Parameters = self._parameters[fx]()
+  self:GetParameters()
+
+end
+
+function FX:GetParameters()
+
+  self.bass.BASS_FXGetParameters(self.id, self.Parameters:GetPointer())
+
+  return self.bass.BASS_ErrorGetCode()
 
 end
 
@@ -34,16 +43,41 @@ function FX:Reset()
 
 end
 
+function FX:SetParameters(parameters)
+
+  self.bass.BASS_FXSetParameters(self.id, parameters:GetPointer())
+
+  return self.bass.BASS_ErrorGetCode()
+
+end
+
+-- some convenience
+
+function FX:Update()
+
+  -- we will try to set the current parameters
+
+  local success = self:SetParameters(self.Parameters)
+
+  -- if we succeeded, we will just return it
+  -- otherwise, we will grab the last valid parameters from within bass
+  -- that way, our parameters class will always up-to-date after updating
+
+  if success ~= const.error.ok then
+    local get_success = self:GetParameters(self.Parameters)
+
+    if get_success ~= const.error.ok then
+      error("getting parameters within update failed. this shouldn't happen. please contact the developer.")
+    end
+
+  end
+
+  return success
+
+end
+
 FX._parameters = {
-  [const.fx.dx8_chorus] = 'BASS_DX8_CHORUS',
-  [const.fx.dx8_compressor] = 'BASS_DX8_COMPRESSOR',
-  [const.fx.dx8_distortion] = 'BASS_DX8_DISTORTION',
-  [const.fx.dx8_echo] = 'BASS_DX8_ECHO',
-  [const.fx.dx8_flanger] = 'BASS_DX8_FLANGER',
-  [const.fx.dx8_gargle] = 'BASS_DX8_GARGLE',
-  [const.fx.dx8_i3dl2reverb] = 'BASS_DX8_I3DL2REVERB',
-  [const.fx.dx8_parameq] = 'BASS_DX8_PARAMEQ',
-  [const.fx.dx8_reverb] = 'BASS_DX8_REVERB'
+  [const.fx.dx8_chorus] = require("audio.bass.fxparameters.dx8_chorus")
 }
 
 return FX

@@ -1,7 +1,7 @@
-addon = require("audio.bass.addon")
-class = require("pl.class")
-const = require("audio.bassfx.constants")
-fx = require("audio.bass.fx")
+local addon = require("audio.bass.addon")
+local class = require("pl.class")
+local const = require("audio.bassfx.constants")
+local fx = require("audio.bass.fx")
 
 local _fx_parameters = {
   [const.fx.bfx_rotate] = 'BASS_BFX_ROTATE',

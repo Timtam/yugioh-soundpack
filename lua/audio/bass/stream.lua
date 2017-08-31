@@ -1,5 +1,5 @@
-channel = require("audio.bass.channel")
-class = require("pl.class")
+local channel = require("audio.bass.channel")
+local class = require("pl.class")
 
 class.Stream(channel)
 

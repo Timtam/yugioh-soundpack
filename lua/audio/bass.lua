@@ -1,5 +1,5 @@
-class = require("pl.class")
-stream = require("audio.bass.stream")
+local class = require("pl.class")
+local stream = require("audio.bass.stream")
 
 class.BASS()
 
