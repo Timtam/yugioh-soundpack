@@ -77,7 +77,15 @@ function FX:Update()
 end
 
 FX._parameters = {
-  [const.fx.dx8_chorus] = require("audio.bass.fxparameters.dx8_chorus")
+  [const.fx.dx8_chorus] = require("audio.bass.fxparameters.dx8_chorus"),
+  [const.fx.dx8_compressor] = require("audio.bass.fxparameters.dx8_compressor"),
+  [const.fx.dx8_distortion] = require("audio.bass.fxparameters.dx8_distortion"),
+  [const.fx.dx8_echo] = require("audio.bass.fxparameters.dx8_echo"),
+  [const.fx.dx8_flanger] = require("audio.bass.fxparameters.dx8_flanger"),
+  [const.fx.dx8_gargle] = require("audio.bass.fxparameters.dx8_gargle"),
+  [const.fx.dx8_i3dl2reverb] = require("audio.bass.fxparameters.dx8_i3dl2reverb"),
+  [const.fx.dx8_parameq] = require("audio.bass.fxparameters.dx8_parameq"),
+  [const.fx.dx8_reverb] = require("audio.bass.fxparameters.dx8_reverb")
 }
 
 return FX
