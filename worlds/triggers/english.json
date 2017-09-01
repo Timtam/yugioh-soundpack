@@ -239,6 +239,10 @@
     "omit": 1
   },
   {
+    "trigger": "* prepares to attack * with *",
+    "action": "PlayDuelAim()"
+  },
+  {
     "trigger": "* prepares to attack with *",
     "action": "PlayDuelAim()"
   },

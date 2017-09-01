@@ -142,11 +142,11 @@
     "action": "PlayDuelDraw()"
   },
   {
-    "trigger": "* setzt * in face down Position.",
+    "trigger": "* setzt * in Verdeckt Position.",
     "action": "PlayDuelFacedown()"
   },
   {
-    "trigger": "Du setzt * in face down position.",
+    "trigger": "Du setzt * in Verdeckt position.",
     "action": "PlayDuelFacedown()"
   },
   {
@@ -241,6 +241,10 @@
     "trigger": "Schadensberechnung abgeschlossen",
     "action": "PlayDuelDamageEnd()",
     "omit": 1
+  },
+  {
+    "trigger": "* prepares to attack * with *",
+    "action": "PlayDuelAim()"
   },
   {
     "trigger": "* prepares to attack with *",
