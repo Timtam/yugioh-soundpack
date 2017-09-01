@@ -99,15 +99,19 @@ ffi.cdef[[
     char *filename;
   } BASS_CHANNELINFO;
 
+  double BASS_ChannelBytes2Seconds(HCHANNEL handle, QWORD bytes);
   BOOL BASS_ChannelGetAttribute(HCHANNEL handle, DWORD attrib, float *value);
   BOOL BASS_ChannelGetInfo(HCHANNEL handle, BASS_CHANNELINFO * info);
+  QWORD BASS_ChannelGetPosition(HCHANNEL handle, DWORD mode);
   DWORD BASS_ChannelIsActive(HCHANNEL handle);
   BOOL BASS_ChannelIsSliding(HCHANNEL handle, DWORD attrib);
   BOOL BASS_ChannelPause(HCHANNEL handle);
   BOOL BASS_ChannelPlay(HCHANNEL handle, BOOL restart);
   BOOL BASS_ChannelRemoveFX(HCHANNEL handle, HFX fx);
+  QWORD BASS_ChannelSeconds2Bytes(HCHANNEL handle, double time);
   BOOL BASS_ChannelSetAttribute(HCHANNEL handle, DWORD attrib, float value);
   HFX BASS_ChannelSetFX(HCHANNEL handle, DWORD fx, int priority);
+  BOOL BASS_ChannelSetPosition(HCHANNEL handle, QWORD pos, DWORD mode);
   BOOL BASS_ChannelSlideAttribute(HCHANNEL handle, DWORD attrib, float value, DWORD time);
   BOOL BASS_ChannelStop(HCHANNEL handle);
   int BASS_ErrorGetCode();

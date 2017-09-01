@@ -1,4 +1,5 @@
 local class = require("pl.class")
+local const = require("audio.bass.constants")
 local ffi = require("ffi")
 local fx = require("audio.bass.fx")
 local tablex = require("pl.tablex")
@@ -40,9 +41,35 @@ function Channel:_init(id)
 
   end
 
+  meta.__newindex = function(self, key, value)
+
+    local tmp = rawget(self, 'set_'..key)
+
+    if tmp ~= nil then
+      tmp(self, value)
+      return
+    end
+
+    local tmp = rawget(self, '__old_index')['set_'..key]
+
+    if tmp ~= nil then
+      tmp(self, value)
+      return
+    end
+
+    error('no attribute with that name can be set')
+
+  end
+
   setmetatable(self, meta)
 
   self:GetInfo()
+
+end
+
+function Channel:Bytes2Seconds(bytes)
+
+  return self.bass.BASS_ChannelBytes2Seconds(self.id, bytes)
 
 end
 
@@ -76,9 +103,18 @@ function Channel:GetInfo()
 
 end
 
+function Channel:GetPosition(mode)
+
+  mode = mode or const.position.byte
+
+  return self.bass.BASS_ChannelGetPosition(self.id, mode)
+
+end
+
 function Channel:IsActive()
 
   return self.bass.BASS_ChannelIsActive(self.id)
+
 end
 
 function Channel:IsSliding(attribute)
@@ -109,6 +145,12 @@ function Channel:Play(restart)
 
 end
 
+function Channel:Seconds2Bytes(seconds)
+
+  return self.bass.BASS_ChannelSeconds2Bytes(self.id, seconds)
+
+end
+
 function Channel:SetAttribute(attrib, value)
 
   self.bass.BASS_ChannelSetAttribute(self.id, attrib, value)
@@ -131,6 +173,16 @@ function Channel:SetFX(lfx, priority)
 
 end
 
+function Channel:SetPosition(position, mode)
+
+  mode = mode or const.position.byte
+
+  self.bass.BASS_ChannelSetPosition(self.id, position, mode)
+
+  return self.bass.BASS_ErrorGetCode()
+
+end
+
 function Channel:SlideAttribute(attribute, value, time)
 
   self.bass.BASS_ChannelSlideAttribute(self.id, attribute, value, time)
@@ -149,9 +201,9 @@ end
 
 -- all getters follow
 
-function Channel:get_frequency()
+function Channel:get_channel_type()
 
-  return self._channelinfo[0].freq
+  return self._channelinfo[0].ctype
 
 end
 
@@ -167,15 +219,31 @@ function Channel:get_flags()
 
 end
 
-function Channel:get_channel_type()
+function Channel:get_frequency()
 
-  return self._channelinfo[0].ctype
+  return self._channelinfo[0].freq
 
 end
 
 function Channel:get_original_resolution()
 
   return self._channelinfo[0].origres
+
+end
+
+-- convenience
+
+function Channel:get_position()
+
+  return self:Bytes2Seconds(self:GetPosition())
+
+end
+
+-- setters
+
+function Channel:set_position(position)
+
+  self:SetPosition(self:Seconds2Bytes(position))
 
 end
 
