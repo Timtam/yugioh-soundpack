@@ -81,6 +81,14 @@ function Channel:IsActive()
   return self.bass.BASS_ChannelIsActive(self.id)
 end
 
+function Channel:IsSliding(attribute)
+
+  attribute = attribute or 0
+
+  return self.bass.BASS_ChannelIsSliding(self.id, attribute)
+
+end
+
 function Channel:Pause()
 
   self.bass.BASS_ChannelPause(self.id)
@@ -120,6 +128,14 @@ function Channel:SetFX(lfx, priority)
   else
     return self.bass.BASS_ErrorGetCode()
   end
+
+end
+
+function Channel:SlideAttribute(attribute, value, time)
+
+  self.bass.BASS_ChannelSlideAttribute(self.id, attribute, value, time)
+
+  return self.bass.BASS_ErrorGetCode()
 
 end
 

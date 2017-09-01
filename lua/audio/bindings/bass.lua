@@ -102,11 +102,13 @@ ffi.cdef[[
   BOOL BASS_ChannelGetAttribute(HCHANNEL handle, DWORD attrib, float *value);
   BOOL BASS_ChannelGetInfo(HCHANNEL handle, BASS_CHANNELINFO * info);
   DWORD BASS_ChannelIsActive(HCHANNEL handle);
+  BOOL BASS_ChannelIsSliding(HCHANNEL handle, DWORD attrib);
   BOOL BASS_ChannelPause(HCHANNEL handle);
   BOOL BASS_ChannelPlay(HCHANNEL handle, BOOL restart);
   BOOL BASS_ChannelRemoveFX(HCHANNEL handle, HFX fx);
   BOOL BASS_ChannelSetAttribute(HCHANNEL handle, DWORD attrib, float value);
   HFX BASS_ChannelSetFX(HCHANNEL handle, DWORD fx, int priority);
+  BOOL BASS_ChannelSlideAttribute(HCHANNEL handle, DWORD attrib, float value, DWORD time);
   BOOL BASS_ChannelStop(HCHANNEL handle);
   int BASS_ErrorGetCode();
   BOOL BASS_Free();
