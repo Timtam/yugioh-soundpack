@@ -180,11 +180,11 @@
     "action": "PlayDuelSpecial()"
   },
   {
-    "trigger": "* setzt * in face-down defense Position.",
+    "trigger": "* setzt * in Verdeckte Verteidigung Position.",
     "action": "PlayDuelDefense()"
   },
   {
-    "trigger": "Du setzt * in face-down defense position.",
+    "trigger": "Du setzt * in Verdeckte Verteidigung position.",
     "action": "PlayDuelFacedown()"
   },
   {
@@ -226,15 +226,15 @@
     "action": "PlayDuelAttention()"
   },
   {
-    "trigger": "Die Position der Karte * (*) wurde in face-up geändert.",
+    "trigger": "Die Position der Karte * (*) wurde in offen geändert.",
     "action": "PlayDuelFlip()"
   },
   {
-    "trigger": "Die Position der Karte * (*) wurde in face-up attack geändert.",
+    "trigger": "Die Position der Karte * (*) wurde in Offener Angriff geändert.",
     "action": "PlayDuelFlip()"
   },
   {
-    "trigger": "Die Position der Karte * (*) wurde in face-up defense geändert.",
+    "trigger": "Die Position der Karte * (*) wurde in Offene Verteidigung geändert.",
     "action": "PlayDuelDefend()"
   },
   {
