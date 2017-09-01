@@ -103,6 +103,14 @@ function Channel:GetInfo()
 
 end
 
+function Channel:GetLength(mode)
+
+  mode = mode or const.position.byte
+
+  return self.bass.BASS_ChannelGetLength(self.id, mode)
+
+end
+
 function Channel:GetPosition(mode)
 
   mode = mode or const.position.byte
@@ -222,6 +230,14 @@ end
 function Channel:get_frequency()
 
   return self._channelinfo[0].freq
+
+end
+
+-- convenience
+
+function Channel:get_length()
+
+  return self:Bytes2Seconds(self:GetLength())
 
 end
 

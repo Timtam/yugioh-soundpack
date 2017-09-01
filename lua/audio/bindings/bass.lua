@@ -102,6 +102,7 @@ ffi.cdef[[
   double BASS_ChannelBytes2Seconds(HCHANNEL handle, QWORD bytes);
   BOOL BASS_ChannelGetAttribute(HCHANNEL handle, DWORD attrib, float *value);
   BOOL BASS_ChannelGetInfo(HCHANNEL handle, BASS_CHANNELINFO * info);
+  QWORD BASS_ChannelGetLength(HCHANNEL handle, DWORD mode);
   QWORD BASS_ChannelGetPosition(HCHANNEL handle, DWORD mode);
   DWORD BASS_ChannelIsActive(HCHANNEL handle);
   BOOL BASS_ChannelIsSliding(HCHANNEL handle, DWORD attrib);
