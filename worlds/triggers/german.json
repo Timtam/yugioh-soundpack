@@ -333,5 +333,13 @@
   {
     "trigger": "Münze zeigt: *",
     "action": "PlayDuelCoin()"
+  },
+  {
+    "trigger": "Schaue Duell zwischen * und * zu.",
+    "action": "PlayDuelWatch()"
+  },
+  {
+    "trigger": "Du bist nun kein Zuschauer mehr.",
+    "action": "PlayDuelUnwatch()"
   }
 ]

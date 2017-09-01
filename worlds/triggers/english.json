@@ -322,5 +322,13 @@
   {
     "trigger": "Challenge: * has cowardly submitted to *.",
     "action": "PlayChallengeSubmit(\"%0\")"
+  },
+  {
+    "trigger": "Watching duel between * and *.",
+    "action": "PlayDuelWatch()"
+  },
+  {
+    "trigger": "Watching stopped.",
+    "action": "PlayDuelUnwatch()"
   }
 ]

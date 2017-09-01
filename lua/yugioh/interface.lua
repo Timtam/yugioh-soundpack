@@ -282,4 +282,18 @@ function Interface:PlayDuelCoin()
 
 end
 
+function Interface:PlayDuelWatch()
+
+  self.sound('duel/watch')
+  self.musicmode(2)
+
+end
+
+function Interface:PlayDuelUnwatch()
+
+  self.sound('duel/unwatch')
+  self.musicmode(1)
+
+end
+
 return Interface
