@@ -6,6 +6,8 @@ ffi.cdef[[
   typedef uint64_t QWORD;
   typedef DWORD HCHANNEL;
   typedef DWORD HFX;
+  typedef DWORD HPLUGIN;
+  typedef DWORD HSAMPLE;
   typedef DWORD HSTREAM;
 
   typedef struct {
@@ -86,7 +88,19 @@ ffi.cdef[[
     float fHighFreqRTRatio;
   } BASS_DX8_REVERB;
 
+  typedef struct {
+    DWORD freq;
+    DWORD chans;
+    DWORD flags;
+    DWORD ctype;
+    DWORD origres;
+    HPLUGIN plugin;
+    HSAMPLE sample;
+    char *filename;
+  } BASS_CHANNELINFO;
+
   BOOL BASS_ChannelGetAttribute(HCHANNEL handle, DWORD attrib, float *value);
+  BOOL BASS_ChannelGetInfo(HCHANNEL handle, BASS_CHANNELINFO * info);
   DWORD BASS_ChannelIsActive(HCHANNEL handle);
   BOOL BASS_ChannelPause(HCHANNEL handle);
   BOOL BASS_ChannelPlay(HCHANNEL handle, BOOL restart);

@@ -1,13 +1,48 @@
 local class = require("pl.class")
 local ffi = require("ffi")
 local fx = require("audio.bass.fx")
+local tablex = require("pl.tablex")
 
 class.Channel()
 
 function Channel:_init(id)
 
+  local meta = tablex.copy(getmetatable(self))
+
+  self.__old_index = meta.__index
+
+  self._channelinfo = ffi.new("BASS_CHANNELINFO[1]")
   self.bass = require("audio.bindings.bass")
   self.id = id
+
+  meta.__index = function(self, key)
+
+    -- the problem is that we need to support both cases, direct instanciation
+    -- and derived classes
+
+    for i,obj in pairs({self, rawget(self, '__old_index')}) do
+
+      local tmp = rawget(obj, key)
+
+      if tmp ~= nil then
+        return tmp
+      end
+
+      tmp = rawget(obj, 'get_'..key)
+
+      if tmp ~= nil then
+        return tmp(self)
+      end
+
+    end
+
+    return nil
+
+  end
+
+  setmetatable(self, meta)
+
+  self:GetInfo()
 
 end
 
@@ -30,6 +65,14 @@ function Channel:GetAttribute(attrib)
   else
     return f[0]
   end
+
+end
+
+function Channel:GetInfo()
+
+  self.bass.BASS_ChannelGetInfo(self.id, self._channelinfo)
+
+  return self.bass.BASS_ErrorGetCode()
 
 end
 
@@ -85,6 +128,38 @@ function Channel:Stop()
   self.bass.BASS_ChannelStop(self.id)
 
   return self.bass.BASS_ErrorGetCode()
+
+end
+
+-- all getters follow
+
+function Channel:get_frequency()
+
+  return self._channelinfo[0].freq
+
+end
+
+function Channel:get_channels()
+
+  return self._channelinfo[0].chans
+
+end
+
+function Channel:get_flags()
+
+  return self._channelinfo[0].flags
+
+end
+
+function Channel:get_channel_type()
+
+  return self._channelinfo[0].ctype
+
+end
+
+function Channel:get_original_resolution()
+
+  return self._channelinfo[0].origres
 
 end
 

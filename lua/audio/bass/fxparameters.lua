@@ -16,15 +16,19 @@ function FXParameters:_init(struct)
 
   meta.__index = function(self, key)
 
-    local tmp = rawget(self, key) or rawget(self, 'get_'..key)
+    local tmp = rawget(self, key)
 
-    if type(tmp) == 'function' then
-      return tmp(self)
-    elseif tmp ~= nil then
+    if tmp ~= nil then
       return tmp
-    else
-      return rawget(self, '__old_index')[key]
     end
+
+    local tmp = rawget(self, 'get_'..key)
+
+    if tmp ~= nil then
+      return tmp(self)
+    end
+
+    return rawget(self, '__old_index')[key]
 
   end
 
