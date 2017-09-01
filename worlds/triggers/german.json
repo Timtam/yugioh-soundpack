@@ -309,5 +309,17 @@
   {
     "trigger": "Karte * (*) auf die Hand genommen.",
     "action": "PlayDuelReturn()"
+  },
+  {
+    "trigger": "Challenge: The duel between * and * has begun!",
+    "action": "PlayChallengeStart(\"%0\")"
+  },
+  {
+    "trigger": "Challenge: * won the duel between * and *.",
+    "action": "PlayChallengeVictory(\"%0\")"
+  },
+  {
+    "trigger": "Challenge: * has cowardly submitted to *.",
+    "action": "PlayChallengeSubmit(\"%0\")"
   }
 ]

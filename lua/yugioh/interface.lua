@@ -250,4 +250,24 @@ function Interface:PlayDuelReturn()
 
 end
 
+function Interface:PlayChallengeVictory(text)
+  self.sound("challenge/victory")
+  world.Execute('history_add challenge='..text)
+
+end
+
+function Interface:PlayChallengeStart(text)
+
+  self.sound('challenge/start')
+  world.Execute('history_add challenge='..text)
+
+end
+
+function Interface:PlayChallengeSubmit(text)
+
+  self.sound('challenge/submit')
+  world.Execute('history_add challenge='..text)
+
+end
+
 return Interface
