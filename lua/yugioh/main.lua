@@ -5,7 +5,6 @@ Config = nil
 Dir = require('pl.dir')
 Interface = nil
 Music = nil
-MusicFile = ''
 MusicMode = 0 -- 0 = not set, 1 = lounge, 2 = duel
 Path = require('pl.path')
 PPI = require('ppi')
@@ -84,7 +83,6 @@ function PlayMusic(file)
     Music = BASS:StreamCreateFile(false, file, 0, 0, Audio.CONST.stream.auto_free)
     Music:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
     Music:Play()
-    MusicFile = file
     world.EnableTimer('MusicLooper', true)
   end
 end
@@ -229,7 +227,7 @@ function SetMusicMode(mode)
 
       file = files[math.random(1,#files)]
 
-    until file ~= MusicFile
+    until Music == nil or Music.filename ~= file
 
     PlayMusic(file)
 
@@ -241,7 +239,7 @@ end
 
 function MusicLooper()
 
-  if MusicMode > 0 and Music ~= nil and not (Music:IsActive() == Audio.CONST.active.playing) and Config.Get('settings', 'MusicMuted') == 0 then
+  if MusicMode > 0 and Music ~= nil and Music:IsActive() ~= Audio.CONST.active.playing and Config.Get('settings', 'MusicMuted') == 0 then
     SetMusicMode(MusicMode)
   end
 
