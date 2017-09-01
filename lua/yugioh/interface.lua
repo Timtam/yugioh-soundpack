@@ -270,4 +270,10 @@ function Interface:PlayChallengeSubmit(text)
 
 end
 
+function Interface:PlayDuelDice()
+
+  self.sound('duel/dice')
+
+end
+
 return Interface

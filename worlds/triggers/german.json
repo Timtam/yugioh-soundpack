@@ -325,5 +325,9 @@
   {
     "trigger": "Challenge: * has cowardly submitted to *.",
     "action": "PlayChallengeSubmit(\"%0\")"
+  },
+  {
+    "trigger": "Würfel zeigt: *",
+    "action": "PlayDuelDice()"
   }
 ]
