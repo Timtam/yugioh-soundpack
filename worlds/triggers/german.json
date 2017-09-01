@@ -329,5 +329,9 @@
   {
     "trigger": "Würfel zeigt: *",
     "action": "PlayDuelDice()"
+  },
+  {
+    "trigger": "Münze zeigt: *",
+    "action": "PlayDuelCoin()"
   }
 ]

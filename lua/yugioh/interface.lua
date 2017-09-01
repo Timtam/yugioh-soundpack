@@ -276,4 +276,10 @@ function Interface:PlayDuelDice()
 
 end
 
+function Interface:PlayDuelCoin()
+
+  self.sound('duel/coin')
+
+end
+
 return Interface
