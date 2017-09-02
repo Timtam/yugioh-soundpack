@@ -1,4 +1,4 @@
-ffi = require("ffi")
+local ffi = require("ffi")
 
 ffi.cdef[[
   typedef short BOOL;
@@ -100,6 +100,7 @@ ffi.cdef[[
   } BASS_CHANNELINFO;
 
   double BASS_ChannelBytes2Seconds(HCHANNEL handle, QWORD bytes);
+  DWORD BASS_ChannelFlags(HCHANNEL DWORD, DWORD flags, DWORD mask);
   BOOL BASS_ChannelGetAttribute(HCHANNEL handle, DWORD attrib, float *value);
   BOOL BASS_ChannelGetInfo(HCHANNEL handle, BASS_CHANNELINFO * info);
   QWORD BASS_ChannelGetLength(HCHANNEL handle, DWORD mode);

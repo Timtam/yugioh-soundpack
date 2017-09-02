@@ -81,6 +81,14 @@ function Channel:FXReset()
 
 end
 
+function Channel:Flags(flags, mask)
+
+  mask = mask or 0
+
+  return self.bass.BASS_ChannelFlags(self.id, flags, mask)
+
+end
+
 function Channel:GetAttribute(attrib)
 
   local f = ffi.new("float[1]")
