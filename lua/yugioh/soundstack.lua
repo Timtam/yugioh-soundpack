@@ -1,3 +1,4 @@
+local bit = require("bit")
 local class = require("pl.class")
 local ppi = require("ppi")
 
@@ -64,35 +65,15 @@ end
 
 function SoundStack:Cleanup(all)
 
-  local round = function(num, dec)
-    return tonumber(string.format('%.'..tostring(dec)..'f', num))
-  end
-
   all = all or false
 
   while #(self.sounds) > 0 do
 
-    local success = false
-
-    if all == true then
-      -- will perform everything (soundstack shutdown, e.g. muting)
+    if self.sounds[1].sound:IsActive() == self.audio.CONST.active.stopped and self.sounds[1].start_time ~= nil or all == true then
       self.sounds[1].sound:Stop()
       self.sounds[1].sound:Free()
       table.remove(self.sounds, 1)
-      success = true
-    elseif self.sounds[1].sound:IsActive() == Audio.CONST.active.stopped then
-      -- default condition for all normal sounds
-      self.sounds[1].sound:Free()
-      table.remove(self.sounds, 1)
-      success = true
-    elseif self.sounds[1].start_time ~= nil and self.sounds[1].sound.length < self.sounds[1].time and (world.GetInfo(232) - self.sounds[1].start_time) >= self.sounds[1].time then
-      -- special condition for only looped sounds
-      self.sounds[1].sound:Stop()
-      self.sounds[1].sound:Free()
-      table.remove(self.sounds, 1)
-    end
-
-    if success == false then
+    else
       break
     end
 
@@ -106,7 +87,7 @@ function SoundStack:PlayNext()
   self:Cleanup()
 
   for i, snd in pairs(self.sounds) do
-    if snd.sound:IsActive() == self.audio.CONST.active.stopped then
+    if snd.sound:IsActive() == self.audio.CONST.active.stopped and snd.start_time == nil then
       snd.start_time = world.GetInfo(232)
       snd.sound:Play()
       if #(self.sounds) > i then
