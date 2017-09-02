@@ -267,11 +267,11 @@
     "action": "PlayDuelEquip()"
   },
   {
-    "trigger": "* pays * LP. Their LP is now *.",
+    "trigger": "* bezahlt * Lebenspunkte. Es verbleiben noch * Lebenspunkte.",
     "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
   },
   {
-    "trigger": "You pay * LP. Your LP is now *.",
+    "trigger": "Du bezahlst * Lebenspunkte. Es verbleiben noch * Lebenspunkte.",
     "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
   },
   {
