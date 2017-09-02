@@ -259,7 +259,7 @@
     "action": "PlayDuelTribute()"
   },
   {
-    "trigger": "* (s*) equipped to * (m*).",
+    "trigger": "* (*) equipped to * (*).",
     "action": "PlayDuelEquip()"
   },
   {

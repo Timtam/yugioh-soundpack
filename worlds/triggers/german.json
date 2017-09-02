@@ -243,11 +243,11 @@
     "omit": 1
   },
   {
-    "trigger": "* prepares to attack * with *",
+    "trigger": "* greift * (*) mit * (*) an.",
     "action": "PlayDuelAim()"
   },
   {
-    "trigger": "* prepares to attack with *",
+    "trigger": "* greift mit * (*) an.",
     "action": "PlayDuelAim()"
   },
   {
@@ -315,15 +315,15 @@
     "action": "PlayDuelReturn()"
   },
   {
-    "trigger": "Challenge: The duel between * and * has begun!",
+    "trigger": "Challenge: Das Duell zwischen * und * hat begonnen!",
     "action": "PlayChallengeStart(\"%0\")"
   },
   {
-    "trigger": "Challenge: * won the duel between * and *.",
+    "trigger": "Challenge: * hat das Duell zwischen * und * gewonnen.",
     "action": "PlayChallengeVictory(\"%0\")"
   },
   {
-    "trigger": "Challenge: * has cowardly submitted to *.",
+    "trigger": "Challenge: * hat das Duell mit * aufgegeben.",
     "action": "PlayChallengeSubmit(\"%0\")"
   },
   {
