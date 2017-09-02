@@ -177,7 +177,7 @@ end
 -- some helper function to efficiently play lifepoint sounds
 -- which will actually differ, depending on the amount of lost lifepoints
 
-function PlayLifepoints(lp_lost, lp_now, lp_sound)
+function PlayLifepoints(lp_lost, lp_now)
 
   if Config.Get('settings', 'SoundsMuted') == 1 then
     return
@@ -192,25 +192,20 @@ function PlayLifepoints(lp_lost, lp_now, lp_sound)
     lp_lost = 100
   end
 
-  if lp_sound == nil then
-    local sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'), 0, 0, Audio.CONST.sample.loop+Audio.CONST.stream.auto_free)
-    sound:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'SoundVolume')/100)
-    sound:Play()
-    world.DoAfterSpecial(lp_lost/1000, 'PlayLifepoints('..tostring(lp_lost)..', '..tostring(lp_now)..', '..tostring(sound.id)..')', sendto.script)
-    return
+  local sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'), 0, 0, Audio.CONST.sample.loop)
+  SoundStack:Add(sound, lp_lost/1000)
+
+  local tmp
+
+  if lp_now <= 0 then
+    tmp = 'duel/lpzero'
   else
-    sound = BASSSTREAM(lp_sound)
-    sound:Stop()
-
-    local tmp
-
-    if lp_now <= 0 then
-      tmp = 'duel/lpzero'
-    else
-      tmp = 'duel/lpend'
-    end
-    PlaySound(tmp)
+    tmp = 'duel/lpend'
   end
+
+  tmp = Path.join(world.GetInfo(74), tmp)..'.ogg'
+
+  SoundStack:Add(tmp)
 end
 
 function SetMusicMode(mode)
