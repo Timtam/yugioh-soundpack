@@ -231,11 +231,11 @@
   },
   {
     "trigger": "Die Position der Karte * (*) wurde in Offener Angriff geändert.",
-    "action": "PlayDuelFlip()"
+    "action": "PlayDuelSwitchAttack()"
   },
   {
     "trigger": "Die Position der Karte * (*) wurde in Offene Verteidigung geändert.",
-    "action": "PlayDuelDefend()"
+    "action": "PlayDuelSwitchDefense()"
   },
   {
     "trigger": "Schadensberechnung abgeschlossen",
@@ -341,5 +341,9 @@
   {
     "trigger": "Du bist nun kein Zuschauer mehr.",
     "action": "PlayDuelUnwatch()"
+  },
+  {
+    "trigger": "* flipp-beschwört * (*).",
+    "action": "PlayDuelSwitchFlip()"
   }
 ]

@@ -227,11 +227,11 @@
   },
   {
     "trigger": "The position of card * (*) was changed to face-up attack.",
-    "action": "PlayDuelFlip()"
+    "action": "PlayDuelSwitchAttack()"
   },
   {
     "trigger": "The position of card * (*) was changed to face-up defense.",
-    "action": "PlayDuelDefend()"
+    "action": "PlayDuelSwitchDefense()"
   },
   {
     "trigger": "end damage",
@@ -330,5 +330,9 @@
   {
     "trigger": "Watching stopped.",
     "action": "PlayDuelUnwatch()"
+  },
+  {
+    "trigger": "* flip summons * (*).",
+    "action": "PlayDuelSwitchFlip()"
   }
 ]

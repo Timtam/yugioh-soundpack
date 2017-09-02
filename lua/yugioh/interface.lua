@@ -188,8 +188,16 @@ function Interface:PlayDuelFlip()
   self.soundstack('duel/flip')
 end
 
-function Interface:PlayDuelDefend()
-  self.soundstack('duel/defend')
+function Interface:PlayDuelSwitchDefense()
+  self.soundstack('duel/switch_defense')
+end
+
+function Interface:PlayDuelSwitchAttack()
+  self.soundstack('duel/switch_attack')
+end
+
+function Interface:PlayDuelSwitchFlip()
+  self.soundstack('duel/switch_flip')
 end
 
 function Interface:PlayDuelDamageEnd()
