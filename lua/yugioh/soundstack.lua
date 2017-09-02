@@ -9,7 +9,7 @@ function SoundStack:_init(audio)
   self.bass = audio.BASS()
   self.config = ppi.Load(world.GetVariable('Configuration'))
   self.sounds = {}
-  self.overlap_time = 0.2 -- 20% of file length
+  self.overlap_time = 0.1 -- 10% of file length
 
 end
 

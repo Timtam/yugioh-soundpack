@@ -34,7 +34,7 @@ function OnWorldOpen()
   world.Accelerator('F10', 'volume_up')
   world.Accelerator('F11', 'volume_toggle')
   world.Accelerator('F12', 'volume_mute')
-  Interface = require('yugioh.interface')(PlaySound, PlayLifepoints, SetMusicMode)
+  Interface = require('yugioh.interface')(PlaySound, PlaySoundStack, PlayLifepoints, SetMusicMode)
 
   BASS:Init()
 
@@ -65,6 +65,21 @@ function PlaySound(file, pan)
   stream:SetAttribute(Audio.CONST.attribute.pan, pan)
   stream:Play()
   return stream
+end
+
+function PlaySoundStack(file)
+
+  if Config.Get('settings', 'SoundsMuted') == 1 then
+    return
+  end
+
+  if (not Path.isabs(file)) then
+    file = Path.join(world.GetInfo(74), file)
+  end
+  file = file..'.ogg'
+
+  SoundStack:Add(file)
+
 end
 
 function PlayMusic(file)

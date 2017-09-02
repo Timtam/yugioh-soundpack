@@ -3,11 +3,12 @@ PPI = require('ppi')
 
 Class.Interface()
 
-function Interface:_init(sound_callback, lifepoints_callback, musicmode_callback)
+function Interface:_init(sound_callback, soundstack_callback, lifepoints_callback, musicmode_callback)
   self.config = PPI.Load(world.GetVariable('Configuration'))
   self.lifepoints = lifepoints_callback
   self.musicmode = musicmode_callback
   self.sound = sound_callback
+  self.soundstack = soundstack_callback
 end
 
 function Interface:PlayLogin()
@@ -90,17 +91,17 @@ function Interface:PlayDuelTable()
 end
 
 function Interface:PlayDuelWin()
-  self.sound('duel/win')
+  self.soundstack('duel/win')
   self.musicmode(1)
 end
 
 function Interface:PlayDuelLose()
-  self.sound('duel/lose')
+  self.soundstack('duel/lose')
   self.musicmode(1)
 end
 
 function Interface:PlayPrompt()
-  self.sound('prompt')
+  self.soundstack('prompt')
 end
 
 function Interface:PlayDuelRequest()
@@ -108,44 +109,44 @@ function Interface:PlayDuelRequest()
 end
 
 function Interface:PlayDuelStart()
-  self.sound('duel/start')
+  self.soundstack('duel/start')
   self.musicmode(2)
 end
 
 function Interface:PlayDuelActivate()
-  self.sound('duel/activate')
+  self.soundstack('duel/activate')
 end
 
 function Interface:PlayDuelStandby()
-  self.sound('duel/standby')
+  self.soundstack('duel/standby')
 end
 
 function Interface:PlayDuelEnd()
-  self.sound('duel/end')
+  self.soundstack('duel/end')
 end
 
 function Interface:PlayDuelEffect()
-  self.sound('duel/effect')
+  self.soundstack('duel/effect')
 end
 
 function Interface:PlayDuelMain()
-  self.sound('duel/main')
+  self.soundstack('duel/main')
 end
 
 function Interface:PlayDuelDraw()
-  self.sound('duel/draw')
+  self.soundstack('duel/draw')
 end
 
 function Interface:PlayDuelFacedown()
-  self.sound('duel/facedown')
+  self.soundstack('duel/facedown')
 end
 
 function Interface:PlayDuelBattle()
-  self.sound('duel/battle')
+  self.soundstack('duel/battle')
 end
 
 function Interface:PlayDuelAttention()
-  self.sound('duel/attention')
+  self.soundstack('duel/attention')
 end
 
 function Interface:PlayDuelInvalid()
@@ -153,58 +154,58 @@ function Interface:PlayDuelInvalid()
 end
 
 function Interface:PlayDuelChain()
-  self.sound('duel/chain')
+  self.soundstack('duel/chain')
   if self.config.Get('settings', 'AutoChaining') ~= 0 then
     world.Execute('c')
   end
 end
 
 function Interface:PlayDuelSpecial()
-  self.sound('duel/special')
+  self.soundstack('duel/special')
 end
 
 function Interface:PlayDuelDefense()
-  self.sound('duel/defense')
+  self.soundstack('duel/defense')
 end
 
 function Interface:PlayDuelDestroy()
-  self.sound('duel/destroy')
+  self.soundstack('duel/destroy')
 end
 
 function Interface:PlayDuelAttack()
-  self.sound('duel/attack')
+  self.soundstack('duel/attack')
 end
 
 function Interface:PlayDuelDamage()
-  self.sound('duel/damage')
+  self.soundstack('duel/damage')
 end
 
 function Interface:PlayDuelNormal()
-  self.sound('duel/normal')
+  self.soundstack('duel/normal')
 end
 
 function Interface:PlayDuelFlip()
-  self.sound('duel/flip')
+  self.soundstack('duel/flip')
 end
 
 function Interface:PlayDuelDefend()
-  self.sound('duel/defend')
+  self.soundstack('duel/defend')
 end
 
 function Interface:PlayDuelDamageEnd()
-  self.sound('duel/damageend')
+  self.soundstack('duel/damageend')
 end
 
 function Interface:PlayDuelAim()
-  self.sound('duel/aim')
+  self.soundstack('duel/aim')
 end
 
 function Interface:PlayDuelTribute()
-  self.sound('duel/tribute')
+  self.soundstack('duel/tribute')
 end
 
 function Interface:PlayEarnLifepoints(lp_lost, lp_now)
-  self.sound('duel/earn')
+  self.soundstack('duel/earn')
   self.lifepoints(lp_lost, lp_now)
 end
 
@@ -223,11 +224,11 @@ function Interface:PlayChatSend(text)
 end
 
 function Interface:PlayDuelEquip()
-  self.sound('duel/equip')
+  self.soundstack('duel/equip')
 end
 
 function Interface:PlayDuelShow()
-  self.sound('duel/show')
+  self.soundstack('duel/show')
 end
 
 function Interface:PlayWelcome()
@@ -240,13 +241,13 @@ end
 
 function Interface:PlayDuelReplay()
 
-  self.sound('duel/replay')
+  self.soundstack('duel/replay')
 
 end
 
 function Interface:PlayDuelReturn()
 
-  self.sound('duel/return')
+  self.soundstack('duel/return')
 
 end
 
@@ -272,26 +273,26 @@ end
 
 function Interface:PlayDuelDice()
 
-  self.sound('duel/dice')
+  self.soundstack('duel/dice')
 
 end
 
 function Interface:PlayDuelCoin()
 
-  self.sound('duel/coin')
+  self.soundstack('duel/coin')
 
 end
 
 function Interface:PlayDuelWatch()
 
-  self.sound('duel/watch')
+  self.soundstack('duel/watch')
   self.musicmode(2)
 
 end
 
 function Interface:PlayDuelUnwatch()
 
-  self.sound('duel/unwatch')
+  self.soundstack('duel/unwatch')
   self.musicmode(1)
 
 end
