@@ -1,4 +1,5 @@
 local class = require("pl.class")
+local ffi = require("ffi")
 local stream = require("audio.bass.stream")
 
 class.BASS()
@@ -60,7 +61,10 @@ function BASS:StreamCreateFile(mem, file, offset, length, flags)
 
   assert(type(mem) == 'boolean')
 
-  local handle = self.bass.BASS_StreamCreateFile(mem, file, offset, length, flags)
+  local sfile = ffi.new("char[?]", #file+1)
+  ffi.copy(sfile, file)
+
+  local handle = self.bass.BASS_StreamCreateFile(mem, sfile, offset, length, flags)
 
   if handle == 0 then
     return self.bass.BASS_ErrorGetCode()

@@ -124,7 +124,7 @@ ffi.cdef[[
   DWORD BASS_GetVersion();
   BOOL BASS_Init(int device, DWORD frequency, DWORD flags, void *win, const void *dsguid);
   BOOL BASS_SetConfig(DWORD option, DWORD value);
-  HSTREAM BASS_StreamCreateFile(BOOL mem, const char *file, QWORD offset, QWORD length, DWORD flags);
+  HSTREAM BASS_StreamCreateFile(BOOL mem, char *file, QWORD offset, QWORD length, DWORD flags);
   BOOL BASS_StreamFree(HSTREAM handle);
 ]]
 
