@@ -76,15 +76,12 @@ function PlayMusic(file)
   end
   if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
     Music:Stop()
+    Music:Free()
     Music = nil
-    world.EnableTimer('MusicLooper', false)
-    world.DoAfterSpecial(0.5, 'PlayMusic(\''..Path.relpath(file, Path.join(GetInfo(74), 'music')):gsub('\\', '\\\\')..'\')', sendto.script)
-  else
-    Music = BASS:StreamCreateFile(false, file, 0, 0, Audio.CONST.stream.auto_free)
-    Music:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
-    Music:Play()
-    world.EnableTimer('MusicLooper', true)
   end
+  Music = BASS:StreamCreateFile(false, file)
+  Music:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
+  Music:Play()
 end
 
 function Volume(value)
@@ -140,6 +137,7 @@ function VolumeMute()
     world.Note('Music muted')
     if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
       Music:Stop()
+      Music:Free()
       Music = nil
     end
   end
@@ -207,6 +205,7 @@ function SetMusicMode(mode)
   if mode == 0 then
     if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
       Music:Stop()
+      Music:Free()
     end
     Music = nil
   else
