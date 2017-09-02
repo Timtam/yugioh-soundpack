@@ -43,6 +43,7 @@ end
 function OnWorldDisconnect()
   TriggerHandler:Unload()
   SetMusicMode(0)
+  SoundStack:Cleanup(true)
 end
 
 -- seems like the disconnect callback doesn't get called when closing the world
@@ -142,7 +143,7 @@ function VolumeMute()
     Config.Set('settings', 'SoundsMuted', 0)
     world.Note('Sounds unmuted')
   elseif VolumeControl == 1 and Config.Get('settings', 'SoundsMuted') == 0 then
-    SoundStack:Cleanup()
+    SoundStack:Cleanup(true)
     Config.Set('settings', 'SoundsMuted', 1)
     world.Note('Sounds muted')
   elseif VolumeControl == 2 and Config.Get('settings', 'MusicMuted') == 1 then

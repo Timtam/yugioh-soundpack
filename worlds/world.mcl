@@ -241,6 +241,11 @@ group="System" omit_from_output="y" >
   <send>MusicLooper()</send>
 
   </timer>
+  <timer enabled="y" second="0.10" offset_second="0.00"    send_to="12"
+group="System" omit_from_output="y" >
+  <send>SoundStack:PlayNext()</send>
+
+  </timer>
 </timers>
 
 <!-- macros -->

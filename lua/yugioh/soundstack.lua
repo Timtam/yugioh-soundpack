@@ -26,17 +26,12 @@ function SoundStack:Add(sound, time)
 
   self:Cleanup()
 
-  local remaining_time = self:GetRemainingTime()
-
   self.sounds[#(self.sounds)+1] = {sound = sound, time = time or sound.length - (sound.length * self.overlap_time)}
 
-  if remaining_time == 0 then
+  if #(self.sounds) == 1 then
     -- we need to add the start time of the sound
     self.sounds[#(self.sounds)].start_time = world.GetInfo(232)
     sound:Play()
-  elseif #(self.sounds) == 2 then
-    -- the previous sound was the only one, so we need another timer
-    world.DoAfterSpecial(remaining_time, 'SoundStack:PlayNext()', sendto.script)
   end
 
 end
@@ -84,15 +79,19 @@ end
 -- will automatically play the next sound to be played
 function SoundStack:PlayNext()
 
+  if #(self.sounds) == 0 then
+    return
+  end
+
   self:Cleanup()
 
   for i, snd in pairs(self.sounds) do
     if snd.sound:IsActive() == self.audio.CONST.active.stopped and snd.start_time == nil then
+      if i > 1 and world.GetInfo(232) - self.sounds[i-1].start_time < self.sounds[i-1].time then
+        break
+      end
       snd.start_time = world.GetInfo(232)
       snd.sound:Play()
-      if #(self.sounds) > i then
-        world.DoAfterSpecial(snd.time, 'SoundStack:PlayNext()', sendto.script)
-      end
       break
     end
   end
