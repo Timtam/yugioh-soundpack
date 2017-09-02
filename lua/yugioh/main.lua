@@ -8,6 +8,7 @@ Music = nil
 MusicMode = 0 -- 0 = not set, 1 = lounge, 2 = duel
 Path = require('pl.path')
 PPI = require('ppi')
+SoundStack = require("yugioh.soundstack")(Audio)
 TriggerHandler = require('yugioh.triggerhandler')()
 VolumeControl = 1 -- 1 = sounds, 2 = music
 
@@ -126,6 +127,7 @@ function VolumeMute()
     Config.Set('settings', 'SoundsMuted', 0)
     world.Note('Sounds unmuted')
   elseif VolumeControl == 1 and Config.Get('settings', 'SoundsMuted') == 0 then
+    SoundStack:Cleanup()
     Config.Set('settings', 'SoundsMuted', 1)
     world.Note('Sounds muted')
   elseif VolumeControl == 2 and Config.Get('settings', 'MusicMuted') == 1 then
