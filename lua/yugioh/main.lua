@@ -22,12 +22,14 @@ function OnWorldOpen()
   Config.Set('settings', 'MusicMuted', 0)
   Config.Set('settings', 'MusicVolume', 10)
   Config.Set('settings', 'Omitting', 1)
+  Config.Set('settings', 'SoundOverlapTime', 0.4)
   Config.Set('settings', 'SoundsMuted', 0)
   Config.Set('settings', 'SoundVolume', 50)
   Config.Load()
   Config.AddConfigurable{section='settings', option='AutoChaining', type='bool', description='always reject chaining questions', key = 'ctrl+alt+c'}
   Config.AddConfigurable{section='settings', option='LogonSound', type='bool', description='play sound when logging in', key='ctrl+alt+l'}
   Config.AddConfigurable{section='settings', option='Omitting', type='bool', description='don\'t show unimportant messages', key='ctrl+alt+o'}
+  Config.AddConfigurable{section='settings', option='SoundOverlapTime', type='number', description='overlap time of stacked sounds. Between 1.0 and 0.0, where 1.0 means total overlap and 0.0 means no overlap at all.'}
 
   -- defining all world accelerators
   world.Accelerator('F9', 'volume_down')

@@ -10,7 +10,6 @@ function SoundStack:_init(audio)
   self.bass = audio.BASS()
   self.config = ppi.Load(world.GetVariable('Configuration'))
   self.sounds = {}
-  self.overlap_time = 0.4 -- 40% of file length
 
 end
 
@@ -26,7 +25,7 @@ function SoundStack:Add(sound, time)
 
   self:Cleanup()
 
-  self.sounds[#(self.sounds)+1] = {sound = sound, time = time or sound.length - (sound.length * self.overlap_time)}
+  self.sounds[#(self.sounds)+1] = {sound = sound, time = time or sound.length - (sound.length * self.config.Get('settings', 'SoundOverlapTime'))}
 
   if #(self.sounds) == 1 then
     -- we need to add the start time of the sound

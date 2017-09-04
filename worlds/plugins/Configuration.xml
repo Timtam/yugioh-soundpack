@@ -54,7 +54,7 @@ Table = require('pl.tablex')
 
 -- constants follow
 TYPE_BOOL = 'bool'
-TYPE_INTEGER = 'int'
+TYPE_NUMBER = 'number'
 TYPE_PERCENTAGE = 'percentage'
 TYPE_TEXT = 'text'
 
@@ -136,7 +136,7 @@ end
 function AddConfigurable(arg)
 
   -- make sure the type is valid
-  if arg.func == nil and Table.find({TYPE_BOOL, TYPE_INTEGER, TYPE_PERCENTAGE, TYPE_TEXT}, arg.type) == nil then
+  if arg.func == nil and Table.find({TYPE_BOOL, TYPE_NUMBER, TYPE_PERCENTAGE, TYPE_TEXT}, arg.type) == nil then
     error(arg.type..' is no valid configurable type')
   end
 
@@ -186,7 +186,7 @@ function GetConfigurableValue(option)
 
   if Configurables[option].type == TYPE_TEXT then
     result = tostring(result)
-  elseif Configurables[option].type == TYPE_INTEGER then
+  elseif Configurables[option].type == TYPE_NUMBER then
     result = tonumber(result)
   elseif Configurables[option].type == TYPE_PERCENTAGE then
     result = tonumber(result)
@@ -316,7 +316,7 @@ function SetConfigurable(option, value)
       return
     end
 
-    if Configurables[option].type == TYPE_INTEGER then
+    if Configurables[option].type == TYPE_NUMBER then
       if operator == '+' then
         Config[Configurables[option].section][Configurables[option].option]=Config[Configurables[option].section][Configurables[option].option] + value
       elseif operator == '-' then
