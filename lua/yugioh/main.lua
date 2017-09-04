@@ -195,8 +195,6 @@ function PlayLifepoints(lp_lost, lp_now)
     lp_lost = 100
   end
 
-
-
   local lp_sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'))
 
   if lp_lost/100 <= 1 then
@@ -210,6 +208,8 @@ function PlayLifepoints(lp_lost, lp_now)
     for i = 1, lp_lost/100 do
       sound:PutData(lp_sound_data)
     end
+
+    lp_sound:Free()
 
     SoundStack:Add(sound, lp_sound.length*(lp_lost/100))
 
