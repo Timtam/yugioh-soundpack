@@ -25,7 +25,7 @@ function SoundStack:Add(sound, time)
 
   self:Cleanup()
 
-  self.sounds[#(self.sounds)+1] = {sound = sound, time = time or sound.length - (sound.length * self.config.Get('settings', 'SoundOverlapTime'))}
+  self.sounds[#(self.sounds)+1] = {sound = sound, time = time or sound.length - (sound.length * math.max(0, math.min(1.0, self.config.Get('settings', 'SoundOverlapTime'))))}
 
   if #(self.sounds) == 1 then
     -- we need to add the start time of the sound
