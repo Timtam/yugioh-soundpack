@@ -12,6 +12,22 @@ function Stream:Free()
 
 end
 
+function Stream:PutData(data)
+
+  -- if no data is given, we will retrieve the amount of data buffered
+  if data == nil then
+    return self.bass.BASS_StreamPutData(self.id, nil, 0)
+  end
+
+  local buf = ffi.C.malloc(#data)
+
+  ffi.copy(buf, data, #data)
+
+  self.bass.BASS_StreamPutData(self.id, buf, #data)
+
+  return self.bass.BASS_ErrorGetCode()
+end
+
 -- getters
 
 function Stream:get_filename()

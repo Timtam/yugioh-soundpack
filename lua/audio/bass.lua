@@ -1,4 +1,5 @@
 local class = require("pl.class")
+local const = require("audio.bass.constants")
 local ffi = require("ffi")
 local stream = require("audio.bass.stream")
 
@@ -51,6 +52,17 @@ function BASS:SetConfig(option, value)
 
   return self.bass.BASS_ErrorGetCode()
 
+end
+
+function BASS:StreamCreate(freq, chans, flags)
+
+  local handle = self.bass.BASS_StreamCreate(freq, chans, flags, -1, nil)
+
+  if self.bass.BASS_ErrorGetCode() ~= const.error.ok then
+    return self.bass.BASS_ErrorGetCode()
+  else
+    return stream(handle)
+  end
 end
 
 function BASS:StreamCreateFile(mem, file, offset, length, flags)

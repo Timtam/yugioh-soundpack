@@ -117,6 +117,7 @@ ffi.cdef[[
   BOOL BASS_ChannelSetPosition(HCHANNEL handle, QWORD pos, DWORD mode);
   BOOL BASS_ChannelSlideAttribute(HCHANNEL handle, DWORD attrib, float value, DWORD time);
   BOOL BASS_ChannelStop(HCHANNEL handle);
+  BOOL BASS_ChannelUpdate(HCHANNEL handle, DWORD length);
   int BASS_ErrorGetCode();
   BOOL BASS_Free();
   BOOL BASS_FXGetParameters(HFX handle, void *params);
@@ -126,9 +127,10 @@ ffi.cdef[[
   DWORD BASS_GetVersion();
   BOOL BASS_Init(int device, DWORD frequency, DWORD flags, void *win, const void *dsguid);
   BOOL BASS_SetConfig(DWORD option, DWORD value);
+  HSTREAM BASS_StreamCreate(DWORD freq, DWORD chans, DWORD flags, int proc, void *user);
   HSTREAM BASS_StreamCreateFile(BOOL mem, char *file, QWORD offset, QWORD length, DWORD flags);
   BOOL BASS_StreamFree(HSTREAM handle);
-  BOOL BASS_ChannelUpdate(HCHANNEL handle, DWORD length);
+  DWORD BASS_StreamPutData(HSTREAM handle, void *buffer, DWORD length);
 ]]
 
 local basslib = ffi.load("bass")
