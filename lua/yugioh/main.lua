@@ -209,9 +209,9 @@ function PlayLifepoints(lp_lost, lp_now)
       sound:PutData(lp_sound_data)
     end
 
-    lp_sound:Free()
-
     SoundStack:Add(sound, lp_sound.length*(lp_lost/100))
+
+    lp_sound:Free()
 
   end
 
