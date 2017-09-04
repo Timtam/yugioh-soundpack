@@ -241,10 +241,30 @@ local fx = {
   dx8_reverb = 8
 }
 
+-- BASS_ChannelGetData flags
+local data = {
+  available = 0, -- query how much data is buffered
+  fixed = 0x20000000, -- flag: return 8.24 fixed-point data
+  float = 0x40000000, -- flag: return floating-point sample data
+  fft256 = 0x80000000, -- 256 sample FFT
+  fft512 = 0x80000001, -- 512 FFT
+  fft1024 = 0x80000002, -- 1024 FFT
+  fft2048 = 0x80000003, -- 2048 FFT
+  fft4096 = 0x80000004, -- 4096 FFT
+  fft8192 = 0x80000005, -- 8192 FFT
+  fft16384 = 0x80000006, -- 16384 FFT
+  fft32768 = 0x80000007, -- 32768 FFT
+  fft_individual = 0x10, -- FFT flag: FFT for each channel, else all combined
+  fft_nowindow = 0x20, -- FFT flag: no Hanning window
+  fft_removedc = 0x40, -- FFT flag: pre-remove DC bias
+  fft_complex = 0x80 -- FFT flag: return complex data
+}
+
 return {
   active = active,
   attribute = attribute,
   config = config,
+  data = data,
   device = device,
   device_info = device_info,
   error = error,
