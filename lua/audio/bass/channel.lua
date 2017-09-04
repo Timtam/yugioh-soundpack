@@ -1,3 +1,4 @@
+local bit = require("bit")
 local class = require("pl.class")
 local const = require("audio.bass.constants")
 local ffi = require("ffi")
@@ -101,6 +102,35 @@ function Channel:GetAttribute(attrib)
     return f[0]
   end
 
+end
+
+function Channel:GetData(length)
+
+  if length == const.data.available then
+    local bytes = self.bass.BASS_ChannelGetData(self.id, nil, length)
+
+    if self.bass.BASS_ErrorGetCode() ~= const.error.ok then
+      return self.bass.BASS_ErrorGetCode()
+    else
+      return bytes
+    end
+  else
+
+    -- splitting actual length from additional arguments
+    local actual_length = bit.band(length, 0xfffffff)
+
+    local buf = ffi.C.malloc(actual_length)
+
+    local returned = self.bass.BASS_ChannelGetData(self.id, buf, length)
+
+    if self.bass.BASS_ErrorGetCode() ~= const.error.ok then
+      return self.bass.BASS_ErrorGetCode()
+    else
+      local result = ffi.string(buf, returned)
+      ffi.C.free(buf)
+      return result
+    end
+  end
 end
 
 function Channel:GetInfo()
@@ -212,6 +242,14 @@ function Channel:Stop()
   self.bass.BASS_ChannelStop(self.id)
 
   return self.bass.BASS_ErrorGetCode()
+
+end
+
+function Channel:Update(length)
+
+  length = length or 0
+
+  return self.bass.BASS_ChannelUpdate(self.id, length)
 
 end
 

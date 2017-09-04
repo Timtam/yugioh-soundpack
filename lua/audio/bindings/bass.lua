@@ -102,6 +102,7 @@ ffi.cdef[[
   double BASS_ChannelBytes2Seconds(HCHANNEL handle, QWORD bytes);
   DWORD BASS_ChannelFlags(HCHANNEL DWORD, DWORD flags, DWORD mask);
   BOOL BASS_ChannelGetAttribute(HCHANNEL handle, DWORD attrib, float *value);
+  DWORD BASS_ChannelGetData(HCHANNEL handle, void *buffer, DWORD length);
   BOOL BASS_ChannelGetInfo(HCHANNEL handle, BASS_CHANNELINFO * info);
   QWORD BASS_ChannelGetLength(HCHANNEL handle, DWORD mode);
   QWORD BASS_ChannelGetPosition(HCHANNEL handle, DWORD mode);
@@ -127,6 +128,14 @@ ffi.cdef[[
   BOOL BASS_SetConfig(DWORD option, DWORD value);
   HSTREAM BASS_StreamCreateFile(BOOL mem, char *file, QWORD offset, QWORD length, DWORD flags);
   BOOL BASS_StreamFree(HSTREAM handle);
+  BOOL BASS_ChannelUpdate(HCHANNEL handle, DWORD length);
 ]]
 
-return ffi.load("bass")
+local basslib = ffi.load("bass")
+
+ffi.cdef[[
+  void free(void *ptr);
+  void *malloc(size_t size);
+]]
+
+return basslib
