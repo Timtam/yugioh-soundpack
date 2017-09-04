@@ -195,9 +195,25 @@ function PlayLifepoints(lp_lost, lp_now)
     lp_lost = 100
   end
 
-  local sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'), 0, 0, Audio.CONST.sample.loop)
-  SoundStack:Add(sound, lp_lost/1000)
-  world.DoAfterSpecial(SoundStack:GetRemainingTime()+0.1, 'BASSSTREAM('..tostring(sound.id)..'):Stop()', sendto.script)
+
+
+  local lp_sound = BASS:StreamCreateFile(false, Path.join(GetInfo(74), 'duel', 'lp.ogg'))
+
+  if lp_lost/100 <= 1 then
+    SoundStack:Add(lp_sound)
+  else
+    lp_sound:Update()
+    local lp_sound_data = lp_sound:GetData(0xfffffff)
+
+    local sound = BASS:StreamCreate(lp_sound.frequency, lp_sound.channels, 0)
+
+    for i = 1, lp_lost/100 do
+      sound:PutData(lp_sound_data)
+    end
+
+    SoundStack:Add(sound, lp_sound.length*(lp_lost/100))
+
+  end
 
   local tmp
 
