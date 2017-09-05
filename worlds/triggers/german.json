@@ -271,7 +271,7 @@
     "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
   },
   {
-    "trigger": "Du bezahlst * Lebenspunkte. Es verbleiben noch * Lebenspunkte.",
+    "trigger": "Du zahlst * Lebenspunkte. Es verbleiben noch * Lebenspunkte.",
     "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
   },
   {
