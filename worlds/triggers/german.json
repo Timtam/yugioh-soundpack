@@ -93,8 +93,8 @@
     "action": "PlayDuelTable()"
   },
   {
-    "trigger": "Du hast gewonnen.",
-    "action": "PlayDuelWin()",
+    "trigger": "Du hast gewonnen (*).",
+	    "action": "PlayDuelWin()",
     "omit": 1
   },
   {
@@ -159,7 +159,7 @@
     "action": "PlayDuelAttention()"
   },
   {
-    "trigger": "Du hast verloren.",
+    "trigger": "Du hast verloren (*).",
     "action": "PlayDuelLose()",
     "omit": 1
   },
@@ -319,7 +319,7 @@
     "action": "PlayChallengeStart(\"%0\")"
   },
   {
-    "trigger": "Challenge: * hat das Duell zwischen * und * gewonnen.",
+    "trigger": "Challenge: * hat das Duell zwischen * und * gewonnen (*).",
     "action": "PlayChallengeVictory(\"%0\")"
   },
   {
