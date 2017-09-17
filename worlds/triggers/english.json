@@ -312,12 +312,20 @@
     "action": "PlayDuelReturn()"
   },
   {
+    "trigger": "* card * (*) returned to their hand.",
+    "action": "PlayDuelReturn()"
+  },
+  {
     "trigger": "Challenge: The duel between * and * has begun!",
     "action": "PlayChallengeStart(\"%0\")"
   },
   {
     "trigger": "Challenge: * won the duel between * and * (*).",
     "action": "PlayChallengeVictory(\"%0\")"
+  },
+  {
+    "trigger": "Die landed on: *",
+    "action": "PlayDuelDice()"
   },
   {
     "trigger": "Challenge: * has cowardly submitted to *.",
