@@ -85,11 +85,19 @@
     "action": "PlayDuelScore()"
   },
   {
+    "trigger": "LP: *: *, *: *",
+    "action": "PlayDuelScore()"
+  },
+  {
     "trigger": "Tisch des Gegners:",
     "action": "PlayDuelTable()"
   },
   {
     "trigger": "Dein Tisch:",
+    "action": "PlayDuelTable()"
+  },
+  {
+    "trigger": "* Tisch:",
     "action": "PlayDuelTable()"
   },
   {
@@ -345,5 +353,13 @@
   {
     "trigger": "* flipp-beschwört * (*).",
     "action": "PlayDuelSwitchFlip()"
+  },
+  {
+    "trigger": "* hängt * ab.",
+    "action": "PlayDuelXYZDetach()"
+  },
+  {
+    "trigger": "Du hängst * ab.",
+    "action": "PlayDuelXYZDetach()"
   }
 ]

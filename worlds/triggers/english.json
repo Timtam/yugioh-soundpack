@@ -85,11 +85,19 @@
     "action": "PlayDuelScore()"
   },
   {
+    "trigger": "LP: *: * *: *",
+    "action": "PlayDuelScore()"
+  },
+  {
     "trigger": "Opponent's table:",
     "action": "PlayDuelTable()"
   },
   {
     "trigger": "Your table:",
+    "action": "PlayDuelTable()"
+  },
+  {
+    "trigger": "* table:",
     "action": "PlayDuelTable()"
   },
   {
@@ -342,5 +350,13 @@
   {
     "trigger": "* flip summons * (*).",
     "action": "PlayDuelSwitchFlip()"
+  },
+  {
+    "trigger": "you detached *.",
+    "action": "PlayDuelXYZDetach()"
+  },
+  {
+    "trigger": "* detached *",
+    "action": "PlayDuelXYZDetach()"
   }
 ]

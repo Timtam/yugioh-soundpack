@@ -305,4 +305,9 @@ function Interface:PlayDuelUnwatch()
 
 end
 
+function Interface:PlayDuelXYZDetach()
+  self.soundstack('duel/detach')
+
+end
+
 return Interface
