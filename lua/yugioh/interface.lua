@@ -314,4 +314,10 @@ function Interface:PlayDuelSendToGrave()
   self.soundstack('duel/sendtograve')
 end
 
+function Interface:PlayDuelDiscard()
+
+  self.soundstack("duel/discard")
+
+end
+
 return Interface

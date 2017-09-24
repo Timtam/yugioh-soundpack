@@ -362,5 +362,13 @@
   {
     "trigger": "* card * (*) was sent to the graveyard.",
     "action": "PlayDuelSendToGrave()"
+  },
+  {
+    "trigger": "you discarded * (*).",
+    "action": "PlayDuelDiscard()"
+  },
+  {
+    "trigger": "* discarded * (*).",
+    "action": "PlayDuelDiscard()"
   }
 ]

@@ -365,5 +365,13 @@
   {
     "trigger": "* Karte * (*) wurde auf den Friedhof gelegt.",
     "action": "PlayDuelSendToGrave()"
+  },
+  {
+    "trigger": "Du wirfst * (*) von Deiner Hand ab.",
+    "action": "PlayDuelDiscard()"
+  },
+  {
+    "trigger": "* wirft * (*) von seiner Hand ab.",
+    "action": "PlayDuelDiscard()"
   }
 ]
