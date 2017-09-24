@@ -358,5 +358,9 @@
   {
     "trigger": "* detached *",
     "action": "PlayDuelXYZDetach()"
+  },
+  {
+    "trigger": "* card * (*) was sent to the graveyard.",
+    "action": "PlayDuelSendToGrave()"
   }
 ]

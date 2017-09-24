@@ -310,4 +310,8 @@ function Interface:PlayDuelXYZDetach()
 
 end
 
+function Interface:PlayDuelSendToGrave()
+  self.soundstack('duel/sendtograve')
+end
+
 return Interface

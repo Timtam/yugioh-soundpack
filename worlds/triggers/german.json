@@ -361,5 +361,9 @@
   {
     "trigger": "Du hängst * ab.",
     "action": "PlayDuelXYZDetach()"
+  },
+  {
+    "trigger": "* Karte * (*) wurde auf den Friedhof gelegt.",
+    "action": "PlayDuelSendToGrave()"
   }
 ]
