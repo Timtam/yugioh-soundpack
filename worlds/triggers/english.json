@@ -378,5 +378,9 @@
   {
     "trigger": "* card * (*) was banished.",
     "action": "PlayDuelBanish()"
+  },
+  {
+    "trigger": "* card * (*) returned to * deck.",
+    "action": "PlayDuelSendToDeck()"
   }
 ]

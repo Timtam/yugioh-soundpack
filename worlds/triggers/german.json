@@ -381,5 +381,9 @@
   {
     "trigger": "* Karte * (*) wurde verbannt.",
     "action": "PlayDuelBanish()"
+  },
+  {
+    "trigger": "* Karte * (*) wurde in *ein Deck zurückgelegt.",
+    "action": "PlayDuelSendToDeck()"
   }
 ]

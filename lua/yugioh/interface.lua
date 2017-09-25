@@ -330,4 +330,8 @@ function Interface:PlayDuelBanish()
   self.soundstack('duel/banish')
 end
 
+function Interface:PlayDuelSendToDeck()
+  self.soundstack('duel/sendtodeck')
+end
+
 return Interface
