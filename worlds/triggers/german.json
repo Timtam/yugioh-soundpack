@@ -389,5 +389,13 @@
   {
     "trigger": "* Karte * (*) wurde in *ein Extradeck gelegt.",
     "action": "PlayDuelSendToExtraDeck()"
+  },
+  {
+    "trigger": "Die Position der Karte * (*) wurde in Verdeckte Verteidigung geändert.",
+    "action": "PlayDuelSwitchFacedown()"
+  },
+  {
+    "trigger": "Die Position der Karte * (*) wurde in Verdeckt geändert.",
+    "action": "PlayDuelSwitchFacedown()"
   }
 ]

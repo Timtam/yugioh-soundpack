@@ -338,4 +338,8 @@ function Interface:PlayDuelSendToExtraDeck()
   self.soundstack('duel/sendtoextradeck')
 end
 
+function Interface:PlayDuelSwitchFacedown()
+  self.soundstack('duel/switch_facedown')
+end
+
 return Interface

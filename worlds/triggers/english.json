@@ -230,6 +230,14 @@
     "action": "PlayDuelFlip()"
   },
   {
+    "trigger": "The position of card * (*) was changed to face-down.",
+    "action": "PlayDuelSwitchFacedown()"
+  },
+  {
+    "trigger": "The position of card * (*) was changed to face-down defense.",
+    "action": "PlayDuelSwitchFacedown()"
+  },
+  {
     "trigger": "The position of card * (*) was changed to face-up attack.",
     "action": "PlayDuelSwitchAttack()"
   },
