@@ -342,4 +342,16 @@ function Interface:PlayDuelSwitchFacedown()
   self.soundstack('duel/switch_facedown')
 end
 
+function Interface:PlayDuelSwapControl()
+  self.soundstack('duel/swapcontrol')
+end
+
+function Interface:PlayDuelLoseControl()
+  self.soundstack('duel/losecontrol')
+end
+
+function Interface:PlayDuelGainControl()
+  self.soundstack('duel/gaincontrol')
+end
+
 return Interface

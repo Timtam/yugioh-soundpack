@@ -391,11 +391,29 @@
     "action": "PlayDuelSendToExtraDeck()"
   },
   {
+    "trigger": "Die Position der Karte * (*) wurde in Verdeckt geändert.",
+    "action": "PlayDuelSwitchFacedown()"
+  },
+  {
     "trigger": "Die Position der Karte * (*) wurde in Verdeckte Verteidigung geändert.",
     "action": "PlayDuelSwitchFacedown()"
   },
   {
-    "trigger": "Die Position der Karte * (*) wurde in Verdeckt geändert.",
-    "action": "PlayDuelSwitchFacedown()"
+    "trigger": "* wechselte den Besitzer zu * und befindet sich jetzt in *.",
+    "action": "PlayDuelSwapControl()"
+  },
+  {
+    "trigger": "Deine Karte * (*) wechselte den Besitzer zu * und befindet sich jetzt in *.",
+    "action": "PlayDuelLoseControl()",
+    "sequence": 98
+  },
+  {
+    "trigger": "Du kontrollierst jetzt * Karte * (*) und sie befindet sich in *.",
+    "action": "PlayDuelLoseControl()"
+  },
+  {
+    "trigger": "* Karte * (*) wechselte den Besitzer zu * und befindet sich jetzt in *.",
+    "action": "PlayDuelSwapControl()",
+    "sequence": 99
   }
 ]

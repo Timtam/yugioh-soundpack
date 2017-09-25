@@ -395,5 +395,22 @@
     "trigger": "* card * (*) returned to * extra deck.",
     "action": "PlayDuelSendToExtraDeck()",
     "sequence": 99
+  },
+  {
+    "trigger": "card * (*) swapped control towards * and is now located at *.",
+    "action": "PlayDuelSwapControl()"
+  },
+  {
+    "trigger": "your card * (*) changed control to * and is now located at *.",
+    "action": "PlayDuelLoseControl()",
+    "sequence": 99
+  },
+  {
+    "trigger": "you now control * card * (*) and its located at *.",
+    "action": "PlayDuelGainControl()"
+  },
+  {
+    "trigger": "* card * (*) changed controller to * and is now located at *.",
+    "action": "PlayDuelSwapControl()"
   }
 ]
