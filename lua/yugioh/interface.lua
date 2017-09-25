@@ -326,4 +326,8 @@ function Interface:PlayDuelShuffle()
 
 end
 
+function Interface:PlayDuelBanish()
+  self.soundstack('duel/banish')
+end
+
 return Interface

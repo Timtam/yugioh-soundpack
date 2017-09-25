@@ -374,5 +374,9 @@
   {
     "trigger": "you shuffled your deck.",
     "action": "PlayDuelShuffle()"
+  },
+  {
+    "trigger": "* card * (*) was banished.",
+    "action": "PlayDuelBanish()"
   }
 ]

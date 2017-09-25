@@ -377,5 +377,9 @@
   {
     "trigger": "Du mischst Dein Deck.",
     "action": "PlayDuelShuffle()"
+  },
+  {
+    "trigger": "* Karte * (*) wurde verbannt.",
+    "action": "PlayDuelBanish()"
   }
 ]
