@@ -320,4 +320,10 @@ function Interface:PlayDuelDiscard()
 
 end
 
+function Interface:PlayDuelShuffle()
+
+  self.soundstack('duel/shuffle')
+
+end
+
 return Interface

@@ -106,10 +106,6 @@
     "omit": 1
   },
   {
-    "trigger": "Your opponent disconnected, the duel is over.",
-    "action": "PlayDuelWin()"
-  },
-  {
     "trigger": "Möchtest Du den Effekt von * in * verwenden?",
     "action": "PlayPrompt()"
   },
@@ -373,5 +369,13 @@
   {
     "trigger": "* wirft * (*) von seiner Hand ab.",
     "action": "PlayDuelDiscard()"
+  },
+  {
+    "trigger": "* mischt sein Deck.",
+    "action": "PlayDuelShuffle()"
+  },
+  {
+    "trigger": "Du mischst Dein Deck.",
+    "action": "PlayDuelShuffle()"
   }
 ]
