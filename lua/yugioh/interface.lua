@@ -334,4 +334,8 @@ function Interface:PlayDuelSendToDeck()
   self.soundstack('duel/sendtodeck')
 end
 
+function Interface:PlayDuelSendToExtraDeck()
+  self.soundstack('duel/sendtoextradeck')
+end
+
 return Interface

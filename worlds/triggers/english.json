@@ -382,5 +382,10 @@
   {
     "trigger": "* card * (*) returned to * deck.",
     "action": "PlayDuelSendToDeck()"
+  },
+  {
+    "trigger": "* card * (*) returned to * extra deck.",
+    "action": "PlayDuelSendToExtraDeck()",
+    "sequence": 99
   }
 ]

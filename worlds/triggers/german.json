@@ -385,5 +385,9 @@
   {
     "trigger": "* Karte * (*) wurde in *ein Deck zurückgelegt.",
     "action": "PlayDuelSendToDeck()"
+  },
+  {
+    "trigger": "* Karte * (*) wurde in *ein Extradeck gelegt.",
+    "action": "PlayDuelSendToExtraDeck()"
   }
 ]
