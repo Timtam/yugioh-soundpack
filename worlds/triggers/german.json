@@ -415,5 +415,13 @@
     "trigger": "* Karte * (*) wechselte den Besitzer zu * und befindet sich jetzt in *.",
     "action": "PlayDuelSwapControl()",
     "sequence": 99
+  },
+  {
+    "trigger": "* Zählmarken vom Typ * wurden auf * gelegt.",
+    "action": "PlayDuelAddCounters(\"%1\")"
+  },
+  {
+    "trigger": "* Zählmarken vom Typ * wurden von * entfernt.",
+    "action": "PlayDuelRemoveCounters(\"%1\")"
   }
 ]

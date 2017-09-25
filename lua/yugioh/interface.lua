@@ -354,4 +354,26 @@ function Interface:PlayDuelGainControl()
   self.soundstack('duel/gaincontrol')
 end
 
+function Interface:PlayDuelAddCounters(amount)
+  amount = tonumber(amount)
+
+  local i
+
+  for i = 1, amount, 1 do
+    self.soundstack('duel/counteradd')
+  end
+
+end
+
+function Interface:PlayDuelRemoveCounters(amount)
+  amount = tonumber(amount)
+
+  local i
+
+  for i = 1, amount, 1 do
+    self.soundstack('duel/counterremove')
+  end
+
+end
+
 return Interface

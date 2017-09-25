@@ -412,5 +412,13 @@
   {
     "trigger": "* card * (*) changed controller to * and is now located at *.",
     "action": "PlayDuelSwapControl()"
+  },
+  {
+    "trigger": "* counters of type * placed on *",
+    "action": "PlayDuelAddCounters(\"%1\")"
+  },
+  {
+    "trigger": "* counters of type * removed from *",
+    "action": "PlayDuelRemoveCounters(\"%1\")"
   }
 ]
