@@ -124,6 +124,7 @@ function Channel:GetData(length)
     local returned = self.bass.BASS_ChannelGetData(self.id, buf, length)
 
     if self.bass.BASS_ErrorGetCode() ~= const.error.ok then
+      ffi.C.free(buf)
       return self.bass.BASS_ErrorGetCode()
     else
       local result = ffi.string(buf, returned)
