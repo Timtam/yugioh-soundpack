@@ -89,6 +89,7 @@
    timestamp_output_back_colour="black"
    tool_tip_visible_time="5000"
    tool_tip_start_time="400"
+   treeview_triggers="y"
    underline_hyperlinks="y"
    use_custom_link_colour="y"
    use_default_input_font="y"
@@ -129,6 +130,16 @@ world.Execute('encoding utf-8')</send>
   <trigger
    enabled="y"
    group="System"
+   match="Reconnecting..."
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load("english")
+SetMusicMode(2)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
    match="Sprache gesetzt."
    send_to="12"
    sequence="100"
@@ -144,6 +155,16 @@ world.Execute('encoding windows-1252')</send>
    sequence="100"
   >
   <send>PlaySound('error')</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Verbinde neu..."
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load("german")
+SetMusicMode(2)</send>
   </trigger>
   <trigger
    enabled="y"

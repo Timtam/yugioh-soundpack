@@ -376,4 +376,56 @@ function Interface:PlayDuelRemoveCounters(amount)
 
 end
 
+function Interface:PlayReconnect()
+  self.sound('reconnect')
+end
+
+function Interface:PlayDeckCheck()
+  self.sound('deck/check')
+end
+
+function Interface:PlayDuelPause()
+  self.sound('duel/pause')
+end
+
+function Interface:PlayDuelUnpause()
+  self.sound('duel/unpause')
+end
+
+function Interface:PlayDuelWatchNotification()
+  self.sound('duel/watchnotification')
+end
+
+function Interface:PlayDuelUnwatchNotification()
+  self.sound('duel/unwatchnotification')
+end
+
+function Interface:PlayRoomJoin()
+  self.sound('room/join')
+end
+
+function Interface:PlayRoomJoinNotification()
+  self.sound('room/joinnotification')
+end
+
+function Interface:PlayRoomLeave()
+  self.sound('room/leave')
+end
+
+function Interface:PlayRoomLeaveNotification()
+  self.sound('room/leavenotification')
+end
+
+function Interface:PlayChallengeDisband()
+  self.sound('challenge/disband')
+end
+
+function Interface:PlayLinkdead()
+  self.sound('linkdead')
+end
+
+function Interface:PlayChallengeCreate()
+  self.sound('challenge/create')
+end
+
 return Interface

@@ -110,10 +110,6 @@
     "action": "PlayPrompt()"
   },
   {
-    "trigger": "* wants to duel. Type duel * to accept.",
-    "action": "PlayDuelRequest()"
-  },
-  {
     "trigger": "Duel created. You are player *.",
     "action": "PlayDuelStart()",
     "omit": 1
@@ -420,5 +416,61 @@
   {
     "trigger": "* counters of type * removed from *",
     "action": "PlayDuelRemoveCounters(\"%1\")"
+  },
+  {
+    "trigger": "* reconnected.",
+    "action": "PlayReconnect()"
+  },
+  {
+    "trigger": "Check completed with * errors.",
+    "action": "PlayDeckCheck()"
+  },
+  {
+    "trigger": "Duel paused until all duelists reconnect.",
+    "action": "PlayDuelPause()"
+  },
+  {
+    "trigger": "Duel continues.",
+    "action": "PlayDuelUnpause()"
+  },
+  {
+    "trigger": "* is no longer watching this duel.",
+    "action": "PlayDuelUnwatchNotification()"
+  },
+  {
+    "trigger": "* is now watching this duel.",
+    "action": "PlayDuelWatchNotification()"
+  },
+  {
+    "trigger": "You joined your new room. You need to finish the setup to make it available to the other players.",
+    "action": "PlayRoomJoin()"
+  },
+  {
+    "trigger": "You joined * room. Use the teams and move command to move yourself into a team, or stay outside of any team to watch the duel.",
+    "action": "PlayRoomJoin()"
+  },
+  {
+    "trigger": "* joined this room.",
+    "action": "PlayRoomJoinNotification()"
+  },
+  {
+    "trigger": "You left the room.",
+    "action": "PlayRoomLeave()"
+  },
+  {
+    "trigger": "* left this room.",
+    "action": "PlayRoomLeaveNotification()"
+  },
+  {
+    "trigger": "Challenge: * disbanded their duel room.",
+    "action": "PlayChallengeDisband()"
+  },
+  {
+    "trigger": "* lost connection while in a duel.",
+    "action": "PlayLinkdead()"
+  },
+  {
+    "trigger": "Challenge: * created a new duel room.",
+    "action": "PlayChallengeCreate()"
   }
 ]

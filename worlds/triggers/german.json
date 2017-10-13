@@ -48,7 +48,7 @@
     "sequence": 90
   },
   {
-    "trigger": "Chat on.",
+    "trigger": "Chat eingeschaltet.",
     "action": "PlayChatOn()",
     "omit": 1
   },
@@ -108,10 +108,6 @@
   {
     "trigger": "Möchtest Du den Effekt von * in * verwenden?",
     "action": "PlayPrompt()"
-  },
-  {
-    "trigger": "* möchte sich mit Dir duellieren. Tippe duel * um die Anfrage zu akzeptieren.",
-    "action": "PlayDuelRequest()"
   },
   {
     "trigger": "Duell begonnen. Du bist Spieler *.",
@@ -214,7 +210,7 @@
     "action": "PlayDuelAttention()"
   },
   {
-    "trigger": "* greift an",
+    "trigger": "* greift an.",
     "action": "PlayDuelDamage()"
   },
   {
@@ -423,5 +419,61 @@
   {
     "trigger": "* Zählmarken vom Typ * wurden von * entfernt.",
     "action": "PlayDuelRemoveCounters(\"%1\")"
+  }
+  {
+    "trigger": "* Verbindung wiederhergestellt.",
+    "action": "PlayReconnect()"
+  },
+  {
+    "trigger": "Prüfung mit * Fehlern abgeschlossen.",
+    "action": "PlayDeckCheck()"
+  },
+  {
+    "trigger": "Duell wird pausiert, bis alle Duellanten wieder verbunden sind.",
+    "action": "PlayDuelPause()"
+  },
+  {
+    "trigger": "Duell wird fortgesetzt.",
+    "action": "PlayDuelUnpause()"
+  },
+  {
+    "trigger": "* schaut diesem Duell nicht mehr zu.",
+    "action": "PlayDuelUnwatchNotification()"
+  },
+  {
+    "trigger": "* schaut jetzt diesem Duell zu.",
+    "action": "PlayDuelWatchNotification()"
+  },
+  {
+    "trigger": "Du hast Deinen neuen Raum betreten. Du musst die Einrichtung abschließen, um ihn für andere Spieler zugänglich zu machen.",
+    "action": "PlayRoomJoin()"
+  },
+  {
+    "trigger": "Du hast den Raum von * betreten. Benutze die Befehle move und teams, um die Teams einzusehen und dich in eines zu bewegen, oder warte einfach, um ein Zuschauer zu sein.",
+    "action": "PlayRoomJoin()"
+  },
+  {
+    "trigger": "* betritt den Raum.",
+    "action": "PlayRoomJoinNotification()"
+  },
+  {
+    "trigger": "Du hast den Raum verlassen.",
+    "action": "PlayRoomLeave()"
+  },
+  {
+    "trigger": "* hat den Raum verlassen.",
+    "action": "PlayRoomLeaveNotification()"
+  },
+  {
+    "trigger": "Challenge: * hat seinen Duellraum aufgelöst.",
+    "action": "PlayChallengeDisband()"
+  },
+  {
+    "trigger": "* hat die Verbindung während eines Duells verloren.",
+    "action": "PlayLinkdead()"
+  },
+  {
+    "trigger": "Challenge: * hat einen neuen Duellraum erstellt.",
+    "action": "PlayChallengeCreate()"
   }
 ]
