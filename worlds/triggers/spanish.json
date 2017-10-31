@@ -48,12 +48,12 @@
     "sequence": 90
   },
   {
-    "trigger": "Chat on.",
+    "trigger": "Chat activado.",
     "action": "PlayChatOn()",
     "omit": 1
   },
   {
-    "trigger": "Chat off.",
+    "trigger": "Chat desactivado",
     "action":"PlayChatOff()",
     "omit": 1
   },
