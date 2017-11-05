@@ -1,0 +1,487 @@
+[
+  {
+    "trigger": "* ha entrado al juego.",
+    "action": "PlayLogin()"
+  },
+  {
+    "trigger": "* ha salido del juego.",
+    "action": "PlayLogout()"
+  },
+  {
+    "trigger": "I don't understand that.",
+    "action": "PlayError()",
+    "omit": 1
+  },
+  {
+    "trigger": "baraja existente, cargando.",
+    "action": "PlayDeckChange()",
+    "omit": 1
+  },
+  {
+    "trigger": "Salir.",
+    "action": "PlayDeckQuit()",
+    "omit": 1
+  },
+  {
+    "trigger": "baraja cargada con * cartas.",
+    "action": "PlayDeckLoad()"
+  },
+  {
+    "trigger": "Deck imported.",
+    "action": "PlayDeckImport()"
+  },
+  {
+    "trigger": "baraja borrada.",
+    "action": "PlayDeckDelete()"
+  },
+  {
+    "trigger": "baraja limpiada.",
+    "action": "PlayDeckClear()"
+  },
+  {
+    "trigger": "la baraja no existe.",
+    "action": "PlayError()"
+  },
+  {
+    "trigger": "* chatea: *",
+    "action": "PlayChatMessage(\"%0\")",
+    "sequence": 90
+  },
+  {
+    "trigger": "Chat activado.",
+    "action": "PlayChatOn()",
+    "omit": 1
+  },
+  {
+    "trigger": "Chat desactivado",
+    "action":"PlayChatOff()",
+    "omit": 1
+  },
+  {
+    "trigger": "Jugadores conectados:",
+    "action": "PlayWho()",
+    "omit": 1
+  },
+  {
+    "trigger": "Tu mano está vacía.",
+    "action": "PlayDuelEmpty()"
+  },
+  {
+    "trigger": "mesa vacía.",
+    "action": "PlayDuelEmpty()"
+  },
+  {
+    "trigger": "esperando al oponente.",
+    "action": "PlayDuelWait()",
+    "omit": 1
+  },
+  {
+    "trigger": "Tus puntos de vida: * Puntos de vida del oponente: *",
+    "action": "PlayDuelScore()"
+  },
+  {
+    "trigger": "LP: *: * *: *",
+    "action": "PlayDuelScore()"
+  },
+  {
+    "trigger": "mesa del oponente:",
+    "action": "PlayDuelTable()"
+  },
+  {
+    "trigger": "tu mesa:",
+    "action": "PlayDuelTable()"
+  },
+  {
+    "trigger": "mesa de *:",
+    "action": "PlayDuelTable()"
+  },
+  {
+    "trigger": "Ganaste (LP reached 0).",
+    "action": "PlayDuelWin()",
+    "omit": 1
+  },
+  {
+    "trigger": "Quieres usar el efecto de * en *?",
+    "action": "PlayPrompt()"
+  },
+  {
+    "trigger": "Duelo creado. Eres el jugador *.",
+    "action": "PlayDuelStart()",
+    "omit": 1
+  },
+  {
+    "trigger": "activas *",
+    "action": "PlayDuelActivate()"
+  },
+  {
+    "trigger": "entrando en  fase de espera",
+    "action": "PlayDuelStandby()",
+    "omit": 1
+  },
+  {
+    "trigger": "entrando en  fase final",
+    "action": "PlayDuelEnd()",
+    "omit": 1
+  },
+  {
+    "trigger": "* activando *",
+    "action": "PlayDuelEffect()"
+  },
+  {
+    "trigger": "entrando en  Fase principal",
+    "action": "PlayDuelMain()",
+    "omit": 1
+  },
+  {
+    "trigger": "robas * cartas*",
+    "action": "PlayDuelDraw()"
+  },
+  {
+    "trigger": "* coloca * en posición boca abajo.",
+    "action": "PlayDuelFacedown()"
+  },
+  {
+    "trigger": "colocas * en posición boca abajo.",
+    "action": "PlayDuelFacedown()"
+  },
+  {
+    "trigger": "entrando en  phase de comienzo de combate",
+    "action": "PlayDuelBattle()",
+    "omit": 1
+  },
+  {
+    "trigger": "Selecciona una carta con la que atacar.",
+    "action": "PlayDuelAttention()"
+  },
+  {
+    "trigger": "Perdiste (*).",
+    "action": "PlayDuelLose()",
+    "omit": 1
+  },
+  {
+    "trigger": "Spec no válido.",
+    "action": "PlayDuelInvalid()"
+  },
+  {
+    "trigger": "Selecciona cadena (c para cancelar):",
+    "action": "PlayDuelChain()"
+  },
+  {
+    "trigger": "* roba * cartas*",
+    "action": "PlayDuelDraw()"
+  },
+  {
+    "trigger": "* invocando especial *",
+    "action": "PlayDuelSpecial()"
+  },
+  {
+    "trigger": "* coloca * en posición defensa boca abajo.",
+    "action": "PlayDuelDefense()"
+  },
+  {
+    "trigger": "colocas * en posición defensa boca abajo.",
+    "action": "PlayDuelFacedown()"
+  },
+  {
+    "trigger": "entrando en  fase principal 2",
+    "action": "PlayDuelMain()",
+    "omit": 1
+  },
+  {
+    "trigger": "carta * destruida.",
+    "action": "PlayDuelDestroy()"
+  },
+  {
+    "trigger": "empezando daño",
+    "action": "PlayDuelAttack()",
+    "omit": 1
+  },
+  {
+    "trigger": "Selecciona una carta.",
+    "action": "PlayDuelAttention()"
+  },
+  {
+    "trigger": "* attaca",
+    "action": "PlayDuelDamage()"
+  },
+  {
+    "trigger": "* invoca * (*/*) en posición de ataque boca arriba.",
+    "action": "PlayDuelNormal()"
+  },
+  {
+    "trigger": "Solicitud de duelo enviada a *.",
+    "action": "PlayDuelRequest()"
+  },
+  {
+    "trigger": "turno *",
+    "action": "PlayDuelAttention()"
+  },
+  {
+    "trigger": "la posición de la carta * (*) se cambió a boca arriba.",
+    "action": "PlayDuelFlip()"
+  },
+  {
+    "trigger": "la posición de la carta * (*) se cambió a boca abajo.",
+    "action": "PlayDuelSwitchFacedown()"
+  },
+  {
+    "trigger": "la posición de la carta * (*) se cambió a defensa boca abajo.",
+    "action": "PlayDuelSwitchFacedown()"
+  },
+  {
+    "trigger": "la posición de la carta * (*) se cambió a ataque boca arriba.",
+    "action": "PlayDuelSwitchAttack()"
+  },
+  {
+    "trigger": "la posición de la carta * (*) se cambió a defensa boca arriba.",
+    "action": "PlayDuelSwitchDefense()"
+  },
+  {
+    "trigger": "termina daño",
+    "action": "PlayDuelDamageEnd()",
+    "omit": 1
+  },
+  {
+    "trigger": "* se prepara para atacar * con *",
+    "action": "PlayDuelAim()"
+  },
+  {
+    "trigger": "* se prepara para atacar con *",
+    "action": "PlayDuelAim()"
+  },
+  {
+    "trigger": "* selecciona *",
+    "action": "PlayDuelAim()"
+  },
+  {
+    "trigger": "* sacrifica *",
+    "action": "PlayDuelTribute()"
+  },
+  {
+    "trigger": "sacrificas *",
+    "action": "PlayDuelTribute()"
+  },
+  {
+    "trigger": "* (*) equipada a * (*).",
+    "action": "PlayDuelEquip()"
+  },
+  {
+    "trigger": "* te muestra * cartas.",
+    "action": "PlayDuelShow()"
+  },
+  {
+    "trigger": "* paga * LP. Ahora tiene *.",
+    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
+  },
+  {
+    "trigger": "Pagas * LP. Ahora tienes *.",
+    "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
+  },
+  {
+    "trigger": "Los lp de * disminuyen por *, ahora *",
+    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
+  },
+    {
+      "trigger": "Tus lp disminuyen por *, ahora *",
+      "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
+  },
+  {
+    "trigger": "los lp de * incrementan en *, ahora *",
+    "action": "PlayEarnLifepoints(\"%2\", \"%3\")"
+  },
+    {
+      "trigger": "Tus lp incrementan en *, ahora *",
+      "action": "PlayEarnLifepoints(\"%1\", \"%2\")"
+  },
+  {
+    "trigger": "le dices a *: *",
+    "action": "PlayChatSend(\"%0\")",
+    "sequence": 90
+  },
+  {
+    "trigger": "* te dice: *",
+    "action": "PlayChatReceive(\"%0\")",
+    "sequence": 90
+  },
+  {
+      "trigger": "* dice: *",
+      "action": "PlayChatSay(\"%0\")",
+      "sequence": 91
+    },
+    {
+    "trigger": "Anuncio: *",
+    "action": "PlayChatAnnouncement(\"%0\")",
+    "sequence": 90
+  },
+  {
+    "trigger": "Card * (*) devuelta a tu mano.",
+    "action": "PlayDuelReturn()"
+  },
+  {
+    "trigger": "carta de * * (*) devuelta a su mano.",
+    "action": "PlayDuelReturn()"
+  },
+  {
+    "trigger": "Challenge: ¡El duelo entre * y * ha comenzado!",
+    "action": "PlayChallengeStart(\"%0\")"
+  },
+  {
+    "trigger": "Challenge: * ganaron el duelo entre * y * (LP reached 0).",
+    "action": "PlayChallengeVictory(\"%0\")"
+  },
+  {
+    "trigger": "Die landed on: *",
+    "action": "PlayDuelDice()"
+  },
+  {
+    "trigger": "Challenge: * se ha rendido cobardemente ante *.",
+    "action": "PlayChallengeSubmit(\"%0\")"
+  },
+  {
+    "trigger": "Viendo el duelo entre * y *.",
+    "action": "PlayDuelWatch()"
+  },
+  {
+    "trigger": "Visualización cancelada.",
+    "action": "PlayDuelUnwatch()"
+  },
+  {
+    "trigger": "* voltea e invoca * (*).",
+    "action": "PlayDuelSwitchFlip()"
+  },
+  {
+    "trigger": "separas *.",
+    "action": "PlayDuelXYZDetach()"
+  },
+  {
+    "trigger": "* separa *",
+    "action": "PlayDuelXYZDetach()"
+  },
+  {
+    "trigger": "* carta * (*) ha sido enviada al cementerio.",
+    "action": "PlayDuelSendToGrave()"
+  },
+  {
+    "trigger": "Has descartado * (*).",
+    "action": "PlayDuelDiscard()"
+  },
+  {
+    "trigger": "* ha descartado * (*).",
+    "action": "PlayDuelDiscard()"
+  },
+  {
+    "trigger": "* baraja su baraja",
+    "action": "PlayDuelShuffle()"
+  },
+  {
+    "trigger": "barajas tu baraja",
+    "action": "PlayDuelShuffle()"
+  },
+  {
+    "trigger": "Tu carta * (*) ha sido eliminada del juego.",
+    "action": "PlayDuelBanish()"
+  },
+    {
+      "trigger": "La carta de * (*) ha sido eliminada del juego.",
+      "action": "PlayDuelBanish()"
+    },
+  {
+    "trigger": "La carta de * (*) volvió a su baraja.",
+    "action": "PlayDuelSendToDeck()"
+  },
+    {
+      "trigger": "Tu carta * (*) volvió a tu baraja.",
+      "action": "PlayDuelSendToDeck()"
+    },
+  {
+    "trigger": "La carta de * (*) volvió a su  baraja extra.",
+    "action": "PlayDuelSendToExtraDeck()",
+    "sequence": 99
+  },
+    {
+      "trigger": "Tu carta * (*) volvió a su  baraja extra.",
+      "action": "PlayDuelSendToExtraDeck()",
+      "sequence": 99
+    },
+  {
+    "trigger": "Carta * (*) ahora es controlada por * y se encuentra en *.",
+    "action": "PlayDuelSwapControl()"
+  },
+  {
+    "trigger": "Tu carta * (*) cambió de dueño a * y ahora se encuentra en *.",
+    "action": "PlayDuelLoseControl()",
+    "sequence": 99
+  },
+  {
+    "trigger": "Ahora controlas la carta de * (*) y se encuentra en *.",
+    "action": "PlayDuelGainControl()"
+  },
+  {
+    "trigger": "La carta de * (*) cambió de dueño a * y ahora se encuentra en *.",
+    "action": "PlayDuelSwapControl()"
+  },
+  {
+    "trigger": "* contadores de tipo * colocados en *",
+    "action": "PlayDuelAddCounters(\"%1\")"
+  },
+  {
+    "trigger": "* contadores de tipo * eliminados de *",
+    "action": "PlayDuelRemoveCounters(\"%1\")"
+  },
+  {
+    "trigger": "* ha reconectado.",
+    "action": "PlayReconnect()"
+  },
+  {
+    "trigger": "Comprobación completada con * errores.",
+    "action": "PlayDeckCheck()"
+  },
+  {
+    "trigger": "Duelo pausado hasta que los duelistas reconecten.",
+    "action": "PlayDuelPause()"
+  },
+  {
+    "trigger": "El duelo continúa.",
+    "action": "PlayDuelUnpause()"
+  },
+  {
+    "trigger": "* deja de ver este duelo.",
+    "action": "PlayDuelUnwatchNotification()"
+  },
+  {
+    "trigger": "* está viendo este duelo.",
+    "action": "PlayDuelWatchNotification()"
+  },
+  {
+    "trigger": "entras a tu nueva sala. Necesitas finalizar la configuración para que esté disponible para los otros jugadores.",
+    "action": "PlayRoomJoin()"
+  },
+  {
+    "trigger": "Entras a la sala de *. usa los comandos teams y move para escoger un equipo, o quédate fuera de los equipos para ver el duelo.",
+    "action": "PlayRoomJoin()"
+  },
+  {
+    "trigger": "* entró a la sala.",
+    "action": "PlayRoomJoinNotification()"
+  },
+  {
+    "trigger": "Sales de la sala.",
+    "action": "PlayRoomLeave()"
+  },
+  {
+    "trigger": "* salió de la sala.",
+    "action": "PlayRoomLeaveNotification()"
+  },
+  {
+    "trigger": "Challenge: * ha disuelto su sala.",
+    "action": "PlayChallengeDisband()"
+  },
+  {
+    "trigger": "* ha perdido la conexión en el duelo.",
+    "action": "PlayLinkdead()"
+  },
+  {
+    "trigger": "Challenge: * ha creado una sala de duelo.",
+    "action": "PlayChallengeCreate()"
+  }
+]
