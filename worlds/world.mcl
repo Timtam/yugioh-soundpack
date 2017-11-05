@@ -193,18 +193,9 @@ SetMusicMode(2)</send>
    send_to="12"
    sequence="100"
   >
-  <send>language= utils.inputbox ("Introduce 1 si quieres jugar en español, enter 2 if you want to play in English","Elegir idioma/Set language")
-if (language=="1") then
-Note("Ok. Idioma establecido")
-TriggerHandler:Load('spanish')
+  <send>TriggerHandler:Load('english')
 SetMusicMode(1)
-Interface:PlayWelcome()
-elseif (language=="2") then
-Note("Ok, Language set")
-TriggerHandler:Load('english')
-SetMusicMode(1)
-Interface:PlayWelcome()
-end</send>
+Interface:PlayWelcome()</send>
   </trigger>
   <trigger
    enabled="y"
@@ -398,8 +389,6 @@ group="System" omit_from_output="y" >
    world_file_version="15"
   >
   <variable name="Configuration">741d5052da64c6ec33c863e5</variable>
-  <variable name="PPIparams_1">n:1|n:4|n:2|s:settings|n:3|s:SoundOverlapTime</variable>
-  <variable name="PPIparams_2">s:description|s:overlap time of stacked sounds. Between 1.0 and 0.0, where 1.0 means total overlap and 0.0 means no overlap at all.|s:option|s:SoundOverlapTime|s:section|s:settings|s:type|s:number</variable>
 </variables>
 
 <!-- colours -->
