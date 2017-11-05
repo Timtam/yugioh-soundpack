@@ -305,12 +305,12 @@
   },
   {
       "trigger": "* dice: *",
-      "action": "PlayChatDecir(\"%0\")",
+      "action": "PlayChatSay(\"%0\")",
       "sequence": 91
     },
     {
     "trigger": "Anuncio: *",
-    "action": "PlayChatAnuncio(\"%0\")",
+    "action": "PlayChatAnnouncement(\"%0\")",
     "sequence": 90
   },
   {
