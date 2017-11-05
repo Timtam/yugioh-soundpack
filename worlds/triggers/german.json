@@ -27,6 +27,10 @@
     "action": "PlayDeckLoad()"
   },
   {
+    "trigger": "* hat ein Deck geladen.",
+    "action": "PlayDeckLoadNotification()"
+  },
+  {
     "trigger": "Deck imported.",
     "action": "PlayDeckImport()"
   },
@@ -475,5 +479,13 @@
   {
     "trigger": "Challenge: * hat einen neuen Duellraum erstellt.",
     "action": "PlayChallengeCreate()"
+  },
+  {
+    "trigger": "* lädt Dich ein, seinem Duellraum beizutreten. Tippe join *, um die Einladung anzunehmen.",
+    "action": "PlayRoomInviteNotification()"
+  },
+  {
+    "trigger": "Eine Einladung wurde an * gesendet.",
+    "action": "PlayRoomInvite()"
   }
 ]

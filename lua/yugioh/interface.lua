@@ -428,4 +428,16 @@ function Interface:PlayChallengeCreate()
   self.sound('challenge/create')
 end
 
+function Interface:PlayRoomInvite()
+  self.sound('room/invite')
+end
+
+function Interface:PlayRoomInviteNotification()
+  self.sound('room/invitenotification')
+end
+
+function Interface:PlayDeckLoadNotification()
+  self.sound('deck/loadnotification')
+end
+
 return Interface
