@@ -1,4 +1,5 @@
 Class = require('pl.class')
+local const = require("audio.bass.constants")
 PPI = require('ppi')
 
 Class.Interface()
@@ -438,6 +439,33 @@ end
 
 function Interface:PlayDeckLoadNotification()
   self.sound('deck/loadnotification')
+end
+
+function Interface:PlayRoomTeam(team)
+
+  team = tonumber(team)
+
+  local tmp
+
+  if team == 0 then
+    tmp = 'outofteam'
+  else
+    tmp = 'team'
+  end
+
+  local snd = self.sound('room/'..tmp)
+
+  if team == 1 then
+    tmp = -0.8
+  elseif team == 2 then
+    tmp = 0.8
+  else
+    return
+  end
+
+  local time = snd.length * 1000 * 0.8
+
+  snd:SlideAttribute(const.attribute.pan, tmp, time)
 end
 
 return Interface
