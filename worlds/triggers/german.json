@@ -487,5 +487,21 @@
   {
     "trigger": "Eine Einladung wurde an * gesendet.",
     "action": "PlayRoomInvite()"
+  },
+  {
+    "trigger": "Du wurdest in Gruppe * bewegt.",
+    "action": "PlayRoomTeam(\"%1\")"
+  },
+  {
+    "trigger": "* wurde in Gruppe * bewegt.",
+    "action": "PlayRoomTeam(\"%2\")"
+  },
+  {
+    "trigger": "* wurde aus allen Gruppen entfernt.",
+    "action": "PlayRoomTeam(0)"
+  },
+  {
+    "trigger": "Du wurdest aus allen Gruppen entfernt.",
+    "action": "PlayRoomTeam(0)"
   }
 ]

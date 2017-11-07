@@ -484,5 +484,21 @@
   {
     "trigger": "An invitation was sent to *.",
     "action": "PlayRoomInvite()"
+  },
+  {
+    "trigger": "You were moved into team *.",
+    "action": "PlayRoomTeam(\"%1\")"
+  },
+  {
+    "trigger": "* was moved into team *.",
+    "action": "PlayRoomTeam(\"%2\")"
+  },
+  {
+    "trigger": "* was removed from any team.",
+    "action": "PlayRoomTeam(0)"
+  },
+  {
+    "trigger": "You were removed from any team.",
+    "action": "PlayRoomTeam(0)"
   }
 ]
