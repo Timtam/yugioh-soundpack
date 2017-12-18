@@ -423,7 +423,7 @@
   {
     "trigger": "* Zählmarken vom Typ * wurden von * entfernt.",
     "action": "PlayDuelRemoveCounters(\"%1\")"
-  }
+  },
   {
     "trigger": "* Verbindung wiederhergestellt.",
     "action": "PlayReconnect()"
