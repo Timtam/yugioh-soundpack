@@ -497,7 +497,7 @@
     "action": "PlayRoomTeam(\"%2\")"
   },
   {
-    "trigger": "* wurde aus allen Gruppen entfernt.",
+    "trigger": "* wurde aus jeder Gruppe entfernt.",
     "action": "PlayRoomTeam(0)"
   },
   {
