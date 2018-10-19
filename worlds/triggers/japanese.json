@@ -180,7 +180,7 @@
     "action": "PlayDuelDraw()"
   },
   {
-    "trigger": "* を *表示で特殊召喚。",
+    "trigger": "* を *表\示で特殊召喚。",
     "action": "PlayDuelSpecial()"
   },
   {
@@ -214,7 +214,7 @@
     "action": "PlayDuelDamage()"
   },
   {
-    "trigger": "* は * (*/*) を 表\向き　攻撃表\示で特殊召喚。",
+    "trigger": "* は * (*/*) を 表\向き　攻撃表\示で召喚。",
     "action": "PlayDuelNormal()"
   },
   {
@@ -287,11 +287,11 @@
     "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
   },
   {
-    "trigger": "* のLPが * 減少しました、残り *",
+    "trigger": "*のLPが * 減少しました、残り *",
     "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
   },
   {
-    "trigger": "* のLPが * 増加しました、残り *",
+    "trigger": "*のLPが * 増加しました、残り *",
     "action": "PlayEarnLifepoints(\"%2\", \"%3\")"
   },
   {
