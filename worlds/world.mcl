@@ -94,6 +94,7 @@
    use_custom_link_colour="y"
    use_default_input_font="y"
    use_default_output_font="y"
+   utf_8="n"
    warn_if_scripting_inactive="y"
    wrap="y"
    wrap_column="80"
@@ -117,6 +118,16 @@
   >
   <send>TriggerHandler:Load('spanish')
 world.Execute('encoding windows-1252')</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Œ¾Œê‚ðÝ’è‚µ‚Ü‚µ‚½B"
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load('japanese')
+world.Execute('encoding cp932')</send>
   </trigger>
   <trigger
    enabled="y"
@@ -197,6 +208,18 @@ SetMusicMode(2)</send>
 SetMusicMode(1)
 Interface:PlayWelcome()</send>
   </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="*‚æ‚¤‚±‚»*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>
+SetMusicMode(1)
+Interface:PlayWelcome()</send>
+  </trigger>
+
   <trigger
    enabled="y"
    group="System"
@@ -389,6 +412,8 @@ group="System" omit_from_output="y" >
    world_file_version="15"
   >
   <variable name="Configuration">741d5052da64c6ec33c863e5</variable>
+  <variable name="PPIparams_1">n:1|n:4|n:2|s:settings|n:3|s:Omitting</variable>
+  <variable name="PPIparams_2">s:description|s:overlap time of stacked sounds. Between 1.0 and 0.0, where 1.0 means total overlap and 0.0 means no overlap at all.|s:option|s:SoundOverlapTime|s:section|s:settings|s:type|s:number</variable>
 </variables>
 
 <!-- colours -->
