@@ -94,7 +94,6 @@
    use_custom_link_colour="y"
    use_default_input_font="y"
    use_default_output_font="y"
-   utf_8="n"
    warn_if_scripting_inactive="y"
    wrap="y"
    wrap_column="80"
@@ -112,22 +111,43 @@
   <trigger
    enabled="y"
    group="System"
+   match="*‚æ‚¤‚±‚»*"
+   send_to="12"
+   sequence="100"
+  >
+  <send>
+SetMusicMode(1)
+Interface:PlayWelcome()</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Bem vindo ao jogo."
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load('portuguese')
+SetMusicMode(1)
+Interface:PlayWelcome()</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Idioma alterado."
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load('portuguese')</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
    match="Idioma cambiado."
    send_to="12"
    sequence="100"
   >
   <send>TriggerHandler:Load('spanish')
 world.Execute('encoding windows-1252')</send>
-  </trigger>
-  <trigger
-   enabled="y"
-   group="System"
-   match="Œ¾Œê‚ðÝ’è‚µ‚Ü‚µ‚½B"
-   send_to="12"
-   sequence="100"
-  >
-  <send>TriggerHandler:Load('japanese')
-world.Execute('encoding cp932')</send>
   </trigger>
   <trigger
    enabled="y"
@@ -211,18 +231,6 @@ Interface:PlayWelcome()</send>
   <trigger
    enabled="y"
    group="System"
-   match="*‚æ‚¤‚±‚»*"
-   send_to="12"
-   sequence="100"
-  >
-  <send>
-SetMusicMode(1)
-Interface:PlayWelcome()</send>
-  </trigger>
-
-  <trigger
-   enabled="y"
-   group="System"
    match="Willkommen im Spiel."
    send_to="12"
    sequence="100"
@@ -230,6 +238,16 @@ Interface:PlayWelcome()</send>
   <send>TriggerHandler:Load('german')
 SetMusicMode(1)
 Interface:PlayWelcome()</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="Œ¾Œê‚ðÝ’è‚µ‚Ü‚µ‚½B"
+   send_to="12"
+   sequence="100"
+  >
+  <send>TriggerHandler:Load('japanese')
+world.Execute('encoding cp932')</send>
   </trigger>
 </triggers>
 
