@@ -31,7 +31,7 @@
     "action": "PlayDeckLoadNotification()"
   },
   {
-    "trigger": "Deck imported.",
+    "trigger": "Deck * imported.",
     "action": "PlayDeckImport()"
   },
   {
@@ -44,6 +44,10 @@
   },
   {
     "trigger": "Deck doesn't exist.",
+    "action": "PlayError()"
+  },
+  {
+    "trigger": "Deck doesn't exist or isn't publically available.",
     "action": "PlayError()"
   },
   {

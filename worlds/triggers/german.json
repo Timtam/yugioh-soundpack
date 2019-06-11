@@ -13,7 +13,7 @@
     "omit": 1
   },
   {
-    "trigger": "Deck exists, loading.",
+    "trigger": "Das Deck existiert bereits, es wird geladen.",
     "action": "PlayDeckChange()",
     "omit": 1
   },
@@ -31,19 +31,23 @@
     "action": "PlayDeckLoadNotification()"
   },
   {
-    "trigger": "Deck imported.",
+    "trigger": "Deck * erfolgreich importiert.",
     "action": "PlayDeckImport()"
   },
   {
-    "trigger": "Deck deleted.",
+    "trigger": "Deck gelöscht.",
     "action": "PlayDeckDelete()"
   },
   {
-    "trigger": "Deck cleared.",
+    "trigger": "Deck geleert.",
     "action": "PlayDeckClear()"
   },
   {
-    "trigger": "Deck doesn't exist.",
+    "trigger": "Das Deck existiert nicht.",
+    "action": "PlayError()"
+  },
+  {
+    "trigger": "Dieses Deck existiert nicht oder ist nicht öffentlich verfügbar.",
     "action": "PlayError()"
   },
   {
