@@ -504,5 +504,10 @@
   {
     "trigger": "You were removed from any team.",
     "action": "RoomTeam(0)"
+  },
+  {
+    "trigger": "* tags: *",
+    "action": "TagMessage(\"%0\")",
+    "sequence": 90
   }
 ]

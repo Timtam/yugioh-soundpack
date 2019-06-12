@@ -468,4 +468,9 @@ function Interface:RoomTeam(team)
   snd:SlideAttribute(const.attribute.pan, tmp, time)
 end
 
+function Interface:TagMessage(text)
+  world.Execute('history_add tag='..text)
+  self.sound('chat/tag')
+end
+
 return Interface

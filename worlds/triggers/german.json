@@ -507,5 +507,10 @@
   {
     "trigger": "Du wurdest aus allen Gruppen entfernt.",
     "action": "RoomTeam(0)"
+  },
+  {
+    "trigger": "* teilt seinen Teammitgliedern mit: *",
+    "action": "TagMessage(\"%0\")",
+    "sequence": 90
   }
 ]
