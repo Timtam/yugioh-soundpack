@@ -47,10 +47,18 @@ end
 
 function OnWorldGetFocus()
   Focused = true
+
+  if Config.Get('settings', 'UnfocusedSounds') == 0 and Music ~= nil and Music:IsActive() == Audio.CONST.active.paused and Config.Get('settings', 'MusicMuted') == 0 then
+    Music:Play(false)
+  end
 end
 
 function OnWorldLoseFocus()
   Focused = false
+
+  if Config.Get('settings', 'UnfocusedSounds') == 0 and Music ~= nil and Music:IsActive() == Audio.CONST.active.playing and Config.Get('settings', 'MusicMuted') == 0 then
+    Music:Pause()
+  end
 end
 
 function OnWorldDisconnect()
@@ -118,7 +126,7 @@ function PlayMusic(file)
   if(not Path.isabs(file)) then
     file=Path.join(GetInfo(74), "Music", file)
   end
-  if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
+  if Music ~= nil and Music:IsActive() ~= Audio.CONST.active.stopped then
     Music:Stop()
     Music:Free()
     Music = nil
@@ -126,6 +134,10 @@ function PlayMusic(file)
   Music = BASS:StreamCreateFile(false, file)
   Music:SetAttribute(Audio.CONST.attribute.volume, Config.Get('settings', 'MusicVolume')/100)
   Music:Play()
+
+  if Focused == false and Config.Get('settings', 'UnfocusedSounds') == 0 then
+    music:Pause()
+  end
 end
 
 function Volume(value)
@@ -255,12 +267,12 @@ end
 
 function SetMusicMode(mode)
 
-  if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing and MusicMode == mode then
+  if Music ~= nil and Music:IsActive() ~= Audio.CONST.active.stopped and MusicMode == mode then
     return
   end
 
   if mode == 0 then
-    if Music ~= nil and Music:IsActive() == Audio.CONST.active.playing then
+    if Music ~= nil and Music:IsActive() ~= Audio.CONST.active.stopped then
       Music:Stop()
       Music:Free()
     end
@@ -295,7 +307,7 @@ end
 
 function MusicLooper()
 
-  if MusicMode > 0 and Music ~= nil and Music:IsActive() ~= Audio.CONST.active.playing and Config.Get('settings', 'MusicMuted') == 0 then
+  if MusicMode > 0 and Music ~= nil and Music:IsActive() == Audio.CONST.active.stopped and Config.Get('settings', 'MusicMuted') == 0 then
     SetMusicMode(MusicMode)
   end
 
