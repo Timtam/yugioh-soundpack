@@ -3,6 +3,7 @@ BASS = Audio.BASS()
 BASSSTREAM = require("audio.bass.stream")
 Config = nil
 Dir = require('pl.dir')
+Focused = true
 Interface = nil
 Music = nil
 MusicMode = 0 -- 0 = not set, 1 = lounge, 2 = duel
@@ -25,11 +26,13 @@ function OnWorldOpen()
   Config.Set('settings', 'SoundOverlapTime', 0.4)
   Config.Set('settings', 'SoundsMuted', 0)
   Config.Set('settings', 'SoundVolume', 50)
+  Config.Set('settings', 'UnfocusedSounds', 1)
   Config.Load()
   Config.AddConfigurable{section='settings', option='AutoChaining', type='bool', description='always reject chaining questions', key = 'ctrl+alt+c'}
   Config.AddConfigurable{section='settings', option='LogonSound', type='bool', description='play sound when logging in', key='ctrl+alt+l'}
   Config.AddConfigurable{section='settings', option='Omitting', type='bool', description='don\'t show unimportant messages', key='ctrl+alt+o'}
   Config.AddConfigurable{section='settings', option='SoundOverlapTime', type='number', description='overlap time of stacked sounds. Between 1.0 and 0.0, where 1.0 means total overlap and 0.0 means no overlap at all.'}
+  Config.AddConfigurable{section='settings', option='UnfocusedSounds', type='bool', description='play unimportant sounds when the soundpack window is currently not focused?', key='ctrl+alt+u'}
 
   -- defining all world accelerators
   world.Accelerator('F9', 'volume_down')
@@ -40,6 +43,14 @@ function OnWorldOpen()
 
   BASS:Init()
 
+end
+
+function OnWorldGetFocus()
+  Focused = true
+end
+
+function OnWorldLoseFocus()
+  Focused = false
 end
 
 function OnWorldDisconnect()
@@ -54,11 +65,19 @@ function OnWorldClose()
   OnWorldDisconnect()
 end
 
-function PlaySound(file, pan)
+function PlaySound(file, pan, important)
+
   pan = pan or 0
+  important = important or false
+
   if Config.Get('settings', 'SoundsMuted') == 1 then
     return
   end
+
+  if important == false and Focused == false and Config.Get('settings', 'UnfocusedSounds') == 0 then
+    return
+  end
+  
   if(not Path.isabs(file)) then
     file=Path.join(GetInfo(74), file)
   end
@@ -70,9 +89,15 @@ function PlaySound(file, pan)
   return stream
 end
 
-function PlaySoundStack(file)
+function PlaySoundStack(file, important)
+
+  important = important or false
 
   if Config.Get('settings', 'SoundsMuted') == 1 then
+    return
+  end
+
+  if important == false and Focused == false and Config.Get('settings', 'UnfocusedSounds') == 0 then
     return
   end
 

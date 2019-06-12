@@ -223,7 +223,7 @@ function Interface:PlayLoseLifepoints(lp_lost, lp_now)
 end
 
 function Interface:PlayChatReceive(text)
-  self.sound('chat/receive')
+  self.sound('chat/receive', 0, true)
   world.Execute('history_add tell='..text)
 end
 
@@ -434,7 +434,7 @@ function Interface:PlayRoomInvite()
 end
 
 function Interface:PlayRoomInviteNotification()
-  self.sound('room/invitenotification')
+  self.sound('room/invitenotification', 0, true)
 end
 
 function Interface:PlayDeckLoadNotification()
