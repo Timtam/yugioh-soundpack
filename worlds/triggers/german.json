@@ -512,5 +512,15 @@
     "trigger": "* teilt seinen Teammitgliedern mit: *",
     "action": "TagMessage(\"%0\")",
     "sequence": 90
+  },
+  {
+    "trigger": "* und Du habt gewonnen (*).",
+	    "action": "DuelWin()",
+    "omit": 1
+  },
+  {
+    "trigger": "* und Du habt verloren (*).",
+    "action": "DuelLose()",
+    "omit": 1
   }
 ]

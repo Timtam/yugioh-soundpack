@@ -509,5 +509,15 @@
     "trigger": "* tags: *",
     "action": "TagMessage(\"%0\")",
     "sequence": 90
+  },
+  {
+    "trigger": "* and you won (*).",
+	    "action": "DuelWin()",
+    "omit": 1
+  },
+  {
+    "trigger": "* and you lost (*).",
+    "action": "DuelLose()",
+    "omit": 1
   }
 ]
