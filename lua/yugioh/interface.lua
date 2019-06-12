@@ -12,235 +12,235 @@ function Interface:_init(sound_callback, soundstack_callback, lifepoints_callbac
   self.soundstack = soundstack_callback
 end
 
-function Interface:PlayLogin()
+function Interface:Login()
   self.sound('login')
 end
 
-function Interface:PlayLogout()
+function Interface:Logout()
   self.sound('logout')
 end
 
-function Interface:PlayError()
+function Interface:Error()
   self.sound('error')
 end
 
-function Interface:PlayDeckChange()
+function Interface:DeckChange()
   self.sound('deck/change')
 end
 
-function Interface:PlayDeckQuit()
+function Interface:DeckQuit()
   self.sound('deck/quit')
 end
 
-function Interface:PlayDeckLoad()
+function Interface:DeckLoad()
   self.sound('deck/load')
 end
 
-function Interface:PlayDeckImport()
+function Interface:DeckImport()
   self.sound('deck/import')
 end
 
-function Interface:PlayDeckDelete()
+function Interface:DeckDelete()
   self.sound('deck/delete')
 end
 
-function Interface:PlayDeckClear()
+function Interface:DeckClear()
   self.sound('deck/clear')
 end
 
-function Interface:PlayChatMessage(text)
+function Interface:ChatMessage(text)
   world.Execute('history_add chat='..text)
   self.sound('chat/message')
 end
 
-function Interface:PlayChatOn()
+function Interface:ChatOn()
   self.sound('chat/on')
 end
 
-function Interface:PlayChatOff()
+function Interface:ChatOff()
   self.sound('chat/off')
 end
 
-function Interface:PlayChatSay(text)
+function Interface:ChatSay(text)
   world.Execute('history_add say='..text)
   self.sound('chat/say')
 end
 
-function Interface:PlayChatAnnouncement(text)
+function Interface:ChatAnnouncement(text)
   self.sound('chat/announcement')
   world.Execute('history_add announcement='..text)
 end
 
-function Interface:PlayWho()
+function Interface:Who()
   self.sound('who')
 end
 
-function Interface:PlayDuelEmpty()
+function Interface:DuelEmpty()
   self.sound('duel/empty')
 end
 
-function Interface:PlayDuelWait()
+function Interface:DuelWait()
   self.sound('duel/wait')
 end
 
-function Interface:PlayDuelScore()
+function Interface:DuelScore()
   self.sound('duel/score')
 end
 
-function Interface:PlayDuelTable()
+function Interface:DuelTable()
   self.sound('duel/score')
 end
 
-function Interface:PlayDuelWin()
+function Interface:DuelWin()
   self.soundstack('duel/win')
   self.musicmode(1)
 end
 
-function Interface:PlayDuelLose()
+function Interface:DuelLose()
   self.soundstack('duel/lose')
   self.musicmode(1)
 end
 
-function Interface:PlayPrompt()
+function Interface:Prompt()
   self.soundstack('prompt')
 end
 
-function Interface:PlayDuelRequest()
+function Interface:DuelRequest()
   self.sound('duel/request')
 end
 
-function Interface:PlayDuelStart()
+function Interface:DuelStart()
   self.soundstack('duel/start')
   self.musicmode(2)
 end
 
-function Interface:PlayDuelActivate()
+function Interface:DuelActivate()
   self.soundstack('duel/activate')
 end
 
-function Interface:PlayDuelStandby()
+function Interface:DuelStandby()
   self.soundstack('duel/standby')
 end
 
-function Interface:PlayDuelEnd()
+function Interface:DuelEnd()
   self.soundstack('duel/end')
 end
 
-function Interface:PlayDuelEffect()
+function Interface:DuelEffect()
   self.soundstack('duel/effect')
 end
 
-function Interface:PlayDuelMain()
+function Interface:DuelMain()
   self.soundstack('duel/main')
 end
 
-function Interface:PlayDuelDraw()
+function Interface:DuelDraw()
   self.soundstack('duel/draw')
 end
 
-function Interface:PlayDuelFacedown()
+function Interface:DuelFacedown()
   self.soundstack('duel/facedown')
 end
 
-function Interface:PlayDuelBattle()
+function Interface:DuelBattle()
   self.soundstack('duel/battle')
 end
 
-function Interface:PlayDuelAttention()
+function Interface:DuelAttention()
   self.soundstack('duel/attention')
 end
 
-function Interface:PlayDuelInvalid()
+function Interface:DuelInvalid()
   self.sound('duel/invalid')
 end
 
-function Interface:PlayDuelChain()
+function Interface:DuelChain()
   self.soundstack('duel/chain')
   if self.config.Get('settings', 'AutoChaining') ~= 0 then
     world.Execute('c')
   end
 end
 
-function Interface:PlayDuelSpecial()
+function Interface:DuelSpecial()
   self.soundstack('duel/special')
 end
 
-function Interface:PlayDuelDefense()
+function Interface:DuelDefense()
   self.soundstack('duel/defense')
 end
 
-function Interface:PlayDuelDestroy()
+function Interface:DuelDestroy()
   self.soundstack('duel/destroy')
 end
 
-function Interface:PlayDuelAttack()
+function Interface:DuelAttack()
   self.soundstack('duel/attack')
 end
 
-function Interface:PlayDuelDamage()
+function Interface:DuelDamage()
   self.soundstack('duel/damage')
 end
 
-function Interface:PlayDuelNormal()
+function Interface:DuelNormal()
   self.soundstack('duel/normal')
 end
 
-function Interface:PlayDuelFlip()
+function Interface:DuelFlip()
   self.soundstack('duel/flip')
 end
 
-function Interface:PlayDuelSwitchDefense()
+function Interface:DuelSwitchDefense()
   self.soundstack('duel/switch_defense')
 end
 
-function Interface:PlayDuelSwitchAttack()
+function Interface:DuelSwitchAttack()
   self.soundstack('duel/switch_attack')
 end
 
-function Interface:PlayDuelSwitchFlip()
+function Interface:DuelSwitchFlip()
   self.soundstack('duel/switch_flip')
 end
 
-function Interface:PlayDuelDamageEnd()
+function Interface:DuelDamageEnd()
   self.soundstack('duel/damageend')
 end
 
-function Interface:PlayDuelAim()
+function Interface:DuelAim()
   self.soundstack('duel/aim')
 end
 
-function Interface:PlayDuelTribute()
+function Interface:DuelTribute()
   self.soundstack('duel/tribute')
 end
 
-function Interface:PlayEarnLifepoints(lp_lost, lp_now)
+function Interface:EarnLifepoints(lp_lost, lp_now)
   self.soundstack('duel/earn')
   self.lifepoints(lp_lost, lp_now)
 end
 
-function Interface:PlayLoseLifepoints(lp_lost, lp_now)
+function Interface:LoseLifepoints(lp_lost, lp_now)
   self.lifepoints(lp_lost, lp_now)
 end
 
-function Interface:PlayChatReceive(text)
+function Interface:ChatReceive(text)
   self.sound('chat/receive', 0, true)
   world.Execute('history_add tell='..text)
 end
 
-function Interface:PlayChatSend(text)
+function Interface:ChatSend(text)
   self.sound('chat/send')
   world.Execute('history_add tell='..text)
 end
 
-function Interface:PlayDuelEquip()
+function Interface:DuelEquip()
   self.soundstack('duel/equip')
 end
 
-function Interface:PlayDuelShow()
+function Interface:DuelShow()
   self.soundstack('duel/show')
 end
 
-function Interface:PlayWelcome()
+function Interface:Welcome()
 
   if self.config.Get('settings', 'LogonSound') ~= 0 then
     self.sound('welcome')
@@ -248,114 +248,114 @@ function Interface:PlayWelcome()
 
 end
 
-function Interface:PlayDuelReplay()
+function Interface:DuelReplay()
 
   self.soundstack('duel/replay')
 
 end
 
-function Interface:PlayDuelReturn()
+function Interface:DuelReturn()
 
   self.soundstack('duel/return')
 
 end
 
-function Interface:PlayChallengeVictory(text)
+function Interface:ChallengeVictory(text)
   self.sound("challenge/victory")
   world.Execute('history_add challenge='..text)
 
 end
 
-function Interface:PlayChallengeStart(text)
+function Interface:ChallengeStart(text)
 
   self.sound('challenge/start')
   world.Execute('history_add challenge='..text)
 
 end
 
-function Interface:PlayChallengeSubmit(text)
+function Interface:ChallengeSubmit(text)
 
   self.sound('challenge/submit')
   world.Execute('history_add challenge='..text)
 
 end
 
-function Interface:PlayDuelDice()
+function Interface:DuelDice()
 
   self.soundstack('duel/dice')
 
 end
 
-function Interface:PlayDuelCoin()
+function Interface:DuelCoin()
 
   self.soundstack('duel/coin')
 
 end
 
-function Interface:PlayDuelWatch()
+function Interface:DuelWatch()
 
   self.soundstack('duel/watch')
   self.musicmode(2)
 
 end
 
-function Interface:PlayDuelUnwatch()
+function Interface:DuelUnwatch()
 
   self.soundstack('duel/unwatch')
   self.musicmode(1)
 
 end
 
-function Interface:PlayDuelXYZDetach()
+function Interface:DuelXYZDetach()
   self.soundstack('duel/detach')
 
 end
 
-function Interface:PlayDuelSendToGrave()
+function Interface:DuelSendToGrave()
   self.soundstack('duel/sendtograve')
 end
 
-function Interface:PlayDuelDiscard()
+function Interface:DuelDiscard()
 
   self.soundstack("duel/discard")
 
 end
 
-function Interface:PlayDuelShuffle()
+function Interface:DuelShuffle()
 
   self.soundstack('duel/shuffle')
 
 end
 
-function Interface:PlayDuelBanish()
+function Interface:DuelBanish()
   self.soundstack('duel/banish')
 end
 
-function Interface:PlayDuelSendToDeck()
+function Interface:DuelSendToDeck()
   self.soundstack('duel/sendtodeck')
 end
 
-function Interface:PlayDuelSendToExtraDeck()
+function Interface:DuelSendToExtraDeck()
   self.soundstack('duel/sendtoextradeck')
 end
 
-function Interface:PlayDuelSwitchFacedown()
+function Interface:DuelSwitchFacedown()
   self.soundstack('duel/switch_facedown')
 end
 
-function Interface:PlayDuelSwapControl()
+function Interface:DuelSwapControl()
   self.soundstack('duel/swapcontrol')
 end
 
-function Interface:PlayDuelLoseControl()
+function Interface:DuelLoseControl()
   self.soundstack('duel/losecontrol')
 end
 
-function Interface:PlayDuelGainControl()
+function Interface:DuelGainControl()
   self.soundstack('duel/gaincontrol')
 end
 
-function Interface:PlayDuelAddCounters(amount)
+function Interface:DuelAddCounters(amount)
   amount = tonumber(amount)
 
   local i
@@ -366,7 +366,7 @@ function Interface:PlayDuelAddCounters(amount)
 
 end
 
-function Interface:PlayDuelRemoveCounters(amount)
+function Interface:DuelRemoveCounters(amount)
   amount = tonumber(amount)
 
   local i
@@ -377,71 +377,71 @@ function Interface:PlayDuelRemoveCounters(amount)
 
 end
 
-function Interface:PlayReconnect()
+function Interface:Reconnect()
   self.sound('reconnect')
 end
 
-function Interface:PlayDeckCheck()
+function Interface:DeckCheck()
   self.sound('deck/check')
 end
 
-function Interface:PlayDuelPause()
+function Interface:DuelPause()
   self.sound('duel/pause')
 end
 
-function Interface:PlayDuelUnpause()
+function Interface:DuelUnpause()
   self.sound('duel/unpause')
 end
 
-function Interface:PlayDuelWatchNotification()
+function Interface:DuelWatchNotification()
   self.sound('duel/watchnotification')
 end
 
-function Interface:PlayDuelUnwatchNotification()
+function Interface:DuelUnwatchNotification()
   self.sound('duel/unwatchnotification')
 end
 
-function Interface:PlayRoomJoin()
+function Interface:RoomJoin()
   self.sound('room/join')
 end
 
-function Interface:PlayRoomJoinNotification()
+function Interface:RoomJoinNotification()
   self.sound('room/joinnotification')
 end
 
-function Interface:PlayRoomLeave()
+function Interface:RoomLeave()
   self.sound('room/leave')
 end
 
-function Interface:PlayRoomLeaveNotification()
+function Interface:RoomLeaveNotification()
   self.sound('room/leavenotification')
 end
 
-function Interface:PlayChallengeDisband()
+function Interface:ChallengeDisband()
   self.sound('challenge/disband')
 end
 
-function Interface:PlayLinkdead()
+function Interface:Linkdead()
   self.sound('linkdead')
 end
 
-function Interface:PlayChallengeCreate()
+function Interface:ChallengeCreate()
   self.sound('challenge/create')
 end
 
-function Interface:PlayRoomInvite()
+function Interface:RoomInvite()
   self.sound('room/invite')
 end
 
-function Interface:PlayRoomInviteNotification()
+function Interface:RoomInviteNotification()
   self.sound('room/invitenotification', 0, true)
 end
 
-function Interface:PlayDeckLoadNotification()
+function Interface:DeckLoadNotification()
   self.sound('deck/loadnotification')
 end
 
-function Interface:PlayRoomTeam(team)
+function Interface:RoomTeam(team)
 
   team = tonumber(team)
 

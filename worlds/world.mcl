@@ -119,7 +119,7 @@
   >
   <send>
 SetMusicMode(1)
-Interface:PlayWelcome()</send>
+Interface:Welcome()</send>
   </trigger>
   <trigger
    enabled="y"
@@ -130,7 +130,7 @@ Interface:PlayWelcome()</send>
   >
   <send>TriggerHandler:Load('portuguese')
 SetMusicMode(1)
-Interface:PlayWelcome()</send>
+Interface:Welcome()</send>
   </trigger>
   <trigger
    enabled="y"
@@ -228,7 +228,7 @@ SetMusicMode(2)</send>
   >
   <send>TriggerHandler:Load('english')
 SetMusicMode(1)
-Interface:PlayWelcome()</send>
+Interface:Welcome()</send>
   </trigger>
   <trigger
    enabled="y"
@@ -239,7 +239,7 @@ Interface:PlayWelcome()</send>
   >
   <send>TriggerHandler:Load('german')
 SetMusicMode(1)
-Interface:PlayWelcome()</send>
+Interface:Welcome()</send>
   </trigger>
   <trigger
    enabled="y"

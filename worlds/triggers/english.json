@@ -1,508 +1,508 @@
 [
   {
     "trigger": "* logged in.",
-    "action": "PlayLogin()"
+    "action": "Login()"
   },
   {
     "trigger": "* logged out.",
-    "action": "PlayLogout()"
+    "action": "Logout()"
   },
   {
     "trigger": "I don't understand that.",
-    "action": "PlayError()",
+    "action": "Error()",
     "omit": 1
   },
   {
     "trigger": "Deck exists, loading.",
-    "action": "PlayDeckChange()",
+    "action": "DeckChange()",
     "omit": 1
   },
   {
     "trigger": "Quit.",
-    "action": "PlayDeckQuit()",
+    "action": "DeckQuit()",
     "omit": 1
   },
   {
     "trigger": "Deck loaded with * cards.",
-    "action": "PlayDeckLoad()"
+    "action": "DeckLoad()"
   },
   {
     "trigger": "* loaded a deck.",
-    "action": "PlayDeckLoadNotification()"
+    "action": "DeckLoadNotification()"
   },
   {
     "trigger": "Deck * imported.",
-    "action": "PlayDeckImport()"
+    "action": "DeckImport()"
   },
   {
     "trigger": "Deck deleted.",
-    "action": "PlayDeckDelete()"
+    "action": "DeckDelete()"
   },
   {
     "trigger": "Deck cleared.",
-    "action": "PlayDeckClear()"
+    "action": "DeckClear()"
   },
   {
     "trigger": "Deck doesn't exist.",
-    "action": "PlayError()"
+    "action": "Error()"
   },
   {
     "trigger": "Deck doesn't exist or isn't publically available.",
-    "action": "PlayError()"
+    "action": "Error()"
   },
   {
     "trigger": "* chats: *",
-    "action": "PlayChatMessage(\"%0\")",
+    "action": "ChatMessage(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "Chat on.",
-    "action": "PlayChatOn()",
+    "action": "ChatOn()",
     "omit": 1
   },
   {
     "trigger": "Chat off.",
-    "action":"PlayChatOff()",
+    "action":"ChatOff()",
     "omit": 1
   },
   {
     "trigger": "* says: *",
-    "action": "PlayChatSay(\"%0\")",
+    "action": "ChatSay(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "Online players:",
-    "action": "PlayWho()",
+    "action": "Who()",
     "omit": 1
   },
   {
     "trigger": "Your hand is empty.",
-    "action": "PlayDuelEmpty()"
+    "action": "DuelEmpty()"
   },
   {
     "trigger": "Table is empty.",
-    "action": "PlayDuelEmpty()"
+    "action": "DuelEmpty()"
   },
   {
     "trigger": "Waiting for opponent.",
-    "action": "PlayDuelWait()",
+    "action": "DuelWait()",
     "omit": 1
   },
   {
     "trigger": "Your LP: * Opponent LP: *",
-    "action": "PlayDuelScore()"
+    "action": "DuelScore()"
   },
   {
     "trigger": "LP: *: * *: *",
-    "action": "PlayDuelScore()"
+    "action": "DuelScore()"
   },
   {
     "trigger": "Opponent's table:",
-    "action": "PlayDuelTable()"
+    "action": "DuelTable()"
   },
   {
     "trigger": "Your table:",
-    "action": "PlayDuelTable()"
+    "action": "DuelTable()"
   },
   {
     "trigger": "* table:",
-    "action": "PlayDuelTable()"
+    "action": "DuelTable()"
   },
   {
     "trigger": "You won (*).",
-    "action": "PlayDuelWin()",
+    "action": "DuelWin()",
     "omit": 1
   },
   {
     "trigger": "Do you want to use the effect from * in *?",
-    "action": "PlayPrompt()"
+    "action": "Prompt()"
   },
   {
     "trigger": "Duel created. You are player *.",
-    "action": "PlayDuelStart()",
+    "action": "DuelStart()",
     "omit": 1
   },
   {
     "trigger": "Activating *",
-    "action": "PlayDuelActivate()"
+    "action": "DuelActivate()"
   },
   {
     "trigger": "entering standby phase.",
-    "action": "PlayDuelStandby()",
+    "action": "DuelStandby()",
     "omit": 1
   },
   {
     "trigger": "entering end phase.",
-    "action": "PlayDuelEnd()",
+    "action": "DuelEnd()",
     "omit": 1
   },
   {
     "trigger": "* activating *",
-    "action": "PlayDuelEffect()"
+    "action": "DuelEffect()"
   },
   {
     "trigger": "entering main1 phase.",
-    "action": "PlayDuelMain()",
+    "action": "DuelMain()",
     "omit": 1
   },
   {
     "trigger": "Drew * cards*",
-    "action": "PlayDuelDraw()"
+    "action": "DuelDraw()"
   },
   {
     "trigger": "* sets * in face down position.",
-    "action": "PlayDuelFacedown()"
+    "action": "DuelFacedown()"
   },
   {
     "trigger": "You set * in face down position.",
-    "action": "PlayDuelFacedown()"
+    "action": "DuelFacedown()"
   },
   {
     "trigger": "entering battle start phase.",
-    "action": "PlayDuelBattle()",
+    "action": "DuelBattle()",
     "omit": 1
   },
   {
     "trigger": "Select card to attack with:",
-    "action": "PlayDuelAttention()"
+    "action": "DuelAttention()"
   },
   {
     "trigger": "You lost (*).",
-    "action": "PlayDuelLose()",
+    "action": "DuelLose()",
     "omit": 1
   },
   {
     "trigger": "Invalid spec.",
-    "action": "PlayDuelInvalid()"
+    "action": "DuelInvalid()"
   },
   {
     "trigger": "Select chain (c to cancel):",
-    "action": "PlayDuelChain()"
+    "action": "DuelChain()"
   },
   {
     "trigger": "* drew * cards*",
-    "action": "PlayDuelDraw()"
+    "action": "DuelDraw()"
   },
   {
     "trigger": "* special summoning *",
-    "action": "PlayDuelSpecial()"
+    "action": "DuelSpecial()"
   },
   {
     "trigger": "* sets * in face-down defense position.",
-    "action": "PlayDuelDefense()"
+    "action": "DuelDefense()"
   },
   {
     "trigger": "You set * in face-down defense position.",
-    "action": "PlayDuelFacedown()"
+    "action": "DuelFacedown()"
   },
   {
     "trigger": "entering main2 phase.",
-    "action": "PlayDuelMain()",
+    "action": "DuelMain()",
     "omit": 1
   },
   {
     "trigger": "Card * destroyed.",
-    "action": "PlayDuelDestroy()"
+    "action": "DuelDestroy()"
   },
   {
     "trigger": "begin damage",
-    "action": "PlayDuelAttack()",
+    "action": "DuelAttack()",
     "omit": 1
   },
   {
     "trigger": "Select a card:",
-    "action": "PlayDuelAttention()"
+    "action": "DuelAttention()"
   },
   {
     "trigger": "* attacks",
-    "action": "PlayDuelDamage()"
+    "action": "DuelDamage()"
   },
   {
     "trigger": "* summoning * (*/*) in face-up attack position.",
-    "action": "PlayDuelNormal()"
+    "action": "DuelNormal()"
   },
   {
     "trigger": "Duel request sent to *.",
-    "action": "PlayDuelRequest()"
+    "action": "DuelRequest()"
   },
   {
     "trigger": "* turn.",
-    "action": "PlayDuelAttention()"
+    "action": "DuelAttention()"
   },
   {
     "trigger": "The position of card * (*) was changed to face-up.",
-    "action": "PlayDuelFlip()"
+    "action": "DuelFlip()"
   },
   {
     "trigger": "The position of card * (*) was changed to face-down.",
-    "action": "PlayDuelSwitchFacedown()"
+    "action": "DuelSwitchFacedown()"
   },
   {
     "trigger": "The position of card * (*) was changed to face-down defense.",
-    "action": "PlayDuelSwitchFacedown()"
+    "action": "DuelSwitchFacedown()"
   },
   {
     "trigger": "The position of card * (*) was changed to face-up attack.",
-    "action": "PlayDuelSwitchAttack()"
+    "action": "DuelSwitchAttack()"
   },
   {
     "trigger": "The position of card * (*) was changed to face-up defense.",
-    "action": "PlayDuelSwitchDefense()"
+    "action": "DuelSwitchDefense()"
   },
   {
     "trigger": "end damage",
-    "action": "PlayDuelDamageEnd()",
+    "action": "DuelDamageEnd()",
     "omit": 1
   },
   {
     "trigger": "* prepares to attack * with *",
-    "action": "PlayDuelAim()"
+    "action": "DuelAim()"
   },
   {
     "trigger": "* prepares to attack with *",
-    "action": "PlayDuelAim()"
+    "action": "DuelAim()"
   },
   {
     "trigger": "* targets *",
-    "action": "PlayDuelAim()"
+    "action": "DuelAim()"
   },
   {
     "trigger": "* tributes *",
-    "action": "PlayDuelTribute()"
+    "action": "DuelTribute()"
   },
   {
     "trigger": "You tribute *",
-    "action": "PlayDuelTribute()"
+    "action": "DuelTribute()"
   },
   {
     "trigger": "* (*) equipped to * (*).",
-    "action": "PlayDuelEquip()"
+    "action": "DuelEquip()"
   },
   {
     "trigger": "* shows you * cards.",
-    "action": "PlayDuelShow()"
+    "action": "DuelShow()"
   },
   {
     "trigger": "* pays * LP. Their LP is now *.",
-    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
+    "action": "LoseLifepoints(\"%2\", \"%3\")"
   },
   {
     "trigger": "You pay * LP. Your LP is now *.",
-    "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
+    "action": "LoseLifepoints(\"%1\", \"%2\")"
   },
   {
     "trigger": "* lp decreased by *, now *",
-    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
+    "action": "LoseLifepoints(\"%2\", \"%3\")"
   },
   {
     "trigger": "* lp increased by *, now *",
-    "action": "PlayEarnLifepoints(\"%2\", \"%3\")"
+    "action": "EarnLifepoints(\"%2\", \"%3\")"
   },
   {
     "trigger": "You tell *: *",
-    "action": "PlayChatSend(\"%0\")",
+    "action": "ChatSend(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "You reply to *: *",
-    "action": "PlayChatSend(\"%0\")",
+    "action": "ChatSend(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "* tells you: *",
-    "action": "PlayChatReceive(\"%0\")",
+    "action": "ChatReceive(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "* replies: *",
-    "action": "PlayChatReceive(\"%0\")",
+    "action": "ChatReceive(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "Announcement: *",
-    "action": "PlayChatAnnouncement(\"%0\")",
+    "action": "ChatAnnouncement(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "Card * (*) returned to hand.",
-    "action": "PlayDuelReturn()"
+    "action": "DuelReturn()"
   },
   {
     "trigger": "* card * (*) returned to their hand.",
-    "action": "PlayDuelReturn()"
+    "action": "DuelReturn()"
   },
   {
     "trigger": "Challenge: The duel between * and * has begun!",
-    "action": "PlayChallengeStart(\"%0\")"
+    "action": "ChallengeStart(\"%0\")"
   },
   {
     "trigger": "Challenge: * won the duel between * and * (*).",
-    "action": "PlayChallengeVictory(\"%0\")"
+    "action": "ChallengeVictory(\"%0\")"
   },
   {
     "trigger": "Die landed on: *",
-    "action": "PlayDuelDice()"
+    "action": "DuelDice()"
   },
   {
     "trigger": "Challenge: * has cowardly submitted to *.",
-    "action": "PlayChallengeSubmit(\"%0\")"
+    "action": "ChallengeSubmit(\"%0\")"
   },
   {
     "trigger": "Watching duel between * and *.",
-    "action": "PlayDuelWatch()"
+    "action": "DuelWatch()"
   },
   {
     "trigger": "Watching stopped.",
-    "action": "PlayDuelUnwatch()"
+    "action": "DuelUnwatch()"
   },
   {
     "trigger": "* flip summons * (*).",
-    "action": "PlayDuelSwitchFlip()"
+    "action": "DuelSwitchFlip()"
   },
   {
     "trigger": "you detached *.",
-    "action": "PlayDuelXYZDetach()"
+    "action": "DuelXYZDetach()"
   },
   {
     "trigger": "* detached *",
-    "action": "PlayDuelXYZDetach()"
+    "action": "DuelXYZDetach()"
   },
   {
     "trigger": "* card * (*) was sent to the graveyard.",
-    "action": "PlayDuelSendToGrave()"
+    "action": "DuelSendToGrave()"
   },
   {
     "trigger": "you discarded * (*).",
-    "action": "PlayDuelDiscard()"
+    "action": "DuelDiscard()"
   },
   {
     "trigger": "* discarded * (*).",
-    "action": "PlayDuelDiscard()"
+    "action": "DuelDiscard()"
   },
   {
     "trigger": "* shuffled their deck.",
-    "action": "PlayDuelShuffle()"
+    "action": "DuelShuffle()"
   },
   {
     "trigger": "you shuffled your deck.",
-    "action": "PlayDuelShuffle()"
+    "action": "DuelShuffle()"
   },
   {
     "trigger": "* card * (*) was banished.",
-    "action": "PlayDuelBanish()"
+    "action": "DuelBanish()"
   },
   {
     "trigger": "* card * (*) returned to * deck.",
-    "action": "PlayDuelSendToDeck()"
+    "action": "DuelSendToDeck()"
   },
   {
     "trigger": "* card * (*) returned to * extra deck.",
-    "action": "PlayDuelSendToExtraDeck()",
+    "action": "DuelSendToExtraDeck()",
     "sequence": 99
   },
   {
     "trigger": "card * (*) swapped control towards * and is now located at *.",
-    "action": "PlayDuelSwapControl()"
+    "action": "DuelSwapControl()"
   },
   {
     "trigger": "your card * (*) changed control to * and is now located at *.",
-    "action": "PlayDuelLoseControl()",
+    "action": "DuelLoseControl()",
     "sequence": 99
   },
   {
     "trigger": "you now control * card * (*) and its located at *.",
-    "action": "PlayDuelGainControl()"
+    "action": "DuelGainControl()"
   },
   {
     "trigger": "* card * (*) changed controller to * and is now located at *.",
-    "action": "PlayDuelSwapControl()"
+    "action": "DuelSwapControl()"
   },
   {
     "trigger": "* counters of type * placed on *",
-    "action": "PlayDuelAddCounters(\"%1\")"
+    "action": "DuelAddCounters(\"%1\")"
   },
   {
     "trigger": "* counters of type * removed from *",
-    "action": "PlayDuelRemoveCounters(\"%1\")"
+    "action": "DuelRemoveCounters(\"%1\")"
   },
   {
     "trigger": "* reconnected.",
-    "action": "PlayReconnect()"
+    "action": "Reconnect()"
   },
   {
     "trigger": "Check completed with * errors.",
-    "action": "PlayDeckCheck()"
+    "action": "DeckCheck()"
   },
   {
     "trigger": "Duel paused until all duelists reconnect.",
-    "action": "PlayDuelPause()"
+    "action": "DuelPause()"
   },
   {
     "trigger": "Duel continues.",
-    "action": "PlayDuelUnpause()"
+    "action": "DuelUnpause()"
   },
   {
     "trigger": "* is no longer watching this duel.",
-    "action": "PlayDuelUnwatchNotification()"
+    "action": "DuelUnwatchNotification()"
   },
   {
     "trigger": "* is now watching this duel.",
-    "action": "PlayDuelWatchNotification()"
+    "action": "DuelWatchNotification()"
   },
   {
     "trigger": "You joined your new room. You need to finish the setup to make it available to the other players.",
-    "action": "PlayRoomJoin()"
+    "action": "RoomJoin()"
   },
   {
     "trigger": "You joined * room. Use the teams and move command to move yourself into a team, or stay outside of any team to watch the duel.",
-    "action": "PlayRoomJoin()"
+    "action": "RoomJoin()"
   },
   {
     "trigger": "* joined this room.",
-    "action": "PlayRoomJoinNotification()"
+    "action": "RoomJoinNotification()"
   },
   {
     "trigger": "You left the room.",
-    "action": "PlayRoomLeave()"
+    "action": "RoomLeave()"
   },
   {
     "trigger": "* left this room.",
-    "action": "PlayRoomLeaveNotification()"
+    "action": "RoomLeaveNotification()"
   },
   {
     "trigger": "Challenge: * disbanded their duel room.",
-    "action": "PlayChallengeDisband()"
+    "action": "ChallengeDisband()"
   },
   {
     "trigger": "* lost connection while in a duel.",
-    "action": "PlayLinkdead()"
+    "action": "Linkdead()"
   },
   {
     "trigger": "Challenge: * created a new duel room.",
-    "action": "PlayChallengeCreate()"
+    "action": "ChallengeCreate()"
   },
   {
     "trigger": "* invites you to join his duel room. Type join * to do so.",
-    "action": "PlayRoomInviteNotification()"
+    "action": "RoomInviteNotification()"
   },
   {
     "trigger": "An invitation was sent to *.",
-    "action": "PlayRoomInvite()"
+    "action": "RoomInvite()"
   },
   {
     "trigger": "You were moved into team *.",
-    "action": "PlayRoomTeam(\"%1\")"
+    "action": "RoomTeam(\"%1\")"
   },
   {
     "trigger": "* was moved into team *.",
-    "action": "PlayRoomTeam(\"%2\")"
+    "action": "RoomTeam(\"%2\")"
   },
   {
     "trigger": "* was removed from any team.",
-    "action": "PlayRoomTeam(0)"
+    "action": "RoomTeam(0)"
   },
   {
     "trigger": "You were removed from any team.",
-    "action": "PlayRoomTeam(0)"
+    "action": "RoomTeam(0)"
   }
 ]

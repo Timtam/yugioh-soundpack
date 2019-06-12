@@ -1,504 +1,504 @@
 [
   {
     "trigger": "* がログインしました。",
-    "action": "PlayLogin()"
+    "action": "Login()"
   },
   {
     "trigger": "* がログアウトしました。",
-    "action": "PlayLogout()"
+    "action": "Logout()"
   },
   {
     "trigger": "I don't understand that.",
-    "action": "PlayError()",
+    "action": "Error()",
     "omit": 1
   },
   {
     "trigger": "デッキが見つかりました、読み込んでいます",
-    "action": "PlayDeckChange()",
+    "action": "DeckChange()",
     "omit": 1
   },
   {
     "trigger": "終了",
-    "action": "PlayDeckQuit()",
+    "action": "DeckQuit()",
     "omit": 1
   },
   {
     "trigger": "* 枚のカードをデッキから読み込みました。",
-    "action": "PlayDeckLoad()"
+    "action": "DeckLoad()"
   },
   {
     "trigger": " がデッキを読み込みました。",
-    "action": "PlayDeckLoadNotification()"
+    "action": "DeckLoadNotification()"
   },
   {
     "trigger": "Deck imported.",
-    "action": "PlayDeckImport()"
+    "action": "DeckImport()"
   },
   {
     "trigger": "デッキを削除しました",
-    "action": "PlayDeckDelete()"
+    "action": "DeckDelete()"
   },
   {
     "trigger": "デッキをクリアしました",
-    "action": "PlayDeckClear()"
+    "action": "DeckClear()"
   },
   {
     "trigger": "デッキがありません。",
-    "action": "PlayError()"
+    "action": "Error()"
   },
   {
     "trigger": "* からチャット: *",
-    "action": "PlayChatMessage(\"%0\")",
+    "action": "ChatMessage(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "chatコマンド　有効",
-    "action": "PlayChatOn()",
+    "action": "ChatOn()",
     "omit": 1
   },
   {
     "trigger": "chatコマンド　無効",
-    "action":"PlayChatOff()",
+    "action":"ChatOff()",
     "omit": 1
   },
   {
     "trigger": "* の発言: *",
-    "action": "PlayChatSay(\"%0\")",
+    "action": "ChatSay(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "オンラインのプレイヤー: ",
-    "action": "PlayWho()",
+    "action": "Who()",
     "omit": 1
   },
   {
     "trigger": "Your hand is empty.",
-    "action": "PlayDuelEmpty()"
+    "action": "DuelEmpty()"
   },
   {
     "trigger": "テーブルは空です。",
-    "action": "PlayDuelEmpty()"
+    "action": "DuelEmpty()"
   },
   {
     "trigger": "対戦相手を待っています。",
-    "action": "PlayDuelWait()",
+    "action": "DuelWait()",
     "omit": 1
   },
   {
     "trigger": "自分のLP: * 相手のLP: *",
-    "action": "PlayDuelScore()"
+    "action": "DuelScore()"
   },
   {
     "trigger": "LP: *: * *: *",
-    "action": "PlayDuelScore()"
+    "action": "DuelScore()"
   },
   {
     "trigger": "相手のテーブル: ",
-    "action": "PlayDuelTable()"
+    "action": "DuelTable()"
   },
   {
     "trigger": "自分のテーブル: ",
-    "action": "PlayDuelTable()"
+    "action": "DuelTable()"
   },
   {
     "trigger": "* のテーブル: ",
-    "action": "PlayDuelTable()"
+    "action": "DuelTable()"
   },
   {
     "trigger": "あなたの勝利です(*)",
-    "action": "PlayDuelWin()",
+    "action": "DuelWin()",
     "omit": 1
   },
   {
     "trigger": "* にある * の効果を使用しますか?",
-    "action": "PlayPrompt()"
+    "action": "Prompt()"
   },
   {
     "trigger": "デュエルを作成しました。あなたはプレイヤー*です。",
-    "action": "PlayDuelStart()",
+    "action": "DuelStart()",
     "omit": 1
   },
   {
     "trigger": "* を有効化します",
-    "action": "PlayDuelActivate()"
+    "action": "DuelActivate()"
   },
   {
     "trigger": "スタンバイフェイズ開始",
-    "action": "PlayDuelStandby()",
+    "action": "DuelStandby()",
     "omit": 1
   },
   {
     "trigger": "エンドフェイズ開始",
-    "action": "PlayDuelEnd()",
+    "action": "DuelEnd()",
     "omit": 1
   },
   {
     "trigger": "* は * を発動",
-    "action": "PlayDuelEffect()"
+    "action": "DuelEffect()"
   },
   {
     "trigger": "メインフェイズ1開始",
-    "action": "PlayDuelMain()",
+    "action": "DuelMain()",
     "omit": 1
   },
   {
     "trigger": "*枚のカードをドロー: *",
-    "action": "PlayDuelDraw()"
+    "action": "DuelDraw()"
   },
   {
     "trigger": "* は * を 裏向き表\示でセット。",
-    "action": "PlayDuelFacedown()"
+    "action": "DuelFacedown()"
   },
   {
     "trigger": "* を 裏向き表\示でセットします。",
-    "action": "PlayDuelFacedown()"
+    "action": "DuelFacedown()"
   },
   {
     "trigger": "バトルスタートフェイズ開始",
-    "action": "PlayDuelBattle()",
+    "action": "DuelBattle()",
     "omit": 1
   },
   {
     "trigger": "攻撃させるモンスターを選んでください: ",
-    "action": "PlayDuelAttention()"
+    "action": "DuelAttention()"
   },
   {
     "trigger": "あなたの敗北です(*)",
-    "action": "PlayDuelLose()",
+    "action": "DuelLose()",
     "omit": 1
   },
   {
     "trigger": "位置指定が間違っています。",
-    "action": "PlayDuelInvalid()"
+    "action": "DuelInvalid()"
   },
   {
     "trigger": "チェインを選んでください(cで取り消し)。",
-    "action": "PlayDuelChain()"
+    "action": "DuelChain()"
   },
   {
     "trigger": "*は *枚のカードをドロー。",
-    "action": "PlayDuelDraw()"
+    "action": "DuelDraw()"
   },
   {
     "trigger": "* を *表\示で特殊召喚。",
-    "action": "PlayDuelSpecial()"
+    "action": "DuelSpecial()"
   },
   {
     "trigger": "* は * を 裏向き　守備表\示でセット",
-    "action": "PlayDuelDefense()"
+    "action": "DuelDefense()"
   },
   {
     "trigger": "* を 裏向き　守備表\示でセットします。",
-    "action": "PlayDuelFacedown()"
+    "action": "DuelFacedown()"
   },
   {
     "trigger": "メインフェイズ2開始",
-    "action": "PlayDuelMain()",
+    "action": "DuelMain()",
     "omit": 1
   },
   {
     "trigger": "カード * が破壊されました。",
-    "action": "PlayDuelDestroy()"
+    "action": "DuelDestroy()"
   },
   {
     "trigger": "ダメージフェイズ開始",
-    "action": "PlayDuelAttack()",
+    "action": "DuelAttack()",
     "omit": 1
   },
   {
     "trigger": "カードを選んでください: ",
-    "action": "PlayDuelAttention()"
+    "action": "DuelAttention()"
   },
   {
     "trigger": "* を攻撃",
-    "action": "PlayDuelDamage()"
+    "action": "DuelDamage()"
   },
   {
     "trigger": "* は * (*/*) を 表\向き　攻撃表\示で召喚。",
-    "action": "PlayDuelNormal()"
+    "action": "DuelNormal()"
   },
   {
     "trigger": "Duel request sent to *.",
-    "action": "PlayDuelRequest()"
+    "action": "DuelRequest()"
   },
   {
     "trigger": "*ターン*",
-    "action": "PlayDuelAttention()"
+    "action": "DuelAttention()"
   },
   {
     "trigger": "カード * (*) のポジションが 表\向き に変更されました。",
-    "action": "PlayDuelFlip()"
+    "action": "DuelFlip()"
   },
   {
     "trigger": "カード * (*) のポジションが 裏向き に変更されました。",
-    "action": "PlayDuelSwitchFacedown()"
+    "action": "DuelSwitchFacedown()"
   },
   {
     "trigger": "カード * (*) のポジションが 裏向き　守備 に変更されました。",
-    "action": "PlayDuelSwitchFacedown()"
+    "action": "DuelSwitchFacedown()"
   },
   {
     "trigger": "カード * (*) のポジションが 表\向き　攻撃 に変更されました。",
-    "action": "PlayDuelSwitchAttack()"
+    "action": "DuelSwitchAttack()"
   },
   {
     "trigger": "カード * (*) のポジションが 表\向き　守備 に変更されました。",
-    "action": "PlayDuelSwitchDefense()"
+    "action": "DuelSwitchDefense()"
   },
   {
     "trigger": "ダメージフェイズ終了",
-    "action": "PlayDuelDamageEnd()",
+    "action": "DuelDamageEnd()",
     "omit": 1
   },
   {
     "trigger": "* は * (*) で攻撃準備",
-    "action": "PlayDuelAim()"
+    "action": "DuelAim()"
   },
   {
     "trigger": "* は * で攻撃準備",
-    "action": "PlayDuelAim()"
+    "action": "DuelAim()"
   },
   {
     "trigger": "* は * をターゲット",
-    "action": "PlayDuelAim()"
+    "action": "DuelAim()"
   },
   {
     "trigger": "* は * をリリース",
-    "action": "PlayDuelTribute()"
+    "action": "DuelTribute()"
   },
   {
     "trigger": "* をリリースします。",
-    "action": "PlayDuelTribute()"
+    "action": "DuelTribute()"
   },
   {
     "trigger": "* に装備しました。",
-    "action": "PlayDuelEquip()"
+    "action": "DuelEquip()"
   },
   {
     "trigger": "* は * 枚のカードを宣言。",
-    "action": "PlayDuelShow()"
+    "action": "DuelShow()"
   },
   {
     "trigger": "* は * のLPを支払います、残り *",
-    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
+    "action": "LoseLifepoints(\"%2\", \"%3\")"
   },
   {
     "trigger": "* のLPを支払います、残り *。",
-    "action": "PlayLoseLifepoints(\"%1\", \"%2\")"
+    "action": "LoseLifepoints(\"%1\", \"%2\")"
   },
   {
     "trigger": "*のLPが * 減少しました、残り *",
-    "action": "PlayLoseLifepoints(\"%2\", \"%3\")"
+    "action": "LoseLifepoints(\"%2\", \"%3\")"
   },
   {
     "trigger": "*のLPが * 増加しました、残り *",
-    "action": "PlayEarnLifepoints(\"%2\", \"%3\")"
+    "action": "EarnLifepoints(\"%2\", \"%3\")"
   },
   {
     "trigger": "* に *",
-    "action": "PlayChatSend(\"%0\")",
+    "action": "ChatSend(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "You reply to *: *",
-    "action": "PlayChatSend(\"%0\")",
+    "action": "ChatSend(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "* から *",
-    "action": "PlayChatReceive(\"%0\")",
+    "action": "ChatReceive(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "* replies: *",
-    "action": "PlayChatReceive(\"%0\")",
+    "action": "ChatReceive(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "アナウンス: *",
-    "action": "PlayChatAnnouncement(\"%0\")",
+    "action": "ChatAnnouncement(\"%0\")",
     "sequence": 90
   },
   {
     "trigger": "カード * (*) を手札に戻しました。",
-    "action": "PlayDuelReturn()"
+    "action": "DuelReturn()"
   },
   {
     "trigger": "*のカード * (*) が手札に戻りました。",
-    "action": "PlayDuelReturn()"
+    "action": "DuelReturn()"
   },
   {
     "trigger": "Challenge: * と * のデュエルが始まりました！",
-    "action": "PlayChallengeStart(\"%0\")"
+    "action": "ChallengeStart(\"%0\")"
   },
   {
     "trigger": "Challenge: * が * と * のデュエルに勝利しました (*).",
-    "action": "PlayChallengeVictory(\"%0\")"
+    "action": "ChallengeVictory(\"%0\")"
   },
   {
     "trigger": "サイコロの結果: *",
-    "action": "PlayDuelDice()"
+    "action": "DuelDice()"
   },
   {
     "trigger": "Challenge: * は * を前にギブアップしました。",
-    "action": "PlayChallengeSubmit(\"%0\")"
+    "action": "ChallengeSubmit(\"%0\")"
   },
   {
     "trigger": "* と * とのデュエルを観察中",
-    "action": "PlayDuelWatch()"
+    "action": "DuelWatch()"
   },
   {
     "trigger": "観察を終了しました。",
-    "action": "PlayDuelUnwatch()"
+    "action": "DuelUnwatch()"
   },
   {
     "trigger": "* は * を反転召喚。",
-    "action": "PlayDuelSwitchFlip()"
+    "action": "DuelSwitchFlip()"
   },
   {
     "trigger": "* を外しました。",
-    "action": "PlayDuelXYZDetach()"
+    "action": "DuelXYZDetach()"
   },
   {
     "trigger": "* は * を外しました。",
-    "action": "PlayDuelXYZDetach()"
+    "action": "DuelXYZDetach()"
   },
   {
     "trigger": "* が墓地へ送られました。",
-    "action": "PlayDuelSendToGrave()"
+    "action": "DuelSendToGrave()"
   },
   {
     "trigger": "* を捨てました。",
-    "action": "PlayDuelDiscard()"
+    "action": "DuelDiscard()"
   },
   {
     "trigger": "* は * (*) を捨てました。",
-    "action": "PlayDuelDiscard()"
+    "action": "DuelDiscard()"
   },
   {
     "trigger": "* はデッキをシャッフル",
-    "action": "PlayDuelShuffle()"
+    "action": "DuelShuffle()"
   },
   {
     "trigger": "デッキをシャッフルしました。",
-    "action": "PlayDuelShuffle()"
+    "action": "DuelShuffle()"
   },
   {
     "trigger": "* は除外されました。",
-    "action": "PlayDuelBanish()"
+    "action": "DuelBanish()"
   },
   {
     "trigger": "*のカード * (*) が*へ戻りました。",
-    "action": "PlayDuelSendToDeck()"
+    "action": "DuelSendToDeck()"
   },
   {
     "trigger": "*のカード * (*) が*に戻りました。",
-    "action": "PlayDuelSendToExtraDeck()",
+    "action": "DuelSendToExtraDeck()",
     "sequence": 99
   },
   {
     "trigger": "カード * (*) の制御が * に変更され、現在 * として存在します。",
-    "action": "PlayDuelSwapControl()"
+    "action": "DuelSwapControl()"
   },
   {
     "trigger": "自分のカード * (*) の制御が * に変更され、 *。",
-    "action": "PlayDuelLoseControl()",
+    "action": "DuelLoseControl()",
     "sequence": 99
   },
   {
     "trigger": "現在 * のカード * (*) の制御を奪い、そのカードは *。",
-    "action": "PlayDuelGainControl()"
+    "action": "DuelGainControl()"
   },
   {
     "trigger": "*カード * (*) の制御が * に変更され、 *。",
-    "action": "PlayDuelSwapControl()"
+    "action": "DuelSwapControl()"
   },
   {
     "trigger": "*つの * タイプのカウンターが * に置かれました",
-    "action": "PlayDuelAddCounters(\"%1\")"
+    "action": "DuelAddCounters(\"%1\")"
   },
   {
     "trigger": "*つの * タイプのカウンターが *  から取り除かれました",
-    "action": "PlayDuelRemoveCounters(\"%1\")"
+    "action": "DuelRemoveCounters(\"%1\")"
   },
   {
     "trigger": "*再接続しました。 .",
-    "action": "PlayReconnect()"
+    "action": "Reconnect()"
   },
   {
     "trigger": "チェック完了、エラー*",
-    "action": "PlayDeckCheck()"
+    "action": "DeckCheck()"
   },
   {
     "trigger": "全てのデュエリストが再接続するまで、デュエルをポーズします。",
-    "action": "PlayDuelPause()"
+    "action": "DuelPause()"
   },
   {
     "trigger": "デュエルが再開されます。",
-    "action": "PlayDuelUnpause()"
+    "action": "DuelUnpause()"
   },
   {
     "trigger": "*  が、このデュエルの観察をやめました。",
-    "action": "PlayDuelUnwatchNotification()"
+    "action": "DuelUnwatchNotification()"
   },
   {
     "trigger": "* が、このデュエルを観察しています。",
-    "action": "PlayDuelWatchNotification()"
+    "action": "DuelWatchNotification()"
   },
   {
     "trigger": "新しいルームに入室しました。ほかのプレイヤーから見えるようにするには、ルーム設定を完了させてください。",
-    "action": "PlayRoomJoin()"
+    "action": "RoomJoin()"
   },
   {
     "trigger": "* のルームに入室しました。teams または move コマンドを使ってチームを設定できます。どのチームにも所属しないことで、デュエルを観察することができます。",
-    "action": "PlayRoomJoin()"
+    "action": "RoomJoin()"
   },
   {
     "trigger": "* が入室しました。",
-    "action": "PlayRoomJoinNotification()"
+    "action": "RoomJoinNotification()"
   },
   {
     "trigger": "ルームから退室しました。",
-    "action": "PlayRoomLeave()"
+    "action": "RoomLeave()"
   },
   {
     "trigger": "* が退室しました。",
-    "action": "PlayRoomLeaveNotification()"
+    "action": "RoomLeaveNotification()"
   },
   {
     "trigger": "Challenge: * が自分のルームを削除しました。",
-    "action": "PlayChallengeDisband()"
+    "action": "ChallengeDisband()"
   },
   {
     "trigger": "デュエル中の * との接続が切れました。",
-    "action": "PlayLinkdead()"
+    "action": "Linkdead()"
   },
   {
     "trigger": "Challenge: * が新しいルームを作成しました。",
-    "action": "PlayChallengeCreate()"
+    "action": "ChallengeCreate()"
   },
   {
     "trigger": "* からデュエルルームへの招待が届いています。 join * で参加できます。",
-    "action": "PlayRoomInviteNotification()"
+    "action": "RoomInviteNotification()"
   },
   {
     "trigger": "* にルームへの招待が送られました。",
-    "action": "PlayRoomInvite()"
+    "action": "RoomInvite()"
   },
   {
     "trigger": "チーム * にチームを移動しました。",
-    "action": "PlayRoomTeam(\"%1\")"
+    "action": "RoomTeam(\"%1\")"
   },
   {
     "trigger": "* が チーム * にチームを移動しました。",
-    "action": "PlayRoomTeam(\"%2\")"
+    "action": "RoomTeam(\"%2\")"
   },
   {
     "trigger": "* がチームから外れました。",
-    "action": "PlayRoomTeam(0)"
+    "action": "RoomTeam(0)"
   },
   {
     "trigger": "チームから外れました。",
-    "action": "PlayRoomTeam(0)"
+    "action": "RoomTeam(0)"
   }
 ]
