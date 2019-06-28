@@ -323,11 +323,11 @@
     "action": "DuelReturn()"
   },
   {
-    "trigger": "Challenge: Das Duell zwischen * und * hat begonnen!",
+    "trigger": "Challenge: Das * zwischen * und * hat begonnen!",
     "action": "ChallengeStart(\"%0\")"
   },
   {
-    "trigger": "Challenge: * hat das Duell zwischen * und * gewonnen (*).",
+    "trigger": "Challenge: * hat das Duell zwischen * und * gewonnen.",
     "action": "ChallengeVictory(\"%0\")"
   },
   {
