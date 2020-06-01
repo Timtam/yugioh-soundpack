@@ -27,11 +27,15 @@
     "action": "DeckLoad()"
   },
   {
-    "trigger": "Deck imported.",
+    "trigger": "* cargó una baraja.",
+    "action": "DeckLoadNotification()"
+  },
+  {
+    "trigger": "Baraja * importada.",
     "action": "DeckImport()"
   },
   {
-    "trigger": "baraja borrada.",
+    "trigger": "baraja eliminada.",
     "action": "DeckDelete()"
   },
   {
@@ -40,6 +44,10 @@
   },
   {
     "trigger": "la baraja no existe.",
+    "action": "Error()"
+  },
+  {
+    "trigger": "La baraja no existe o no está disponible públicamente.",
     "action": "Error()"
   },
   {
@@ -110,16 +118,16 @@
     "omit": 1
   },
   {
-    "trigger": "activas *",
+    "trigger": "activando *",
     "action": "DuelActivate()"
   },
   {
-    "trigger": "entrando en  fase de espera",
+    "trigger": "entrando en  standby phase",
     "action": "DuelStandby()",
     "omit": 1
   },
   {
-    "trigger": "entrando en  fase final",
+    "trigger": "entrando en  end phase",
     "action": "DuelEnd()",
     "omit": 1
   },
@@ -128,7 +136,7 @@
     "action": "DuelEffect()"
   },
   {
-    "trigger": "entrando en  Fase principal",
+    "trigger": "entrando en  main1 phase",
     "action": "DuelMain()",
     "omit": 1
   },
@@ -145,7 +153,7 @@
     "action": "DuelFacedown()"
   },
   {
-    "trigger": "entrando en  phase de comienzo de combate",
+    "trigger": "entrando en  battle start phase",
     "action": "DuelBattle()",
     "omit": 1
   },
@@ -171,7 +179,7 @@
     "action": "DuelDraw()"
   },
   {
-    "trigger": "* invocando especial *",
+    "trigger": "* invoca de forma especial *",
     "action": "DuelSpecial()"
   },
   {
@@ -183,7 +191,7 @@
     "action": "DuelFacedown()"
   },
   {
-    "trigger": "entrando en  fase principal 2",
+    "trigger": "entrando en  main2 phase",
     "action": "DuelMain()",
     "omit": 1
   },
@@ -209,7 +217,7 @@
     "action": "DuelNormal()"
   },
   {
-    "trigger": "Solicitud de duelo enviada a *.",
+    "trigger": "Duel request sent to *.",
     "action": "DuelRequest()"
   },
   {
@@ -266,7 +274,7 @@
     "action": "DuelEquip()"
   },
   {
-    "trigger": "* te muestra * cartas.",
+    "trigger": "* te muestra * cartas:",
     "action": "DuelShow()"
   },
   {
@@ -326,7 +334,7 @@
     "action": "ChallengeStart(\"%0\")"
   },
   {
-    "trigger": "Challenge: * ganaron el duelo entre * y * (LP reached 0).",
+    "trigger": "Challenge:* won the duel between * and *.",
     "action": "ChallengeVictory(\"%0\")"
   },
   {
@@ -338,11 +346,11 @@
     "action": "ChallengeSubmit(\"%0\")"
   },
   {
-    "trigger": "Viendo el duelo entre * y *.",
+    "trigger": "Observando el duelo entre * y *.",
     "action": "DuelWatch()"
   },
   {
-    "trigger": "Visualización cancelada.",
+    "trigger": "Obsservación cancelada.",
     "action": "DuelUnwatch()"
   },
   {
@@ -370,7 +378,7 @@
     "action": "DuelDiscard()"
   },
   {
-    "trigger": "* baraja su baraja",
+    "trigger": "* baraja su baraja.",
     "action": "DuelShuffle()"
   },
   {
@@ -473,7 +481,7 @@
     "action": "RoomLeaveNotification()"
   },
   {
-    "trigger": "Challenge: * ha disuelto su sala.",
+    "trigger": "Challenge: * disbanded their duel room.",
     "action": "ChallengeDisband()"
   },
   {
@@ -481,7 +489,31 @@
     "action": "Linkdead()"
   },
   {
-    "trigger": "Challenge: * ha creado una sala de duelo.",
+    "trigger": "Challenge: * created a new duel room.",
     "action": "ChallengeCreate()"
-  }
+  },
+  {
+    "trigger": "* te invita a entrar a su sala. Teclea join * para unirte.",
+    "action": "RoomInviteNotification()"
+  },
+  {
+    "trigger": "Una invitación ha sido enviada a *.",
+    "action": "RoomInvite()"
+  },
+  {
+    "trigger": "Te mueves al Equipo *.",
+    "action": "RoomTeam(\"%1\")"
+  },
+  {
+    "trigger": "* es movido al equipo *.",
+    "action": "RoomTeam(\"%2\")"
+  },
+  {
+    "trigger": "* no tiene equipo.",
+    "action": "RoomTeam(0)"
+  },
+  {
+    "trigger": "Ahora no tienes equipo.",
+    "action": "RoomTeam(0)"
+  },
 ]
