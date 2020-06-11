@@ -512,12 +512,20 @@
   },
   {
     "trigger": "* and you won (*).",
-	    "action": "DuelWin()",
+    "action": "DuelWin()",
     "omit": 1
   },
   {
     "trigger": "* and you lost (*).",
     "action": "DuelLose()",
     "omit": 1
+  },
+  {
+    "trigger": "Challenge: * won the match between * and *.",
+    "action": "ChallengeVictory(\"%0\")"
+  },
+  {
+    "trigger": "Challenge: * scooped against *.",
+    "action": "ChallengeVictory(\"%0\")"
   }
 ]
