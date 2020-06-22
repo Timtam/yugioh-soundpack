@@ -527,5 +527,10 @@
   {
     "trigger": "Challenge: * scooped against *.",
     "action": "ChallengeVictory(\"%0\")"
+  },
+  {
+    "trigger": "* talks in English: *",
+    "action": "ChatTalk(\"%0\")",
+    "sequence": 90
   }
 ]

@@ -71,6 +71,11 @@ function Interface:ChatAnnouncement(text)
   world.Execute('history_add announcement='..text)
 end
 
+function Interface:ChatTalk(text)
+  self.sound('chat/talk')
+  world.Execute('history_add talk='..text)
+end
+
 function Interface:Who()
   self.sound('who')
 end
