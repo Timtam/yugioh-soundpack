@@ -492,5 +492,10 @@
   {
     "trigger": "Você não tem equipe.",
     "action": "RoomTeam(0)"
+  },
+  {
+    "trigger": "* Fala no canal talk: Portuguese *",
+    "action": "ChatTalk(\"%0\")",
+    "sequence": 90
   }
 ]
