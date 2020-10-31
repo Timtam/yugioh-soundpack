@@ -29,6 +29,8 @@ end
 
 function Addon:_inject_table(dest, src)
 
+  local key, value
+
   for key, value in pairs(src) do
 
     if dest[key] ~= nil and type(dest[key]) ~= type(value) then

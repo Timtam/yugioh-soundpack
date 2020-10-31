@@ -25,6 +25,8 @@ function Stream:PutData(data)
 
   self.bass.BASS_StreamPutData(self.id, buf, #data)
 
+  ffi.C.free(buf)
+
   return self.bass.BASS_ErrorGetCode()
 end
 

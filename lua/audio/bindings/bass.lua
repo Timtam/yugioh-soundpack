@@ -9,6 +9,7 @@ ffi.cdef[[
   typedef DWORD HPLUGIN;
   typedef DWORD HSAMPLE;
   typedef DWORD HSTREAM;
+  typedef DWORD HSYNC;
 
   typedef struct {
     float fWetDryMix;
@@ -99,6 +100,8 @@ ffi.cdef[[
     char *filename;
   } BASS_CHANNELINFO;
 
+  typedef void (__stdcall SYNCPROC)(HSYNC handle, DWORD channel, DWORD data, void *user);
+
   double BASS_ChannelBytes2Seconds(HCHANNEL handle, QWORD bytes);
   DWORD BASS_ChannelFlags(HCHANNEL DWORD, DWORD flags, DWORD mask);
   BOOL BASS_ChannelGetAttribute(HCHANNEL handle, DWORD attrib, float *value);
@@ -111,10 +114,12 @@ ffi.cdef[[
   BOOL BASS_ChannelPause(HCHANNEL handle);
   BOOL BASS_ChannelPlay(HCHANNEL handle, BOOL restart);
   BOOL BASS_ChannelRemoveFX(HCHANNEL handle, HFX fx);
+  BOOL BASS_ChannelRemoveSync(DWORD handle, HSYNC sync);
   QWORD BASS_ChannelSeconds2Bytes(HCHANNEL handle, double time);
   BOOL BASS_ChannelSetAttribute(HCHANNEL handle, DWORD attrib, float value);
   HFX BASS_ChannelSetFX(HCHANNEL handle, DWORD fx, int priority);
   BOOL BASS_ChannelSetPosition(HCHANNEL handle, QWORD pos, DWORD mode);
+  HSYNC BASS_ChannelSetSync(DWORD handle, DWORD type, QWORD param, SYNCPROC *proc, void *user);
   BOOL BASS_ChannelSlideAttribute(HCHANNEL handle, DWORD attrib, float value, DWORD time);
   BOOL BASS_ChannelStop(HCHANNEL handle);
   BOOL BASS_ChannelUpdate(HCHANNEL handle, DWORD length);

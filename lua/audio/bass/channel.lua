@@ -3,7 +3,9 @@ local class = require("pl.class")
 local const = require("audio.bass.constants")
 local ffi = require("ffi")
 local fx = require("audio.bass.fx")
+local sync = require("audio.bass.sync")
 local tablex = require("pl.tablex")
+local types = require("pl.types")
 
 class.Channel()
 
@@ -21,6 +23,8 @@ function Channel:_init(id)
 
     -- the problem is that we need to support both cases, direct instanciation
     -- and derived classes
+
+    local i, obj
 
     for i,obj in pairs({self, rawget(self, '__old_index')}) do
 
@@ -230,6 +234,24 @@ function Channel:SetPosition(position, mode)
 
 end
 
+function Channel:SetSync(type, param, callback, user)
+
+  assert(types.is_callable(callback) == true)
+
+  user = tostring(user)
+
+  local res = self.bass.BASS_ChannelSetSync(self.id, type, param, function(hsync, channel, data, user)
+    callback(sync(hsync, channel), data, user)
+  end, ffi.cast("void*", user))
+
+  if res ~= 0 then
+    return sync(res, self.id)
+  else
+    return self.bass.BASS_ErrorGetCode()
+  end
+
+end
+
 function Channel:SlideAttribute(attribute, value, time)
 
   self.bass.BASS_ChannelSlideAttribute(self.id, attribute, value, time)
@@ -251,6 +273,34 @@ function Channel:Update(length)
   length = length or 0
 
   return self.bass.BASS_ChannelUpdate(self.id, length)
+
+end
+
+-- convenience
+
+function Channel:Fadeout(duration, pause)
+
+  pause = types.to_bool(pause)
+
+  assert(types.type(duration) == 'number')
+
+  local res
+
+  res = self:SetSync(bit.bor(const.sync.slide, const.sync.onetime), 0, function(hsync, data, user)
+    if pause == false then
+      hsync:GetChannel():Stop()
+    else
+      hsync:GetChannel():Pause()
+    end
+  end, "")
+
+  if types.type(res) == 'number' then
+    return res
+  end
+
+  res = self:SlideAttribute(const.attribute.volume, 0, duration)
+
+  return res
 
 end
 

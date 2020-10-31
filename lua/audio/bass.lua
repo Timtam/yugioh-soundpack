@@ -27,10 +27,7 @@ end
 
 function BASS:GetVersion()
 
-  version = self.bass.BASS_GetVersion()
-
-  return version
-
+  return self.bass.BASS_GetVersion()
 end
 
 function BASS:Init(device, frequency, flags)
