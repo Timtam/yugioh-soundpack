@@ -2,6 +2,7 @@ Audio = require("audio")
 BASS = Audio.BASS()
 BASSSTREAM = require("audio.bass.stream")
 Config = nil
+Const = Audio.CONST
 Dir = require('pl.dir')
 Focused = true
 Interface = nil
@@ -40,6 +41,8 @@ function OnWorldOpen()
   world.Accelerator('F11', 'volume_toggle')
   world.Accelerator('F12', 'volume_mute')
   Interface = require('yugioh.interface')(PlaySound, PlaySoundStack, PlayLifepoints, SetMusicMode)
+
+  BASS:SetConfig(Const.config.device_default, 1)
 
   BASS:Init()
 
