@@ -225,6 +225,11 @@ function PlayLifepoints(lp_lost, lp_now)
   if Config.Get('settings', 'SoundsMuted') == 1 then
     return
   end
+
+  if Focused == false and Config.Get('settings', 'UnfocusedSounds') == 0 then
+    return
+  end
+
   lp_lost=tonumber(lp_lost)
   lp_now = tonumber(lp_now)
   if lp_lost == nil then
