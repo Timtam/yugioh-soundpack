@@ -460,6 +460,10 @@ function Interface:RoomTeam(team)
 
   local snd = self.sound('room/'..tmp)
 
+  if team == nil then
+    return -- unfocused
+  end
+
   if team == 1 then
     tmp = -0.8
   elseif team == 2 then
