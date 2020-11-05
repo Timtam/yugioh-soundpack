@@ -159,7 +159,7 @@ world.Execute('encoding windows-1252')</send>
    sequence="100"
   >
   <send>TriggerHandler:Load('english')
-world.Execute('encoding utf-8')</send>
+world.Execute('encoding windows-1252')</send>
   </trigger>
   <trigger
    enabled="y"
