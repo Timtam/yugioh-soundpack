@@ -1,5 +1,7 @@
 Class = require('pl.class')
 local const = require("audio.bass.constants")
+Dir = require("pl.dir")
+Path = require("pl.path")
 PPI = require('ppi')
 
 Class.Interface()
@@ -140,7 +142,7 @@ function Interface:DuelMain()
 end
 
 function Interface:DuelDraw()
-  self.soundstack('duel/draw')
+  self.soundstack('duel/draw/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'draw')))))
 end
 
 function Interface:DuelFacedown()
