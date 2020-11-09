@@ -122,6 +122,7 @@ function Interface:DuelStart()
 end
 
 function Interface:DuelActivate()
+  self.soundstack('duel/play/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'play')))))
   self.soundstack('duel/activate')
 end
 
@@ -146,6 +147,7 @@ function Interface:DuelDraw()
 end
 
 function Interface:DuelFacedown()
+  self.soundstack('duel/play/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'play')))))
   self.soundstack('duel/facedown')
 end
 
@@ -169,10 +171,12 @@ function Interface:DuelChain()
 end
 
 function Interface:DuelSpecial()
+  self.soundstack('duel/play/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'play')))))
   self.soundstack('duel/special')
 end
 
 function Interface:DuelDefense()
+  self.soundstack('duel/play/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'play')))))
   self.soundstack('duel/defense')
 end
 
@@ -189,10 +193,12 @@ function Interface:DuelDamage()
 end
 
 function Interface:DuelNormal()
+  self.soundstack('duel/play/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'play')))))
   self.soundstack('duel/normal')
 end
 
 function Interface:DuelFlip()
+  self.soundstack('duel/play/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'play')))))
   self.soundstack('duel/flip')
 end
 
@@ -263,6 +269,7 @@ end
 
 function Interface:DuelReturn()
 
+  self.soundstack('duel/draw/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'draw')))))
   self.soundstack('duel/return')
 
 end
@@ -325,6 +332,7 @@ end
 function Interface:DuelDiscard()
 
   self.soundstack("duel/discard")
+  self.soundstack('duel/play/'..tostring(math.random(1, #Dir.getfiles(Path.join(GetInfo(74), 'duel', 'play')))))
 
 end
 
