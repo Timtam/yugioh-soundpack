@@ -113,6 +113,22 @@
   <trigger
    enabled="y"
    group="System"
+   match="### activate_spell"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="### activate_trap"
+   omit_from_output="y"
+   sequence="100"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
    match="*‚æ‚¤‚±‚»*"
    send_to="12"
    sequence="100"

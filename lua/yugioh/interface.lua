@@ -259,6 +259,8 @@ function Interface:Welcome()
     self.sound('welcome')
   end
 
+  world.Execute('soundpack_on')
+
 end
 
 function Interface:DuelReplay()
