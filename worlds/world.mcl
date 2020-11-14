@@ -115,13 +115,41 @@
    group="System"
    match="### activate_spell"
    omit_from_output="y"
-   sequence="100"
+   sequence="99"
   >
   </trigger>
   <trigger
    enabled="y"
    group="System"
    match="### activate_trap"
+   omit_from_output="y"
+   sequence="99"
+  >
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="### card_text_finished"
+   omit_from_output="y"
+   send_to="12"
+   sequence="99"
+  >
+  <send>world.EnableTriggerGroup("Game", true)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="### card_text_follows"
+   omit_from_output="y"
+   send_to="12"
+   sequence="99"
+  >
+  <send>world.EnableTriggerGroup("Game", false)</send>
+  </trigger>
+  <trigger
+   enabled="y"
+   group="System"
+   match="###*"
    omit_from_output="y"
    sequence="100"
   >
@@ -336,14 +364,14 @@ world.Execute('encoding cp932')</send>
    muclient_version="5.05"
    world_file_version="15"
   >
-  <timer enabled="y" second="1.00" offset_second="0.00"    send_to="12"
-group="System" omit_from_output="y" >
-  <send>MusicLooper()</send>
-
-  </timer>
   <timer enabled="y" second="0.10" offset_second="0.00"    send_to="12"
 group="System" omit_from_output="y" >
   <send>SoundStack:PlayNext()</send>
+
+  </timer>
+  <timer enabled="y" second="1.00" offset_second="0.00"    send_to="12"
+group="System" omit_from_output="y" >
+  <send>MusicLooper()</send>
 
   </timer>
 </timers>
@@ -448,7 +476,7 @@ group="System" omit_from_output="y" >
    world_file_version="15"
   >
   <variable name="Configuration">741d5052da64c6ec33c863e5</variable>
-  <variable name="PPIparams_1">n:1|n:3|n:2|t:2</variable>
+  <variable name="PPIparams_1">n:1|n:4|n:2|s:settings|n:3|s:UnfocusedSounds</variable>
   <variable name="PPIparams_2">s:description|s:play unimportant sounds when the soundpack window is currently not focused?|s:key|s:ctrl+alt+u|s:option|s:UnfocusedSounds|s:section|s:settings|s:type|s:bool</variable>
 </variables>
 

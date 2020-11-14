@@ -46,6 +46,8 @@ function TriggerHandler:Load(language)
     if success ~= error_code.eOK then
       error('Error when creating trigger for text \''..self.triggers[i].text..'\': error code '..tostring(success))
     end
+
+    world.SetTriggerOption(self.triggers[i].name, 'group', 'Game')
   end
 end
 
