@@ -1,6 +1,7 @@
 Audio = require("audio")
 BASS = Audio.BASS()
 BASSSTREAM = require("audio.bass.stream")
+CardText = ""
 Config = nil
 Const = Audio.CONST
 Dir = require('pl.dir')
@@ -10,6 +11,7 @@ Music = nil
 MusicMode = 0 -- 0 = not set, 1 = lounge, 2 = duel
 Path = require('pl.path')
 PPI = require('ppi')
+ReceivingCardText = false
 SoundStack = require("yugioh.soundstack")(Audio)
 TriggerHandler = require('yugioh.triggerhandler')()
 VolumeControl = 1 -- 1 = sounds, 2 = music
